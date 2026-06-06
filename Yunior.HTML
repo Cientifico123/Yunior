@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NECMASTER PRO | Your NEC Field Bible</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #050d1a;
+    --bg-secondary: #0a1628;
+    --bg-card: #0d1f38;
+    --bg-card-hover: #112540;
+    --gold: #FFD700;
+    --gold-light: #FFE44D;
+    --gold-dark: #CC9900;
+    --electric: #00C8FF;
+    --electric-dim: #0080AA;
+    --white: #FFFFFF;
+    --gray: #8A9BB0;
+    --gray-light: #B0C0D0;
+    --orange: #FF6B00;
+    --green: #00E676;
+    --red: #FF3D3D;
+    --border: rgba(0,200,255,0.15);
+    --border-gold: rgba(255,215,0,0.3);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Rajdhani', sans-serif;
+    background: var(--bg-primary);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,200,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,200,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(5,13,26,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-gold);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: var(--gold);
+    letter-spacing: 3px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  .nav-logo span { color: var(--electric); }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--gray-light);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-badge {
+    background: var(--gold);
+    color: var(--bg-primary);
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+  }
+
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 2rem 4rem;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,200,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-bolt { font-size: 4rem; animation: pulse 2s ease-in-out infinite; margin-bottom: 1rem; }
+
+  @keyframes pulse {
+    0%, 100% { text-shadow: 0 0 20px var(--gold); opacity: 1; }
+    50% { text-shadow: 0 0 60px var(--gold), 0 0 100px var(--electric); opacity: 0.8; }
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    color: var(--gold);
+    letter-spacing: 8px;
+    line-height: 1;
+    text-shadow: 0 0 40px rgba(255,215,0,0.4);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-subtitle {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: var(--electric);
+    letter-spacing: 6px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-tagline { font-size: 1.1rem; color: var(--gray-light); font-weight: 600; letter-spacing: 1px; margin-bottom: 0.5rem; }
+  .hero-tagline-es { font-size: 0.95rem; color: var(--gray); font-style: italic; margin-bottom: 3rem; }
+
+  .hero-disclaimer {
+    background: rgba(255,107,0,0.1);
+    border: 1px solid rgba(255,107,0,0.3);
+    border-radius: 8px;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.75rem;
+    color: var(--orange);
+    letter-spacing: 0.5px;
+    margin-bottom: 3rem;
+    max-width: 600px;
+  }
+
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-bottom: 4rem; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--bg-primary);
+    border: none;
+    padding: 0.9rem 2.5rem;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 0 20px rgba(255,215,0,0.3);
+  }
+
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(255,215,0,0.5); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--electric);
+    border: 2px solid var(--electric);
+    padding: 0.9rem 2.5rem;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover { background: rgba(0,200,255,0.1); box-shadow: 0 0 20px rgba(0,200,255,0.3); transform: translateY(-2px); }
+
+  .search-section { width: 100%; max-width: 700px; margin: 0 auto; }
+
+  .search-label { font-size: 0.8rem; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.8rem; }
+
+  .search-wrapper { position: relative; display: flex; align-items: center; }
+
+  .search-input {
+    width: 100%;
+    background: rgba(13,31,56,0.9);
+    border: 2px solid var(--border-gold);
+    border-radius: 8px;
+    padding: 1rem 5rem 1rem 1.5rem;
+    color: var(--white);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .search-input::placeholder { color: var(--gray); }
+  .search-input:focus { border-color: var(--gold); box-shadow: 0 0 20px rgba(255,215,0,0.15); }
+
+  .search-btn {
+    position: absolute;
+    right: 8px;
+    background: var(--gold);
+    border: none;
+    border-radius: 6px;
+    width: 42px; height: 42px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+    color: var(--bg-primary);
+  }
+
+  .search-btn:hover { background: var(--gold-light); transform: scale(1.05); }
+
+  .search-examples { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.8rem; justify-content: center; }
+
+  .search-chip {
+    background: rgba(0,200,255,0.08);
+    border: 1px solid rgba(0,200,255,0.2);
+    border-radius: 20px;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.75rem;
+    color: var(--electric);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 600;
+  }
+
+  .search-chip:hover { background: rgba(0,200,255,0.18); border-color: var(--electric); }
+
+  .answer-box {
+    display: none;
+    margin-top: 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: left;
+    max-width: 700px;
+    width: 100%;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .answer-box.visible { display: block; }
+
+  @keyframes fadeIn { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
+
+  .answer-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+
+  .answer-badge { background: var(--gold); color: var(--bg-primary); font-size: 0.7rem; font-weight: 700; padding: 2px 10px; border-radius: 20px; letter-spacing: 1px; }
+
+  .answer-title { font-size: 1rem; font-weight: 700; color: var(--white); }
+  .answer-body { font-size: 0.95rem; color: var(--gray-light); line-height: 1.7; font-weight: 500; }
+  .answer-ref { color: var(--electric); font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; margin-top: 0.8rem; }
+  .answer-result { color: var(--gold); font-family: 'Share Tech Mono', monospace; font-size: 1.1rem; font-weight: 700; margin: 0.8rem 0; }
+
+  .stats-bar {
+    position: relative; z-index: 1;
+    background: rgba(13,31,56,0.8);
+    border-top: 1px solid var(--border-gold);
+    border-bottom: 1px solid var(--border-gold);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .stat-item { text-align: center; }
+  .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--gold); line-height: 1; }
+  .stat-label { font-size: 0.75rem; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+
+  .main-content { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-tag { font-size: 0.75rem; color: var(--electric); letter-spacing: 4px; text-transform: uppercase; font-weight: 700; margin-bottom: 0.5rem; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3rem); color: var(--gold); letter-spacing: 4px; }
+  .section-desc { color: var(--gray-light); font-size: 1rem; font-weight: 500; margin-top: 0.5rem; }
+
+  .modules-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 5rem; }
+
+  .module-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.8rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .module-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--electric));
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  .module-card:hover { background: var(--bg-card-hover); border-color: var(--border-gold); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+  .module-card:hover::before { transform: scaleX(1); }
+  .module-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .module-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--gold); letter-spacing: 2px; margin-bottom: 0.3rem; }
+  .module-name-es { font-size: 0.8rem; color: var(--electric); letter-spacing: 1px; text-transform: uppercase; font-weight: 700; margin-bottom: 0.8rem; }
+  .module-desc { font-size: 0.9rem; color: var(--gray-light); font-weight: 500; line-height: 1.5; }
+  .module-ref { font-size: 0.75rem; color: var(--gray); font-family: 'Share Tech Mono', monospace; margin-top: 0.8rem; }
+  .module-arrow { position: absolute; bottom: 1.5rem; right: 1.5rem; color: var(--gold); font-size: 1.2rem; opacity: 0; transition: all 0.3s; }
+  .module-card:hover .module-arrow { opacity: 1; transform: translateX(4px); }
+
+  .module-panel {
+    display: none;
+    background: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-top: 2rem;
+    animation: slideDown 0.3s ease;
+  }
+
+  .module-panel.active { display: block; }
+
+  @keyframes slideDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+
+  .panel-close {
+    float: right;
+    background: rgba(255,61,61,0.15);
+    border: 1px solid rgba(255,61,61,0.3);
+    color: var(--red);
+    border-radius: 6px;
+    padding: 0.3rem 1rem;
+    cursor: pointer;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
+  .panel-title { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--gold); letter-spacing: 3px; margin-bottom: 2rem; }
+
+  .learn-steps { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .learn-step {
+    background: rgba(0,200,255,0.04);
+    border-left: 3px solid var(--electric);
+    border-radius: 0 8px 8px 0;
+    padding: 1.2rem 1.5rem;
+  }
+
+  .step-label { font-size: 0.7rem; color: var(--electric); letter-spacing: 3px; text-transform: uppercase; font-weight: 700; margin-bottom: 0.4rem; }
+  .step-content { font-size: 0.95rem; color: var(--white); font-weight: 500; line-height: 1.6; }
+  .step-content strong { color: var(--gold); }
+  .step-content code { background: rgba(0,200,255,0.1); color: var(--electric); padding: 2px 8px; border-radius: 4px; font-family: 'Share Tech Mono', monospace; font-size: 0.9rem; }
+
+  .formula-box {
+    background: rgba(255,215,0,0.06);
+    border: 1px solid var(--border-gold);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--gold);
+    font-size: 1rem;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+
+  .warning-box {
+    background: rgba(255,107,0,0.08);
+    border: 1px solid rgba(255,107,0,0.3);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    color: var(--orange);
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    margin: 0.5rem 0;
+  }
+
+  .calc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px,1fr)); gap: 1.5rem; margin-bottom: 5rem; }
+
+  .calc-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .calc-card:hover { border-color: var(--border-gold); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+
+  .calc-header {
+    background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(0,200,255,0.05));
+    border-bottom: 1px solid var(--border);
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .calc-icon { font-size: 1.5rem; }
+  .calc-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--gold); letter-spacing: 2px; }
+  .calc-nec { font-size: 0.7rem; color: var(--electric); font-family: 'Share Tech Mono', monospace; }
+
+  .calc-body { padding: 1.5rem; }
+  .calc-fields { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1rem; }
+  .field-label { font-size: 0.8rem; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; font-weight: 700; margin-bottom: 0.3rem; }
+
+  .field-input, .field-select {
+    width: 100%;
+    background: rgba(5,13,26,0.8);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    color: var(--white);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .field-input:focus, .field-select:focus { border-color: var(--gold); }
+  .field-select option { background: var(--bg-secondary); color: var(--white); }
+
+  .calc-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--bg-primary);
+    border: none;
+    border-radius: 6px;
+    padding: 0.8rem;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .calc-btn:hover { box-shadow: 0 0 20px rgba(255,215,0,0.4); transform: translateY(-1px); }
+
+  .calc-result {
+    display: none;
+    margin-top: 1rem;
+    background: rgba(0,230,118,0.06);
+    border: 1px solid rgba(0,230,118,0.3);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .calc-result.show { display: block; }
+  .result-label { font-size: 0.7rem; color: var(--green); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 0.4rem; }
+  .result-value { font-family: 'Share Tech Mono', monospace; font-size: 1.2rem; color: var(--white); font-weight: 700; }
+  .result-detail { font-size: 0.85rem; color: var(--gray-light); margin-top: 0.4rem; font-weight: 500; }
+  .result-ref { font-size: 0.75rem; color: var(--electric); font-family: 'Share Tech Mono', monospace; margin-top: 0.4rem; }
+
+  .nec-table-section { margin-bottom: 5rem; }
+  .table-filters { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+
+  .filter-input {
+    background: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    color: var(--white);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    outline: none;
+    transition: border-color 0.2s;
+    flex: 1;
+    min-width: 140px;
+  }
+
+  .filter-input:focus { border-color: var(--gold); }
+  .filter-input::placeholder { color: var(--gray); }
+
+  .nec-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  thead { background: linear-gradient(135deg, rgba(255,215,0,0.12), rgba(0,200,255,0.08)); }
+
+  th {
+    padding: 1rem;
+    text-align: left;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+    border-bottom: 2px solid var(--border-gold);
+    white-space: nowrap;
+  }
+
+  td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); color: var(--gray-light); font-weight: 500; font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; transition: background 0.15s; }
+  tr:hover td { background: rgba(255,215,0,0.04); color: var(--white); }
+  .awg-cell { color: var(--gold); font-weight: 700; font-size: 0.95rem; }
+  .amp-cell { color: var(--green); font-weight: 700; }
+  .area-cell { color: var(--electric); }
+
+  .glossary-section { margin-bottom: 5rem; }
+  .gloss-toggle { display: flex; gap: 0; margin-bottom: 1.5rem; border: 1px solid var(--border-gold); border-radius: 8px; overflow: hidden; width: fit-content; }
+  .gloss-btn {
+    background: transparent;
+    color: var(--gray-light);
+    border: none;
+    padding: 0.6rem 1.5rem;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .gloss-btn.active { background: var(--gold); color: var(--bg-primary); }
+  .glossary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1rem; }
+
+  .gloss-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem;
+    transition: all 0.2s;
+  }
+
+  .gloss-card:hover { border-color: var(--border-gold); }
+  .gloss-term { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--gold); letter-spacing: 2px; }
+  .gloss-term-es { font-size: 0.75rem; color: var(--electric); letter-spacing: 1px; font-weight: 700; margin-bottom: 0.5rem; }
+  .gloss-def { font-size: 0.88rem; color: var(--gray-light); line-height: 1.5; font-weight: 500; }
+  .gloss-ref { font-size: 0.7rem; color: var(--gray); font-family: 'Share Tech Mono', monospace; margin-top: 0.5rem; }
+
+  .exam-section { margin-bottom: 5rem; }
+  .exam-controls { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+
+  .level-btn {
+    background: transparent;
+    border: 2px solid var(--border-gold);
+    color: var(--gold);
+    padding: 0.6rem 1.5rem;
+    border-radius: 20px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .level-btn.active, .level-btn:hover { background: var(--gold); color: var(--bg-primary); }
+
+  .question-card { background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: 16px; padding: 2rem; }
+
+  .question-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .q-level { background: rgba(255,215,0,0.1); border: 1px solid var(--border-gold); color: var(--gold); padding: 3px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; }
+  .q-number { color: var(--gray); font-size: 0.85rem; font-family: 'Share Tech Mono', monospace; }
+  .q-score { color: var(--green); font-weight: 700; margin-left: auto; font-family: 'Share Tech Mono', monospace; }
+
+  .question-text { font-size: 1.15rem; color: var(--white); font-weight: 600; line-height: 1.6; margin-bottom: 1.5rem; }
+  .question-text-es { font-size: 0.95rem; color: var(--gray); font-style: italic; margin-bottom: 1.5rem; }
+
+  .options-grid { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1.5rem; }
+
+  .option-btn {
+    background: rgba(13,31,56,0.8);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    color: var(--gray-light);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+  }
+
+  .option-btn:hover { border-color: var(--gold); background: rgba(255,215,0,0.06); color: var(--white); }
+  .option-btn.correct { border-color: var(--green); background: rgba(0,230,118,0.1); color: var(--green); pointer-events: none; }
+  .option-btn.wrong { border-color: var(--red); background: rgba(255,61,61,0.08); color: var(--red); pointer-events: none; }
+
+  .option-letter { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--gold); min-width: 20px; }
+
+  .explanation-box {
+    display: none;
+    background: rgba(0,200,255,0.06);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin-top: 1rem;
+  }
+
+  .explanation-box.show { display: block; animation: fadeIn 0.3s ease; }
+  .exp-label { font-size: 0.7rem; color: var(--electric); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 0.5rem; }
+  .exp-text { color: var(--gray-light); font-size: 0.9rem; font-weight: 500; line-height: 1.6; }
+  .exp-ref { color: var(--electric); font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; margin-top: 0.5rem; }
+
+  .next-btn {
+    background: linear-gradient(135deg, var(--electric), var(--electric-dim));
+    color: var(--bg-primary);
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 2rem;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+  }
+
+  .next-btn:hover { box-shadow: 0 0 20px rgba(0,200,255,0.3); transform: translateY(-1px); }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--border-gold);
+    padding: 3rem 2rem;
+    text-align: center;
+    background: rgba(5,13,26,0.95);
+  }
+
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--gold); letter-spacing: 4px; margin-bottom: 0.5rem; }
+  .footer-legal { font-size: 0.78rem; color: var(--gray); max-width: 600px; margin: 0 auto 1rem; line-height: 1.6; font-weight: 500; }
+  .footer-version { font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; color: var(--electric); letter-spacing: 2px; }
+
+  .scroll-top {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--gold); color: var(--bg-primary); border: none;
+    border-radius: 50%; width: 48px; height: 48px;
+    font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 20px rgba(255,215,0,0.3);
+    z-index: 999; display: none; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .scroll-top.visible { display: flex; }
+  .scroll-top:hover { transform: scale(1.1); }
+
+  .divider { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--border-gold), transparent); margin: 4rem 0; }
+
+  @media(max-width:768px){
+    .nav-links { display: none; }
+    .stats-bar { gap: 2rem; }
+    .modules-grid { grid-template-columns: 1fr; }
+    .calc-grid { grid-template-columns: 1fr; }
+    .glossary-grid { grid-template-columns: 1fr; }
+    .hero { padding: 80px 1.5rem 3rem; }
+    .main-content { padding: 3rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo" onclick="scrollToTop()">⚡ NECMASTER<span>PRO</span></div>
+  <ul class="nav-links">
+    <li><a onclick="scrollTo('modules')">Modules</a></li>
+    <li><a onclick="scrollTo('calculators')">Calculators</a></li>
+    <li><a onclick="scrollTo('tables')">NEC Tables</a></li>
+    <li><a onclick="scrollTo('exam')">Exam Mode</a></li>
+    <li><a onclick="scrollTo('glossary')">Glossary</a></li>
+    <li><span class="nav-badge">NEC 2023</span></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bolt">⚡</div>
+  <h1 class="hero-title">NECMASTER PRO</h1>
+  <div class="hero-subtitle">YOUR NEC FIELD BIBLE</div>
+  <p class="hero-tagline">The Complete NEC Reference, Calculator & Study Guide for Electrical Professionals</p>
+  <p class="hero-tagline-es">La Referencia NEC Completa, Calculadora y Guía de Estudio para Profesionales Eléctricos</p>
+  <div class="hero-disclaimer">
+    ⚠️ This app is for educational purposes only. Always verify with the official NEC and consult the AHJ (Authority Having Jurisdiction). Not a substitute for the NEC codebook.
+  </div>
+  <div class="hero-cta">
+    <button class="btn-primary" onclick="scrollTo('modules')">EXPLORE MODULES</button>
+    <button class="btn-secondary" onclick="scrollTo('calculators')">⚡ CALCULATORS</button>
+  </div>
+
+  <div class="search-section">
+    <div class="search-label">⚡ SMART NEC ASSISTANT — Ask anything in English or Spanish</div>
+    <div class="search-wrapper">
+      <input class="search-input" id="searchInput" type="text" placeholder='e.g. "How many #12 wires fit in EMT 3/4?" or "¿Qué breaker lleva un motor de 10 HP?"' />
+      <button class="search-btn" onclick="handleSearch()">→</button>
+    </div>
+    <div class="search-examples">
+      <span class="search-chip" onclick="fillSearch('How many #12 wires fit in 3/4 EMT?')">12 AWG in 3/4 EMT</span>
+      <span class="search-chip" onclick="fillSearch('What breaker for a 10 HP 3-phase motor?')">10 HP Motor Breaker</span>
+      <span class="search-chip" onclick="fillSearch('How to calculate 45 kVA transformer current?')">45 kVA Transformer</span>
+      <span class="search-chip" onclick="fillSearch('Where is derating in the NEC?')">Derating Reference</span>
+      <span class="search-chip" onclick="fillSearch('Box fill for 4x4 box with 6 #12 wires')">Box Fill 4x4</span>
+    </div>
+    <div class="answer-box" id="answerBox">
+      <div class="answer-header">
+        <span class="answer-badge">NEC ANSWER</span>
+        <span class="answer-title" id="answerTitle"></span>
+      </div>
+      <div class="answer-body" id="answerBody"></div>
+      <div class="answer-result" id="answerResult"></div>
+      <div class="answer-ref" id="answerRef"></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-number">100+</div><div class="stat-label">NEC Topics</div></div>
+  <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">Calculators</div></div>
+  <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">Exam Questions</div></div>
+  <div class="stat-item"><div class="stat-number">2</div><div class="stat-label">Languages</div></div>
+  <div class="stat-item"><div class="stat-number">2023</div><div class="stat-label">NEC Edition</div></div>
+</div>
+
+<div class="main-content">
+  <div id="modules" class="section-header">
+    <div class="section-tag">// EDUCATIONAL MODULES</div>
+    <div class="section-title">CORE NEC MODULES</div>
+    <div class="section-desc">Click any module to learn, understand, and apply NEC code — step by step</div>
+  </div>
+
+  <div class="modules-grid">
+    <div class="module-card" onclick="openModule('conduit')">
+      <div class="module-icon">🔧</div>
+      <div class="module-name">CONDUIT FILL</div>
+      <div class="module-name-es">Llenado de Conduit</div>
+      <div class="module-desc">Learn how many conductors fit in any conduit type. EMT, PVC, RMC and more with complete calculations.</div>
+      <div class="module-ref">NEC Article 358 | Annex C | Chapter 9</div>
+      <div class="module-arrow">→</div>
+    </div>
+    <div class="module-card" onclick="openModule('boxfill')">
+      <div class="module-icon">📦</div>
+      <div class="module-name">BOX FILL</div>
+      <div class="module-name-es">Llenado de Cajas</div>
+      <div class="module-desc">Calculate box fill for 4x4, octagonal and device boxes. Volume per conductor, devices and clamps.</div>
+      <div class="module-ref">NEC Article 314.16</div>
+      <div class="module-arrow">→</div>
+    </div>
+    <div class="module-card" onclick="openModule('ampacity')">
+      <div class="module-icon">⚡</div>
+      <div class="module-name">AMPACITY & DERATING</div>
+      <div class="module-name-es">Ampacidad y Corrección</div>
+      <div class="module-desc">Table 310.16, temperature correction, conduit fill derating. Select the right conductor every time.</div>
+      <div class="module-ref">NEC 310.15 | Table 310.16 | 310.15(C)(1)</div>
+      <div class="module-arrow">→</div>
+    </div>
+    <div class="module-card" onclick="openModule('motors')">
+      <div class="module-icon">⚙️</div>
+      <div class="module-name">MOTORS</div>
+      <div class="module-name-es">Motores Eléctricos</div>
+      <div class="module-desc">FLC calculations, conductor sizing, overload and short-circuit protection for single and three-phase motors.</div>
+      <div class="module-ref">NEC Article 430 | Tables 430.248, 430.250</div>
+      <div class="module-arrow">→</div>
+    </div>
+    <div class="module-card" onclick="openModule('transformers')">
+      <div class="module-icon">🔄</div>
+      <div class="module-name">TRANSFORMERS</div>
+      <div class="module-name-es">Transformadores</div>
+      <div class="module-desc">Calculate primary and secondary currents, select protection, understand dry-type and SDS grounding.</div>
+      <div class="module-ref">NEC Article 450 | 240.21(C)</div>
+      <div class="module-arrow">→</div>
+    </div>
+    <div class="module-card" onclick="openModule('grounding')">
+      <div class="module-icon">🌍</div>
+      <div class="module-name">GROUNDING & BONDING</div>
+      <div class="module-name-es">Puesta a Tierra</div>
+      <div class="module-desc">GEC sizing, ground rods, UFER ground, bonding jumpers, neutral-ground separation rules.</div>
+      <div class="module-ref">NEC Article 250</div>
+      <div class="module-arrow">→</div>
+    </div>
+    <div class="module-card" onclick="openModule('panels')">
+      <div class="module-icon">🎛️</div>
+      <div class="module-name">PANELBOARDS</div>
+      <div class="module-name-es">Tableros Eléctricos</div>
+      <div class="module-desc">Load calculations, breaker selection, working clearances, labeling requirements and main disconnects.</div>
+      <div class="module-ref">NEC Article 408 | 110.26</div>
+      <div class="module-arrow">→</div>
+    </div>
+    <div class="module-card" onclick="openModule('voltagedrop')">
+      <div class="module-icon">📉</div>
+      <div class="module-name">VOLTAGE DROP</div>
+      <div class="module-name-es">Caída de Tensión</div>
+      <div class="module-desc">Calculate voltage drop for branch circuits and feeders. Select conductor size to keep drop under 3% and 5%.</div>
+      <div class="module-ref">NEC 210.19(A) Informational Note | 215.2(A)</div>
+      <div class="module-arrow">→</div>
+    </div>
+    <div class="module-card" onclick="openModule('branchcircuits')">
+      <div class="module-icon">🔌</div>
+      <div class="module-name">BRANCH CIRCUITS</div>
+      <div class="module-name-es">Circuitos Ramales</div>
+      <div class="module-desc">15A and 20A circuits, AFCI, GFCI requirements, receptacle rules, 6-foot and 12-foot rules.</div>
+      <div class="module-ref">NEC Article 210</div>
+      <div class="module-arrow">→</div>
+    </div>
+    <div class="module-card" onclick="openModule('feeders')">
+      <div class="module-icon">🔋</div>
+      <div class="module-name">FEEDERS</div>
+      <div class="module-name-es">Alimentadores</div>
+      <div class="module-desc">Feeder sizing, continuous vs non-continuous loads, parallel conductors, OCPD selection.</div>
+      <div class="module-ref">NEC Article 215 | 310.10(H)</div>
+      <div class="module-arrow">→</div>
+    </div>
+    <div class="module-card" onclick="openModule('gfciafci')">
+      <div class="module-icon">🛡️</div>
+      <div class="module-name">GFCI & AFCI</div>
+      <div class="module-name-es">Protección GFCI y AFCI</div>
+      <div class="module-desc">Where GFCI and AFCI are required, how they work, tamper-resistant and weather-resistant requirements.</div>
+      <div class="module-ref">NEC 210.8 | 210.12</div>
+      <div class="module-arrow">→</div>
+    </div>
+    <div class="module-card" onclick="openModule('workingspace')">
+      <div class="module-icon">📐</div>
+      <div class="module-name">WORKING SPACES</div>
+      <div class="module-name-es">Espacios de Trabajo</div>
+      <div class="module-desc">Minimum clearances for electrical equipment, three conditions of Table 110.26(A)(1), dedicated space.</div>
+      <div class="module-ref">NEC 110.26</div>
+      <div class="module-arrow">→</div>
+    </div>
+  </div>
+
+  <div id="panel-conduit" class="module-panel">
+    <button class="panel-close" onclick="closeModule('conduit')">✕ CLOSE</button>
+    <div class="panel-title">🔧 CONDUIT FILL — LLENADO DE CONDUIT</div>
+    <div class="learn-steps">
+      <div class="learn-step"><div class="step-label">📖 WHAT IS IT? / ¿QUÉ ES?</div><div class="step-content"><strong>Conduit fill</strong> refers to the maximum percentage of a conduit's cross-sectional area that conductors can occupy. The NEC limits this to prevent heat buildup, insulation damage, and pulling difficulty.<br><br><strong>El llenado de conduit</strong> es el porcentaje máximo del área de la sección transversal de un conduit que pueden ocupar los conductores. El NEC limita esto para evitar acumulación de calor y daño al aislamiento.</div></div>
+      <div class="learn-step"><div class="step-label">📋 NEC REFERENCE / REFERENCIA NEC</div><div class="step-content"><code>Chapter 9, Table 1</code> gives the maximum fill percentages:<br>• <strong>1 conductor:</strong> 53% fill<br>• <strong>2 conductors:</strong> 31% fill<br>• <strong>3+ conductors:</strong> 40% fill<br><br><code>Annex C (Tables C.1–C.12)</code> shows the maximum number of conductors for each conduit type and trade size.</div></div>
+      <div class="learn-step"><div class="step-label">📐 FORMULA / FÓRMULA</div><div class="step-content"><div class="formula-box">Fill % = (Total conductor area ÷ Conduit internal area) × 100</div> Each conductor's area is found in <code>Chapter 9, Table 5</code>. Conduit internal area is in <code>Chapter 9, Table 4</code>.</div></div>
+      <div class="learn-step"><div class="step-label">🔨 FIELD EXAMPLE / EJEMPLO DE CAMPO</div><div class="step-content"><strong>Q:</strong> Can you run 4 conductors of #12 THHN in 1/2" EMT?<br><br>• #12 THHN area = 0.0133 in² each<br>• 4 conductors = 4 × 0.0133 = <strong>0.0532 in²</strong><br>• 1/2" EMT internal area = 0.122 in²<br>• Fill = 0.0532 ÷ 0.122 = <strong>43.6%</strong> — ❌ EXCEEDS 40% limit<br><br><strong>Solution:</strong> Use 3/4" EMT (area = 0.213 in²) → Fill = 25% ✅</div></div>
+      <div class="learn-step"><div class="step-label">⚠️ COMMON MISTAKES / ERRORES COMUNES</div><div class="step-content"><div class="warning-box">⚠️ Using the wrong conductor area — always use the INSULATED conductor area from Table 5, not the bare wire area.</div><div class="warning-box">⚠️ Forgetting that equipment grounds count in the fill calculation.</div><div class="warning-box">⚠️ Mixing conductor sizes — calculate each size separately and add total areas.</div></div></div>
+    </div>
+  </div>
+
+  <div id="panel-boxfill" class="module-panel">
+    <button class="panel-close" onclick="closeModule('boxfill')">✕ CLOSE</button>
+    <div class="panel-title">📦 BOX FILL — LLENADO DE CAJAS</div>
+    <div class="learn-steps">
+      <div class="learn-step"><div class="step-label">📖 WHAT IS IT? / ¿QUÉ ES?</div><div class="step-content"><strong>Box fill</strong> is the calculation that ensures a junction or device box has enough volume to safely contain all conductors, devices, and fittings without crowding.<br><br><strong>El llenado de caja</strong> garantiza que la caja tenga suficiente volumen para contener todos los conductores, dispositivos y accesorios de forma segura.</div></div>
+      <div class="learn-step"><div class="step-label">📋 NEC REFERENCE / REFERENCIA NEC</div><div class="step-content"><code>NEC 314.16(B)</code> — Volume allowance required per conductor:<br>• <strong>#14 AWG:</strong> 2.00 in³ each<br>• <strong>#12 AWG:</strong> 2.25 in³ each<br>• <strong>#10 AWG:</strong> 2.50 in³ each<br>• <strong>#8 AWG:</strong> 3.00 in³ each<br>• <strong>#6 AWG:</strong> 5.00 in³ each</div></div>
+      <div class="learn-step"><div class="step-label">📐 COUNTING RULES / REGLAS DE CONTEO</div><div class="step-content">Count each conductor entering the box. Additionally:<br>• <strong>Device (switch/receptacle):</strong> Count 2 conductors of the largest connected wire<br>• <strong>Internal cable clamps:</strong> Count 1 conductor (largest wire)<br>• <strong>Ground wires:</strong> All grounds = 1 conductor (largest ground)<br>• <strong>Fixture studs/hickeys:</strong> Count 1 each</div></div>
+      <div class="learn-step"><div class="step-label">🔨 FIELD EXAMPLE / EJEMPLO DE CAMPO</div><div class="step-content"><strong>4×4×1.5 box with:</strong> 4 × #12 conductors + 1 receptacle + 1 ground<br><br>• 4 conductors × 2.25 in³ = 9.00 in³<br>• 1 device × 2 × 2.25 in³ = 4.50 in³<br>• 1 ground × 2.25 in³ = 2.25 in³<br>• <strong>Total needed = 15.75 in³</strong><br>• 4×4×1.5 box volume = 21 in³ ✅ Passes</div></div>
+    </div>
+  </div>
+
+  <div id="panel-ampacity" class="module-panel">
+    <button class="panel-close" onclick="closeModule('ampacity')">✕ CLOSE</button>
+    <div class="panel-title">⚡ AMPACITY & DERATING — AMPACIDAD Y CORRECCIÓN</div>
+    <div class="learn-steps">
+      <div class="learn-step"><div class="step-label">📖 WHAT IS IT? / ¿QUÉ ES?</div><div class="step-content"><strong>Ampacity</strong> is the maximum current a conductor can carry continuously under specific conditions without exceeding its temperature rating.<br><br><strong>Derating</strong> reduces the ampacity when conductors are bundled together or in high ambient temperatures, because heat has less room to dissipate.</div></div>
+      <div class="learn-step"><div class="step-label">📋 NEC REFERENCE / REFERENCIA NEC</div><div class="step-content"><code>NEC 310.15 | Table 310.16</code> — Base ampacity values at 30°C ambient<br><code>NEC 310.15(B)(1)</code> — Temperature correction factors<br><code>NEC 310.15(C)(1)</code> — Adjustment factors for conduit fill (4+ current-carrying conductors)</div></div>
+      <div class="learn-step"><div class="step-label">📐 DERATING FACTORS / FACTORES DE CORRECCIÓN</div><div class="step-content"><strong>Conduit Fill Derating (310.15(C)(1)):</strong><br>• 4–6 conductors: <strong>80%</strong><br>• 7–9 conductors: <strong>70%</strong><br>• 10–20 conductors: <strong>50%</strong><br><br><strong>Temperature Correction (75°C column):</strong><br>• 31–35°C: <strong>94%</strong> | 36–40°C: <strong>88%</strong> | 41–45°C: <strong>82%</strong></div></div>
+      <div class="learn-step"><div class="step-label">⚠️ COMMON MISTAKES / ERRORES COMUNES</div><div class="step-content"><div class="warning-box">⚠️ Using 90°C conductor ampacity with 75°C terminals — always use the terminal rating column.</div><div class="warning-box">⚠️ Not counting all current-carrying conductors in conduit fill derating.</div><div class="warning-box">⚠️ Neutrals carrying harmonic currents DO count as current-carrying conductors.</div></div></div>
+    </div>
+  </div>
+
+  <div id="panel-motors" class="module-panel">
+    <button class="panel-close" onclick="closeModule('motors')">✕ CLOSE</button>
+    <div class="panel-title">⚙️ MOTORS — MOTORES ELÉCTRICOS</div>
+    <div class="learn-steps">
+      <div class="learn-step"><div class="step-label">📖 OVERVIEW / RESUMEN</div><div class="step-content">Motor circuits require four levels of protection: <strong>branch-circuit short-circuit protection, conductor protection, overload protection,</strong> and <strong>motor disconnect</strong>. Each has its own NEC rules.</div></div>
+      <div class="learn-step"><div class="step-label">📋 KEY NEC REFERENCES</div><div class="step-content"><code>Article 430</code> — All motor requirements<br><code>Table 430.248</code> — Single-phase FLC values<br><code>Table 430.250</code> — Three-phase FLC values<br><code>430.22</code> — Conductor sizing (125% of FLC)<br><code>430.52</code> — Short-circuit protection (OCPD sizing)<br><code>430.32</code> — Overload protection</div></div>
+      <div class="learn-step"><div class="step-label">📐 MOTOR CALCULATIONS STEP BY STEP</div><div class="step-content">For a <strong>10 HP, 208V, 3-phase motor:</strong><br><br>1. <strong>FLC from Table 430.250:</strong> 30.8A<br>2. <strong>Conductor:</strong> 30.8 × 125% = 38.5A → Use <strong>#8 AWG THHN</strong><br>3. <strong>Overload:</strong> 30.8 × 115% = 35.4A → Use <strong>35A overload</strong><br>4. <strong>OCPD (inverse time CB):</strong> 30.8 × 250% = 77A → Use <strong>80A breaker</strong></div></div>
+    </div>
+  </div>
+
+  <div id="panel-transformers" class="module-panel">
+    <button class="panel-close" onclick="closeModule('transformers')">✕ CLOSE</button>
+    <div class="panel-title">🔄 TRANSFORMERS — TRANSFORMADORES</div>
+    <div class="learn-steps">
+      <div class="learn-step"><div class="step-label">📐 CURRENT CALCULATION / CÁLCULO DE CORRIENTE</div><div class="step-content"><div class="formula-box">I = kVA × 1000 ÷ (V × √3)  [Three-phase]</div><div class="formula-box">I = kVA × 1000 ÷ V  [Single-phase]</div> Example: 45 kVA, 480V primary, 3-phase:<br>I_primary = 45,000 ÷ (480 × 1.732) = <strong>54.1A</strong></div></div>
+      <div class="learn-step"><div class="step-label">📋 PROTECTION RULES / PROTECCIÓN</div><div class="step-content"><code>NEC 450.3(B)</code> — Transformer protection:<br>• Primary OCPD: Not more than <strong>125%</strong> of primary FLC<br>• If impedance ≤ 6%: Secondary OCPD ≤ <strong>125%</strong> of secondary FLC<br>• Dry-type transformers 600V and below: may use next standard size up</div></div>
+    </div>
+  </div>
+
+  <div id="panel-grounding" class="module-panel">
+    <button class="panel-close" onclick="closeModule('grounding')">✕ CLOSE</button>
+    <div class="panel-title">🌍 GROUNDING & BONDING</div>
+    <div class="learn-steps">
+      <div class="learn-step"><div class="step-label">📖 GROUNDING vs BONDING</div><div class="step-content"><strong>Grounding</strong> connects the electrical system to the earth (ground) to stabilize voltage and protect from lightning/fault.<br><br><strong>Bonding</strong> connects all metal parts together to ensure they stay at the same potential, creating a low-impedance fault path.</div></div>
+      <div class="learn-step"><div class="step-label">📋 KEY RULES / REGLAS CLAVE</div><div class="step-content"><code>250.24(A)(5)</code> — Neutral and ground must be separated at ALL panels except the service entrance (main panel).<br><br><code>250.66</code> — GEC sizing based on service entrance conductor size<br><br><code>250.53(A)(2)</code> — Two ground rods required minimum 6 feet apart<br><br><code>250.52(A)(3)</code> — UFER ground (concrete-encased electrode) — 20 ft of #4 AWG bare copper in footing</div></div>
+      <div class="learn-step"><div class="step-label">⚠️ CRITICAL MISTAKES</div><div class="step-content"><div class="warning-box">⚠️ NEVER bond neutral to ground in a subpanel — this creates stray current on the equipment grounding conductor and violates 250.24(A)(5).</div><div class="warning-box">⚠️ The GEC must be continuous — no splices except as permitted by 250.64(C).</div></div></div>
+    </div>
+  </div>
+
+  <div id="panel-panels" class="module-panel">
+    <button class="panel-close" onclick="closeModule('panels')">✕ CLOSE</button>
+    <div class="panel-title">🎛️ PANELBOARDS — TABLEROS</div>
+    <div class="learn-steps">
+      <div class="learn-step"><div class="step-label">📋 WORKING CLEARANCES / ESPACIOS DE TRABAJO</div><div class="step-content"><code>NEC 110.26(A)</code> — Minimum working clearances in front of panel:<br>• 0–150V: <strong>3 feet</strong> (Conditions 1, 2, 3)<br>• 151–600V Condition 1: <strong>3 feet</strong><br>• 151–600V Condition 2: <strong>3.5 feet</strong><br>• 151–600V Condition 3: <strong>4 feet</strong><br><br>Minimum headroom: <strong>6.5 feet</strong><br>Minimum width: <strong>30 inches</strong></div></div>
+      <div class="learn-step"><div class="step-label">📋 BREAKER HEIGHT / ALTURA DE BREAKERS</div><div class="step-content"><code>NEC 240.24(A)</code> — OCPDs shall not be installed in bathrooms.<br><code>NEC 240.24(E)</code> — OCPDs not to be located <strong>above 6.5 feet</strong> (2m) from the floor, except for service equipment or in a dedicated space.</div></div>
+    </div>
+  </div>
+
+  <div id="panel-voltagedrop" class="module-panel">
+    <button class="panel-close" onclick="closeModule('voltagedrop')">✕ CLOSE</button>
+    <div class="panel-title">📉 VOLTAGE DROP — CAÍDA DE TENSIÓN</div>
+    <div class="learn-steps">
+      <div class="learn-step"><div class="step-label">📐 FORMULA / FÓRMULA</div><div class="step-content"><div class="formula-box">VD = (K × I × L) ÷ CM</div>Where:<br>• <strong>K</strong> = 12.9 (copper) or 21.2 (aluminum)<br>• <strong>I</strong> = Current in amperes<br>• <strong>L</strong> = One-way length in feet<br>• <strong>CM</strong> = Circular mils of conductor (from wire tables)<br><br>NEC recommends max <strong>3%</strong> for branch circuits, <strong>5%</strong> total (feeder + branch).</div></div>
+      <div class="learn-step"><div class="step-label">🔨 EXAMPLE / EJEMPLO</div><div class="step-content">120V circuit, #12 AWG (6530 CM), 20A, 75 feet:<br>VD = (12.9 × 20 × 75) ÷ 6530 = <strong>2.96%</strong> ✅ Under 3%<br><br>If 100 feet: VD = (12.9 × 20 × 100) ÷ 6530 = <strong>3.95%</strong> — consider #10 AWG</div></div>
+    </div>
+  </div>
+
+  <div id="panel-branchcircuits" class="module-panel">
+    <button class="panel-close" onclick="closeModule('branchcircuits')">✕ CLOSE</button>
+    <div class="panel-title">🔌 BRANCH CIRCUITS — CIRCUITOS RAMALES</div>
+    <div class="learn-steps">
+      <div class="learn-step"><div class="step-label">📋 RECEPTACLE PLACEMENT RULES</div><div class="step-content"><code>NEC 210.52(A)</code> — In dwelling units:<br>• No point along any wall shall be more than <strong>6 feet</strong> from a receptacle<br>• Receptacles required on all wall spaces <strong>2 feet or wider</strong><br>• Kitchen countertops: no point more than <strong>24 inches</strong> from receptacle</div></div>
+      <div class="learn-step"><div class="step-label">📋 CONTINUOUS LOADS / CARGAS CONTINUAS</div><div class="step-content"><code>NEC 210.19(A)(1)</code> — Branch circuit conductors must have an ampacity of not less than <strong>125%</strong> of the continuous load plus 100% of the non-continuous load.<br><br>A <strong>continuous load</strong> is one expected to continue for 3 hours or more.</div></div>
+    </div>
+  </div>
+
+  <div id="panel-feeders" class="module-panel">
+    <button class="panel-close" onclick="closeModule('feeders')">✕ CLOSE</button>
+    <div class="panel-title">🔋 FEEDERS — ALIMENTADORES</div>
+    <div class="learn-steps">
+      <div class="learn-step"><div class="step-label">📋 FEEDER SIZING RULES</div><div class="step-content"><code>NEC 215.2(A)(1)</code> — Feeder conductors shall have an ampacity not less than needed to supply the load, and not less than <strong>125%</strong> of the continuous loads + 100% of non-continuous loads.<br><br>OCPD must also be sized at 125% of continuous + 100% of non-continuous per <code>215.3</code>.</div></div>
+    </div>
+  </div>
+
+  <div id="panel-gfciafci" class="module-panel">
+    <button class="panel-close" onclick="closeModule('gfciafci')">✕ CLOSE</button>
+    <div class="panel-title">🛡️ GFCI & AFCI PROTECTION</div>
+    <div class="learn-steps">
+      <div class="learn-step"><div class="step-label">📋 WHERE GFCI IS REQUIRED / DÓNDE SE REQUIERE GFCI</div><div class="step-content"><code>NEC 210.8(A)</code> — In dwelling units, GFCI required in:<br>Bathrooms • Garages • Outdoors • Crawl spaces • Unfinished basements • Kitchens (within 6ft of sink) • Boathouses • Bathtubs/shower areas • Sinks in other locations</div></div>
+      <div class="learn-step"><div class="step-label">📋 WHERE AFCI IS REQUIRED / DÓNDE SE REQUIERE AFCI</div><div class="step-content"><code>NEC 210.12(A)</code> — AFCI required for all 120V, 15A and 20A branch circuits supplying outlets or devices in:<br>All dwelling unit areas: Bedrooms • Living rooms • Dining rooms • Kitchens • Hallways • Closets • Sunrooms and similar areas.</div></div>
+      <div class="learn-step"><div class="step-label">📋 TAMPER RESISTANT / RESISTENTE A MANIPULACIÓN</div><div class="step-content"><code>NEC 406.12</code> — Tamper-resistant (TR) receptacles required in all areas of dwelling units. TR receptacles have internal shutters that block insertion of foreign objects unless both slots are pressed simultaneously.</div></div>
+    </div>
+  </div>
+
+  <div id="panel-workingspace" class="module-panel">
+    <button class="panel-close" onclick="closeModule('workingspace')">✕ CLOSE</button>
+    <div class="panel-title">📐 WORKING SPACES — ESPACIOS DE TRABAJO</div>
+    <div class="learn-steps">
+      <div class="learn-step"><div class="step-label">📋 TABLE 110.26(A)(1) CONDITIONS</div><div class="step-content"><strong>Condition 1:</strong> Exposed live parts on one side, grounded or no live parts on the other<br><br><strong>Condition 2:</strong> Exposed live parts on one side, grounded parts (concrete walls, etc.) on the other<br><br><strong>Condition 3:</strong> Exposed live parts on both sides (most hazardous — widest clearance required)</div></div>
+      <div class="learn-step"><div class="step-label">⚠️ KEY REQUIREMENTS</div><div class="step-content"><div class="warning-box">⚠️ Working space cannot be used for storage — ever. Keep it clear at all times.</div><div class="warning-box">⚠️ At least one entrance of sufficient area to allow personnel to escape must be provided per 110.26(C).</div></div></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div id="calculators" class="section-header">
+    <div class="section-tag">// INTERACTIVE TOOLS</div>
+    <div class="section-title">NEC CALCULATORS</div>
+    <div class="section-desc">Real calculations with NEC references — learn as you calculate</div>
+  </div>
+
+  <div class="calc-grid">
+    <div class="calc-card">
+      <div class="calc-header"><span class="calc-icon">🔧</span><div><div class="calc-title">CONDUIT FILL</div><div class="calc-nec">NEC Chapter 9, Table 1 | Annex C</div></div></div>
+      <div class="calc-body">
+        <div class="calc-fields">
+          <div><div class="field-label">Conduit Type</div><select class="field-select" id="cf-type"><option value="emt">EMT</option><option value="pvc">PVC Schedule 40</option><option value="rmc">RMC</option><option value="imc">IMC</option></select></div>
+          <div><div class="field-label">Trade Size (inches)</div><select class="field-select" id="cf-size"><option value="0.5">1/2"</option><option value="0.75">3/4"</option><option value="1">1"</option><option value="1.25">1-1/4"</option><option value="1.5">1-1/2"</option><option value="2">2"</option></select></div>
+          <div><div class="field-label">Wire Size (AWG)</div><select class="field-select" id="cf-wire"><option value="14">14 AWG THHN</option><option value="12">12 AWG THHN</option><option value="10">10 AWG THHN</option><option value="8">8 AWG THHN</option><option value="6">6 AWG THHN</option></select></div>
+          <div><div class="field-label">Number of Conductors</div><input class="field-input" id="cf-qty" type="number" value="4" min="1" max="40"></div>
+        </div>
+        <button class="calc-btn" onclick="calcConduitFill()">CALCULATE FILL</button>
+        <div class="calc-result" id="cf-result"><div class="result-label">RESULT</div><div class="result-value" id="cf-value"></div><div class="result-detail" id="cf-detail"></div><div class="result-ref" id="cf-ref"></div></div>
+      </div>
+    </div>
+
+    <div class="calc-card">
+      <div class="calc-header"><span class="calc-icon">📦</span><div><div class="calc-title">BOX FILL</div><div class="calc-nec">NEC 314.16(B)</div></div></div>
+      <div class="calc-body">
+        <div class="calc-fields">
+          <div><div class="field-label">Wire Size (AWG)</div><select class="field-select" id="bf-wire"><option value="14">14 AWG (2.00 in³)</option><option value="12" selected>12 AWG (2.25 in³)</option><option value="10">10 AWG (2.50 in³)</option><option value="8">8 AWG (3.00 in³)</option><option value="6">6 AWG (5.00 in³)</option></select></div>
+          <div><div class="field-label">Number of Conductors</div><input class="field-input" id="bf-conductors" type="number" value="4" min="1" max="20"></div>
+          <div><div class="field-label">Number of Devices (switches/receptacles)</div><input class="field-input" id="bf-devices" type="number" value="1" min="0" max="5"></div>
+          <div><div class="field-label">Ground Wires (count as 1 total)</div><select class="field-select" id="bf-grounds"><option value="0">None</option><option value="1" selected>1 or more</option></select></div>
+        </div>
+        <button class="calc-btn" onclick="calcBoxFill()">CALCULATE BOX FILL</button>
+        <div class="calc-result" id="bf-result"><div class="result-label">TOTAL VOLUME NEEDED</div><div class="result-value" id="bf-value"></div><div class="result-detail" id="bf-detail"></div><div class="result-ref" id="bf-ref"></div></div>
+      </div>
+    </div>
+
+    <div class="calc-card">
+      <div class="calc-header"><span class="calc-icon">📉</span><div><div class="calc-title">VOLTAGE DROP</div><div class="calc-nec">NEC 210.19 Info Note | 215.2</div></div></div>
+      <div class="calc-body">
+        <div class="calc-fields">
+          <div><div class="field-label">System Voltage (V)</div><select class="field-select" id="vd-voltage"><option value="120">120V (1-phase)</option><option value="240">240V (1-phase)</option><option value="208">208V (3-phase)</option><option value="480">480V (3-phase)</option></select></div>
+          <div><div class="field-label">Load Current (A)</div><input class="field-input" id="vd-current" type="number" value="20" min="1"></div>
+          <div><div class="field-label">One-Way Distance (feet)</div><input class="field-input" id="vd-length" type="number" value="100" min="1"></div>
+          <div><div class="field-label">Wire Size (AWG)</div><select class="field-select" id="vd-wire"><option value="14">14 AWG (4110 CM)</option><option value="12" selected>12 AWG (6530 CM)</option><option value="10">10 AWG (10380 CM)</option><option value="8">8 AWG (16510 CM)</option><option value="6">6 AWG (26240 CM)</option><option value="4">4 AWG (41740 CM)</option><option value="2">2 AWG (66360 CM)</option></select></div>
+          <div><div class="field-label">Conductor Material</div><select class="field-select" id="vd-material"><option value="12.9">Copper (K=12.9)</option><option value="21.2">Aluminum (K=21.2)</option></select></div>
+        </div>
+        <button class="calc-btn" onclick="calcVoltageDrop()">CALCULATE VOLTAGE DROP</button>
+        <div class="calc-result" id="vd-result"><div class="result-label">VOLTAGE DROP</div><div class="result-value" id="vd-value"></div><div class="result-detail" id="vd-detail"></div><div class="result-ref" id="vd-ref"></div></div>
+      </div>
+    </div>
+
+    <div class="calc-card">
+      <div class="calc-header"><span class="calc-icon">⚙️</span><div><div class="calc-title">MOTOR SIZING</div><div class="calc-nec">NEC Article 430 | Tables 430.248/250</div></div></div>
+      <div class="calc-body">
+        <div class="calc-fields">
+          <div><div class="field-label">Motor Type</div><select class="field-select" id="m-type"><option value="3phase">Three-Phase</option><option value="1phase">Single-Phase</option></select></div>
+          <div><div class="field-label">Horsepower (HP)</div><select class="field-select" id="m-hp"><option value="1">1 HP</option><option value="1.5">1.5 HP</option><option value="2">2 HP</option><option value="3">3 HP</option><option value="5">5 HP</option><option value="7.5">7.5 HP</option><option value="10">10 HP</option><option value="15">15 HP</option><option value="20">20 HP</option><option value="25">25 HP</option></select></div>
+          <div><div class="field-label">Voltage</div><select class="field-select" id="m-voltage"><option value="208">208V</option><option value="230">230V</option><option value="460">460V</option><option value="575">575V</option></select></div>
+        </div>
+        <button class="calc-btn" onclick="calcMotor()">CALCULATE MOTOR</button>
+        <div class="calc-result" id="m-result"><div class="result-label">MOTOR REQUIREMENTS</div><div class="result-value" id="m-value"></div><div class="result-detail" id="m-detail"></div><div class="result-ref" id="m-ref"></div></div>
+      </div>
+    </div>
+
+    <div class="calc-card">
+      <div class="calc-header"><span class="calc-icon">🔄</span><div><div class="calc-title">TRANSFORMER</div><div class="calc-nec">NEC Article 450 | 240.21(C)</div></div></div>
+      <div class="calc-body">
+        <div class="calc-fields">
+          <div><div class="field-label">kVA Rating</div><input class="field-input" id="t-kva" type="number" value="45" min="1"></div>
+          <div><div class="field-label">Primary Voltage (V)</div><input class="field-input" id="t-primary" type="number" value="480" min="1"></div>
+          <div><div class="field-label">Secondary Voltage (V)</div><input class="field-input" id="t-secondary" type="number" value="208" min="1"></div>
+          <div><div class="field-label">Phase</div><select class="field-select" id="t-phase"><option value="3">Three-Phase</option><option value="1">Single-Phase</option></select></div>
+        </div>
+        <button class="calc-btn" onclick="calcTransformer()">CALCULATE</button>
+        <div class="calc-result" id="t-result"><div class="result-label">TRANSFORMER CURRENTS</div><div class="result-value" id="t-value"></div><div class="result-detail" id="t-detail"></div><div class="result-ref" id="t-ref"></div></div>
+      </div>
+    </div>
+
+    <div class="calc-card">
+      <div class="calc-header"><span class="calc-icon">🌡️</span><div><div class="calc-title">AMPACITY DERATING</div><div class="calc-nec">NEC 310.15(B)(1) | 310.15(C)(1)</div></div></div>
+      <div class="calc-body">
+        <div class="calc-fields">
+          <div><div class="field-label">Wire Size (AWG)</div><select class="field-select" id="d-wire"><option value="14">14 AWG — 20A base</option><option value="12" selected>12 AWG — 25A base</option><option value="10">10 AWG — 35A base</option><option value="8">8 AWG — 50A base</option><option value="6">6 AWG — 65A base</option><option value="4">4 AWG — 85A base</option></select></div>
+          <div><div class="field-label">Ambient Temperature (°C)</div><select class="field-select" id="d-temp"><option value="1.00">Up to 30°C — 100%</option><option value="0.94">31–35°C — 94%</option><option value="0.88">36–40°C — 88%</option><option value="0.82">41–45°C — 82%</option><option value="0.75">46–50°C — 75%</option><option value="0.67">51–55°C — 67%</option></select></div>
+          <div><div class="field-label">Current-Carrying Conductors in Conduit</div><select class="field-select" id="d-ccc"><option value="1.00">1–3 conductors — 100%</option><option value="0.80">4–6 conductors — 80%</option><option value="0.70">7–9 conductors — 70%</option><option value="0.50">10–20 conductors — 50%</option></select></div>
+        </div>
+        <button class="calc-btn" onclick="calcDerating()">CALCULATE DERATED AMPACITY</button>
+        <div class="calc-result" id="d-result"><div class="result-label">DERATED AMPACITY</div><div class="result-value" id="d-value"></div><div class="result-detail" id="d-detail"></div><div class="result-ref" id="d-ref"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div id="tables" class="nec-table-section">
+    <div class="section-header"><div class="section-tag">// NEC REFERENCE DATA</div><div class="section-title">TABLE 310.16 — AMPACITY</div><div class="section-desc">Allowable Ampacities of Insulated Conductors at 30°C Ambient — THHN/THWN at 75°C Terminal Rating</div></div>
+    <div class="table-filters"><input class="filter-input" id="tableFilter" placeholder="🔍 Filter by AWG size..." oninput="filterTable()" /><input class="filter-input" id="ampFilter" placeholder="🔍 Filter by ampacity..." oninput="filterTable()" /></div>
+    <div class="nec-table-wrap">
+      <table id="necTable"><thead><tr><th>AWG / kcmil</th><th>60°C Column (A)</th><th>75°C Column (A)</th><th>90°C Column (A)</th><th>Area (in²)</th><th>CM (Circ. Mils)</th><th>Max OCPD (75°C)</th></tr></thead><tbody id="tableBody"></tbody></table>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div id="exam" class="exam-section">
+    <div class="section-header"><div class="section-tag">// STUDY MODE</div><div class="section-title">EXAM MODE</div><div class="section-desc">Test your NEC knowledge — Apprentice to Journeyman level</div></div>
+    <div class="exam-controls"><button class="level-btn active" onclick="setLevel('apprentice', this)">APPRENTICE</button><button class="level-btn" onclick="setLevel('journeyman', this)">JOURNEYMAN</button><button class="level-btn" onclick="setLevel('all', this)">ALL LEVELS</button></div>
+    <div class="question-card">
+      <div class="question-meta"><span class="q-level" id="q-level-badge">APPRENTICE</span><span class="q-number" id="q-number">Question 1 of 10</span><span class="q-score" id="q-score">Score: 0/0</span></div>
+      <div class="question-text" id="question-en"></div>
+      <div class="question-text-es" id="question-es"></div>
+      <div class="options-grid" id="options-grid"></div>
+      <div class="explanation-box" id="explanation-box"><div class="exp-label">EXPLANATION / EXPLICACIÓN</div><div class="exp-text" id="exp-text"></div><div class="exp-ref" id="exp-ref"></div></div>
+      <button class="next-btn" id="next-btn" onclick="nextQuestion()" style="display:none">NEXT QUESTION →</button>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div id="glossary" class="glossary-section">
+    <div class="section-header"><div class="section-tag">// BILINGUAL REFERENCE</div><div class="section-title">TECHNICAL GLOSSARY</div><div class="section-desc">Key NEC terms in English and Spanish with definitions and code references</div></div>
+    <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap;"><input class="filter-input" id="glossSearch" placeholder="🔍 Search terms..." oninput="filterGlossary()" style="max-width:300px;" /><div class="gloss-toggle"><button class="gloss-btn active" onclick="setGlossLang('both', this)">EN + ES</button><button class="gloss-btn" onclick="setGlossLang('en', this)">English</button><button class="gloss-btn" onclick="setGlossLang('es', this)">Español</button></div></div>
+    <div class="glossary-grid" id="glossary-grid"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">⚡ NECMASTER PRO</div>
+  <div class="footer-legal">LEGAL DISCLAIMER: NECMASTER PRO is an educational reference tool for electrical professionals. It does not replace the official National Electrical Code (NEC) published by NFPA, nor the authority having jurisdiction (AHJ). Always verify all calculations and code interpretations with the current adopted edition of the NEC and consult with a licensed electrical engineer or inspector when required. All calculations are based on NEC 2023 Edition.</div>
+  <div class="footer-version">NECMASTER PRO v1.0 | NEC 2023 EDITION | EDUCATIONAL USE ONLY</div>
+</footer>
+<button class="scroll-top" id="scrollBtn" onclick="scrollToTop()">↑</button>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+
+const wireData = {
+  14: { area60: 15, area75: 20, area90: 25, sqIn: 0.0097, cm: 4110 },
+  12: { area60: 20, area75: 25, area90: 30, sqIn: 0.0133, cm: 6530 },
+  10: { area60: 30, area75: 35, area90: 40, sqIn: 0.0211, cm: 10380 },
+  8:  { area60: 40, area75: 50, area90: 55, sqIn: 0.0366, cm: 16510 },
+  6:  { area60: 55, area75: 65, area90: 75, sqIn: 0.0507, cm: 26240 },
+  4:  { area60: 70, area75: 85, area90: 95, sqIn: 0.0824, cm: 41740 },
+  3:  { area60: 85, area75: 100, area90: 110, sqIn: 0.1041, cm: 52620 },
+  2:  { area60: 95, area75: 115, area90: 130, sqIn: 0.1333, cm: 66360 },
+  1:  { area60: 110, area75: 130, area90: 150, sqIn: 0.1562, cm: 83690 },
+  '1/0': { area60: 125, area75: 150, area90: 170, sqIn: 0.2223, cm: 105600 },
+  '2/0': { area60: 145, area75: 175, area90: 195, sqIn: 0.2624, cm: 133100 },
+  '3/0': { area60: 165, area75: 200, area90: 225, sqIn: 0.3237, cm: 167800 },
+  '4/0': { area60: 195, area75: 230, area90: 260, sqIn: 0.3904, cm: 211600 },
+  '250': { area60: 215, area75: 255, area90: 290, sqIn: 0.4596, cm: 250000 },
+  '300': { area60: 240, area75: 285, area90: 320, sqIn: 0.5281, cm: 300000 },
+  '350': { area60: 260, area75: 310, area90: 350, sqIn: 0.6291, cm: 350000 },
+  '400': { area60: 280, area75: 335, area90: 380, sqIn: 0.6939, cm: 400000 },
+  '500': { area60: 320, area75: 380, area90: 430, sqIn: 0.7542, cm: 500000 }
+};
+
+const conduitAreas = {
+  emt: { 0.5: 0.122, 0.75: 0.213, 1: 0.346, 1.25: 0.598, 1.5: 0.814, 2: 1.342 },
+  pvc: { 0.5: 0.120, 0.75: 0.217, 1: 0.355, 1.25: 0.610, 1.5: 0.829, 2: 1.363 },
+  rmc: { 0.5: 0.122, 0.75: 0.213, 1: 0.346, 1.25: 0.598, 1.5: 0.814, 2: 1.342 },
+  imc: { 0.5: 0.137, 0.75: 0.235, 1: 0.384, 1.25: 0.659, 1.5: 0.897, 2: 1.452 }
+};
+
+const motorFLC3phase = {
+  1: { 208: 4.0, 230: 3.6, 460: 1.8, 575: 1.4 },
+  1.5: { 208: 5.7, 230: 5.2, 460: 2.6, 575: 2.1 },
+  2: { 208: 7.5, 230: 6.8, 460: 3.4, 575: 2.7 },
+  3: { 208: 10.6, 230: 9.6, 460: 4.8, 575: 3.9 },
+  5: { 208: 16.7, 230: 15.2, 460: 7.6, 575: 6.1 },
+  7.5: { 208: 24.2, 230: 22.0, 460: 11.0, 575: 9.0 },
+  10: { 208: 30.8, 230: 28.0, 460: 14.0, 575: 11.0 },
+  15: { 208: 46.2, 230: 42.0, 460: 21.0, 575: 17.0 },
+  20: { 208: 59.4, 230: 54.0, 460: 27.0, 575: 22.0 },
+  25: { 208: 74.8, 230: 68.0, 460: 34.0, 575: 27.0 }
+};
+
+const boxVol = { 14: 2.0, 12: 2.25, 10: 2.5, 8: 3.0, 6: 5.0 };
+
+const questions = [
+  {
+    level: 'apprentice',
+    en: 'What is the maximum percentage fill for 3 or more conductors in a conduit according to NEC Chapter 9, Table 1?',
+    es: '¿Cuál es el porcentaje máximo de llenado para 3 o más conductores en un conduit según el NEC, Capítulo 9, Tabla 1?',
+    options: ['25%', '31%', '40%', '53%'],
+    correct: 2,
+    explanation: 'NEC Chapter 9, Table 1 specifies: 1 conductor = 53%, 2 conductors = 31%, 3 or more conductors = 40% maximum fill.',
+    ref: 'NEC Chapter 9, Table 1'
+  },
+  {
+    level: 'apprentice',
+    en: 'According to NEC 314.16(B), what is the volume allowance per #12 AWG conductor in box fill calculations?',
+    es: 'Según NEC 314.16(B), ¿cuál es el volumen por conductor #12 AWG en el cálculo de llenado de caja?',
+    options: ['2.00 in³', '2.25 in³', '2.50 in³', '3.00 in³'],
+    correct: 1,
+    explanation: 'NEC 314.16(B) Table: #14=2.00 in³, #12=2.25 in³, #10=2.50 in³, #8=3.00 in³, #6=5.00 in³',
+    ref: 'NEC 314.16(B)'
+  },
+  {
+    level: 'apprentice',
+    en: 'Where is GFCI protection required in a dwelling unit bathroom?',
+    es: '¿Dónde se requiere protección GFCI en el baño de una unidad residencial?',
+    options: ['Only at the sink', 'Only if within 3 feet of water', 'All receptacles in the bathroom', 'Only on circuits over 20A'],
+    correct: 2,
+    explanation: 'NEC 210.8(A)(1) requires GFCI protection for all 125-volt, 15 and 20-ampere receptacles in bathrooms of dwelling units.',
+    ref: 'NEC 210.8(A)(1)'
+  },
+  {
+    level: 'apprentice',
+    en: 'What is the minimum working clearance in front of a 120V panelboard per NEC 110.26?',
+    es: '¿Cuál es el espacio mínimo de trabajo frente a un tablero de 120V según NEC 110.26?',
+    options: ['2 feet', '2.5 feet', '3 feet', '4 feet'],
+    correct: 2,
+    explanation: 'NEC 110.26(A)(1) requires a minimum of 3 feet of working clearance in front of electrical equipment up to 150V to ground (Condition 1).',
+    ref: 'NEC 110.26(A)(1)'
+  },
+  {
+    level: 'journeyman',
+    en: 'A 10 HP, 460V, 3-phase motor has a FLC of 14A. What is the minimum conductor size using NEC 430.22?',
+    es: 'Un motor trifásico de 10 HP, 460V tiene una FLC de 14A. ¿Cuál es el conductor mínimo según NEC 430.22?',
+    options: ['#14 AWG', '#12 AWG', '#10 AWG', '#8 AWG'],
+    correct: 1,
+    explanation: 'NEC 430.22 requires motor conductors to be 125% of FLC. 14A × 125% = 17.5A. From Table 310.16, #12 AWG at 75°C = 25A, which is the minimum size that satisfies the 17.5A requirement.',
+    ref: 'NEC 430.22 | Table 310.16'
+  },
+  {
+    level: 'journeyman',
+    en: 'When must the neutral conductor be counted as a current-carrying conductor for derating purposes?',
+    es: '¿Cuándo debe el neutro contarse como conductor portador de corriente para el derating?',
+    options: ['Always', 'Never', 'When it carries harmonic currents (e.g., in circuits with nonlinear loads)', 'Only on 3-phase systems'],
+    correct: 2,
+    explanation: 'Per NEC 310.15(E)(1), a neutral conductor that carries only the unbalanced current from other conductors is NOT counted. However, neutrals that carry harmonic currents from nonlinear loads (like electronic equipment) ARE counted as current-carrying conductors.',
+    ref: 'NEC 310.15(E)(1)'
+  },
+  {
+    level: 'journeyman',
+    en: 'For a 45 kVA, 480V primary, 3-phase transformer, what is the approximate primary full-load current?',
+    es: 'Para un transformador trifásico de 45 kVA, 480V primario, ¿cuál es la corriente aproximada del primario?',
+    options: ['54A', '93.8A', '125A', '37.5A'],
+    correct: 0,
+    explanation: 'I = kVA × 1000 ÷ (V × √3) = 45,000 ÷ (480 × 1.732) = 45,000 ÷ 831.4 ≈ 54.1A',
+    ref: 'NEC Article 450 | Basic transformer formula'
+  },
+  {
+    level: 'apprentice',
+    en: 'What does AFCI stand for, and what does it protect against?',
+    es: '¿Qué significa AFCI y qué protege?',
+    options: ['Automatic Fault Circuit Interrupter — protects against overloads', 'Arc Fault Circuit Interrupter — protects against dangerous arcing', 'Ampere Fault Current Indicator — monitors current', 'Adjusted Frequency Circuit Isolator — filters frequencies'],
+    correct: 1,
+    explanation: 'AFCI stands for Arc Fault Circuit Interrupter. It detects dangerous electrical arcs that could cause fires, which standard breakers cannot detect. Required per NEC 210.12(A) in most dwelling unit areas.',
+    ref: 'NEC 210.12(A)'
+  },
+  {
+    level: 'journeyman',
+    en: 'In a subpanel, the neutral bar and equipment grounding bar must be:',
+    es: 'En un subtablero (subpanel), la barra neutral y la barra de tierra de equipo deben estar:',
+    options: ['Connected together with a bonding jumper', 'Separated — never bonded', 'Connected only if the panel has a main breaker', 'Connected on single-phase systems only'],
+    correct: 1,
+    explanation: 'NEC 250.24(A)(5) requires that in any panel other than the service entrance, the neutral must be kept isolated (separated) from the equipment ground. Bonding at a subpanel creates objectionable current on equipment grounding conductors.',
+    ref: 'NEC 250.24(A)(5)'
+  },
+  {
+    level: 'apprentice',
+    en: 'According to NEC 210.52(A), in a dwelling unit, no point along a wall shall be more than __ from a receptacle outlet.',
+    es: 'Según NEC 210.52(A), ningún punto a lo largo de una pared en una vivienda debe estar a más de __ de un tomacorriente.',
+    options: ['4 feet', '6 feet', '8 feet', '12 feet'],
+    correct: 1,
+    explanation: 'NEC 210.52(A)(1) requires that in dwelling units, receptacles be placed so that no point measured horizontally along the floor line of any wall is more than 6 feet from a receptacle outlet.',
+    ref: 'NEC 210.52(A)(1)'
+  }
+];
+
+const glossaryData = [
+  { term: 'Ampacity', termEs: 'Ampacidad', def: 'The maximum current, in amperes, that a conductor can carry continuously under conditions of use without exceeding its temperature rating.', defEs: 'La corriente máxima, en amperios, que un conductor puede llevar continuamente sin exceder su clasificación de temperatura.', ref: 'NEC Article 100' },
+  { term: 'Branch Circuit', termEs: 'Circuito Ramal', def: 'The circuit conductors between the final overcurrent device protecting the circuit and the outlet(s).', defEs: 'Los conductores del circuito entre el último dispositivo de sobrecorriente y las salidas.', ref: 'NEC Article 100' },
+  { term: 'Bonding', termEs: 'Unión/Bonding', def: 'The permanent joining of metallic parts to form an electrically conductive path that ensures electrical continuity and the capacity to conduct any fault current likely to be imposed.', defEs: 'La unión permanente de partes metálicas para formar una trayectoria conductora eléctrica.', ref: 'NEC Article 100' },
+  { term: 'Conduit Fill', termEs: 'Llenado de Conduit', def: 'The percentage of the internal cross-sectional area of a conduit occupied by the conductors running through it.', defEs: 'El porcentaje del área de sección transversal interna de un conduit ocupado por los conductores.', ref: 'NEC Chapter 9, Table 1' },
+  { term: 'Derating', termEs: 'Corrección de Ampacidad', def: 'The reduction of the current-carrying capacity of a conductor due to ambient temperature or bundling with other conductors.', defEs: 'La reducción de la capacidad de conducción de corriente debido a temperatura ambiente o agrupamiento.', ref: 'NEC 310.15' },
+  { term: 'Feeder', termEs: 'Alimentador', def: 'All circuit conductors between the service equipment or the source of a separately derived system and the final branch-circuit overcurrent device.', defEs: 'Todos los conductores del circuito entre el equipo de servicio y el último dispositivo de sobrecorriente del circuito ramal.', ref: 'NEC Article 100' },
+  { term: 'GFCI', termEs: 'GFCI', def: 'Ground Fault Circuit Interrupter. A device that de-energizes a circuit when current to ground exceeds a predetermined value (typically 5 mA).', defEs: 'Interruptor de circuito por falla a tierra. Dispositivo que desenergiza un circuito cuando la corriente a tierra excede un valor predeterminado (típicamente 5 mA).', ref: 'NEC 210.8' },
+  { term: 'AFCI', termEs: 'AFCI', def: 'Arc Fault Circuit Interrupter. A device that provides protection from the effects of arc faults by recognizing characteristics unique to arcing.', defEs: 'Interruptor de circuito por arco eléctrico. Dispositivo que protege contra los efectos de fallas de arco.', ref: 'NEC 210.12' },
+  { term: 'Grounding', termEs: 'Puesta a Tierra', def: 'The intentional connection of electrical equipment and systems to earth ground for safety and voltage stabilization.', defEs: 'La conexión intencional de equipos y sistemas eléctricos a tierra para seguridad y estabilización de voltaje.', ref: 'NEC Article 250' },
+  { term: 'Overcurrent', termEs: 'Sobrecorriente', def: 'Any current in excess of the rated current of equipment or the ampacity of a conductor. May result from overload, short circuit, or ground fault.', defEs: 'Cualquier corriente que excede la corriente nominal del equipo o la ampacidad del conductor.', ref: 'NEC Article 100' },
+  { term: 'Panelboard', termEs: 'Tablero Eléctrico', def: 'A single panel or group of panels designed to be assembled in the form of a single panel, including buses and automatic overcurrent devices, and equipped with or without switches for control.', defEs: 'Un panel o grupo de paneles diseñados para contener barras de distribución y dispositivos de sobrecorriente automáticos.', ref: 'NEC Article 408' },
+  { term: 'Raceway', termEs: 'Canalización', def: 'An enclosed channel of metallic or nonmetallic materials designed expressly for holding wires, cables, or busbars.', defEs: 'Canal cerrado de materiales metálicos o no metálicos diseñado expresamente para contener alambres, cables o barras.', ref: 'NEC Article 100' },
+  { term: 'Transformer', termEs: 'Transformador', def: 'A static electrical device that transfers energy between two or more circuits through electromagnetic induction, changing voltage and current levels.', defEs: 'Dispositivo eléctrico estático que transfiere energía entre circuitos mediante inducción electromagnética, cambiando niveles de voltaje y corriente.', ref: 'NEC Article 450' },
+  { term: 'GEC', termEs: 'Conductor de Puesta a Tierra', def: 'Grounding Electrode Conductor. The conductor used to connect the system grounded conductor or equipment to a grounding electrode.', defEs: 'Conductor de Electrodo de Tierra. El conductor usado para conectar el sistema a un electrodo de tierra.', ref: 'NEC Article 100 | 250.66' },
+  { term: 'Disconnect', termEs: 'Desconectador', def: 'A device used to disconnect a motor or other load from its power source. Required within sight of the motor per NEC 430.102.', defEs: 'Dispositivo utilizado para desconectar un motor u otra carga de su fuente de energía.', ref: 'NEC 430.102' },
+  { term: 'Overload', termEs: 'Sobrecarga', def: 'Operation of equipment in excess of normal, full-load rating for a period of time that can cause damage. Not as severe as a short circuit.', defEs: 'Operación del equipo más allá de su carga nominal durante un tiempo que puede causar daño.', ref: 'NEC Article 100' }
+];
+
+const searchAnswers = {
+  'how many #12 wires fit in 3/4 emt': {
+    title: '3/4" EMT — #12 THHN Conductors',
+    body: 'With 3 or more conductors (40% fill rule), a 3/4" EMT has an internal area of 0.213 in². Each #12 THHN conductor has an area of 0.0133 in². At 40% fill: 0.213 × 0.40 = 0.0852 in² allowed.',
+    result: '✅ Maximum: 6 conductors of #12 THHN in 3/4" EMT',
+    ref: '→ NEC Annex C, Table C.1 | Chapter 9, Tables 1, 4, 5'
+  },
+  'what breaker for a 10 hp 3-phase motor': {
+    title: '10 HP Three-Phase Motor — OCPD Selection',
+    body: 'From NEC Table 430.250 at 460V: FLC = 14A. Per NEC 430.52(C)(1), for an inverse time circuit breaker, max OCPD = 250% of FLC.',
+    result: '✅ 14A × 250% = 35A → Use standard 35A breaker (or next size up: 40A if needed)',
+    ref: '→ NEC 430.52 | Table 430.52 | Table 430.250'
+  },
+  'how to calculate 45 kva transformer current': {
+    title: '45 kVA Transformer — Current Calculation',
+    body: 'Use the formula: I = kVA × 1000 ÷ (V × √3) for three-phase. Primary (480V): I = 45,000 ÷ (480 × 1.732) = 54.1A. Secondary (208V): I = 45,000 ÷ (208 × 1.732) = 124.9A.',
+    result: '✅ Primary: 54.1A | Secondary: 124.9A',
+    ref: '→ NEC Article 450 | 450.3(B)'
+  },
+  'where is derating in the nec': {
+    title: 'Derating — NEC Location',
+    body: 'Derating is covered in two sections: (1) Temperature correction factors are in NEC 310.15(B)(1) and Table 310.15(B)(1). (2) Fill adjustment factors (4+ conductors in conduit) are in NEC 310.15(C)(1) and its associated table.',
+    result: '✅ Temp Correction: 310.15(B)(1) | Fill Derating: 310.15(C)(1)',
+    ref: '→ NEC 310.15 | Table 310.16'
+  },
+  'box fill for 4x4 box with 6 #12 wires': {
+    title: 'Box Fill — 4×4 Box with 6 × #12 Conductors',
+    body: '6 conductors of #12 AWG × 2.25 in³ each = 13.5 in³ needed. A standard 4×4×1.5 box = 21 in³. A 4×4×1.25 box = 18 in³. Both pass without devices. If adding 1 receptacle: add 2 × 2.25 = 4.5 in³ more (total 18 in³ — still OK in 1.5" box).',
+    result: '✅ Total volume needed: 13.5 in³ minimum — 4×4×1.5 box (21 in³) works',
+    ref: '→ NEC 314.16(B) | Table 314.16(A)'
+  }
+};
+
+// ============================================================
+// INIT
+// ============================================================
+
+window.onload = function() {
+  buildTable();
+  buildGlossary();
+  loadQuestion();
+};
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+
+function scrollTo(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+window.onscroll = function() {
+  const btn = document.getElementById('scrollBtn');
+  if (window.scrollY > 400) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+};
+
+// ============================================================
+// SMART SEARCH
+// ============================================================
+
+function fillSearch(text) {
+  document.getElementById('searchInput').value = text;
+  handleSearch();
+}
+
+function handleSearch() {
+  const query = document.getElementById('searchInput').value.trim().toLowerCase();
+  if (!query) return;
+
+  const box = document.getElementById('answerBox');
+  const title = document.getElementById('answerTitle');
+  const body = document.getElementById('answerBody');
+  const result = document.getElementById('answerResult');
+  const ref = document.getElementById('answerRef');
+
+  for (const key of Object.keys(searchAnswers)) {
+    if (query.includes(key) || key.includes(query.substring(0, 15))) {
+      const ans = searchAnswers[key];
+      title.textContent = ans.title;
+      body.textContent = ans.body;
+      result.textContent = ans.result;
+      ref.textContent = ans.ref;
+      box.classList.add('visible');
+      return;
+    }
+  }
+
+  let ans = null;
+  if (query.includes('12') && (query.includes('emt') || query.includes('conduit'))) {
+    ans = searchAnswers['how many #12 wires fit in 3/4 emt'];
+  } else if (query.includes('motor') && (query.includes('breaker') || query.includes('ocpd'))) {
+    ans = searchAnswers['what breaker for a 10 hp 3-phase motor'];
+  } else if (query.includes('transformer') || query.includes('transformador') || query.includes('kva')) {
+    ans = searchAnswers['how to calculate 45 kva transformer current'];
+  } else if (query.includes('derat')) {
+    ans = searchAnswers['where is derating in the nec'];
+  } else if (query.includes('box') || query.includes('caja')) {
+    ans = searchAnswers['box fill for 4x4 box with 6 #12 wires'];
+  }
+
+  if (ans) {
+    title.textContent = ans.title;
+    body.textContent = ans.body;
+    result.textContent = ans.result;
+    ref.textContent = ans.ref;
+    box.classList.add('visible');
+  } else {
+    title.textContent = 'NEC Reference';
+    body.textContent = 'Try the chips below for common NEC questions, or use the calculators and modules above. For complex questions, consult the official NEC codebook or a licensed electrician.';
+    result.textContent = '';
+    ref.textContent = '→ NEC 2023 Edition';
+    box.classList.add('visible');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const input = document.getElementById('searchInput');
+  if (input) input.addEventListener('keypress', function(e) { if (e.key === 'Enter') handleSearch(); });
+});
+
+// ============================================================
+// MODULE PANELS
+// ============================================================
+
+let openModuleId = null;
+
+function openModule(id) {
+  if (openModuleId && openModuleId !== id) closeModule(openModuleId);
+  const panel = document.getElementById('panel-' + id);
+  if (panel) {
+    panel.classList.add('active');
+    openModuleId = id;
+    setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+  }
+}
+
+function closeModule(id) {
+  const panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.remove('active');
+  if (openModuleId === id) openModuleId = null;
+}
+
+// ============================================================
+// CALCULATORS
+// ============================================================
+
+function calcConduitFill() {
+  const type = document.getElementById('cf-type').value;
+  const size = parseFloat(document.getElementById('cf-size').value);
+  const wire = parseInt(document.getElementById('cf-wire').value);
+  const qty = parseInt(document.getElementById('cf-qty').value);
+
+  const conduitArea = conduitAreas[type][size];
+  const wireArea = wireData[wire].sqIn;
+  const totalWireArea = wireArea * qty;
+  const fillPercent = (totalWireArea / conduitArea) * 100;
+  const maxFill = qty >= 3 ? 40 : qty === 2 ? 31 : 53;
+  const passes = fillPercent <= maxFill;
+
+  const el = document.getElementById('cf-result');
+  el.classList.add('show');
+  document.getElementById('cf-value').textContent = fillPercent.toFixed(1) + '% Fill — ' + (passes ? '✅ PASSES' : '❌ EXCEEDS LIMIT');
+  document.getElementById('cf-detail').textContent = `${qty} × #${wire} AWG (${wireArea} in² each) = ${totalWireArea.toFixed(4)} in² total in ${size}" ${type.toUpperCase()} (${conduitArea} in²). Max allowed: ${maxFill}%`;
+  document.getElementById('cf-ref').textContent = `→ NEC Chapter 9, Table 1 | Annex C, Table C.1`;
+  el.style.borderColor = passes ? 'rgba(0,230,118,0.3)' : 'rgba(255,61,61,0.3)';
+}
+
+function calcBoxFill() {
+  const wire = parseInt(document.getElementById('bf-wire').value);
+  const conductors = parseInt(document.getElementById('bf-conductors').value);
+  const devices = parseInt(document.getElementById('bf-devices').value);
+  const grounds = parseInt(document.getElementById('bf-grounds').value);
+  const volPerWire = boxVol[wire];
+
+  const condVol = conductors * volPerWire;
+  const devVol = devices * 2 * volPerWire;
+  const gndVol = grounds * volPerWire;
+  const total = condVol + devVol + gndVol;
+
+  const el = document.getElementById('bf-result');
+  el.classList.add('show');
+  document.getElementById('bf-value').textContent = total.toFixed(2) + ' in³ required';
+  document.getElementById('bf-detail').textContent =
+    `Conductors: ${conductors} × ${volPerWire} = ${condVol.toFixed(2)} in³ | Devices: ${devices} × ${(2 * volPerWire).toFixed(2)} = ${devVol.toFixed(2)} in³ | Grounds: ${gndVol.toFixed(2)} in³`;
+  document.getElementById('bf-ref').textContent = `→ NEC 314.16(B) | Common boxes: 4×4×1.5 = 21 in³ | 4×4×2.125 = 30.3 in³ | 4×4×1.25 = 18 in³`;
+}
+
+function calcVoltageDrop() {
+  const voltage = parseFloat(document.getElementById('vd-voltage').value);
+  const current = parseFloat(document.getElementById('vd-current').value);
+  const length = parseFloat(document.getElementById('vd-length').value);
+  const wire = document.getElementById('vd-wire').value;
+  const K = parseFloat(document.getElementById('vd-material').value);
+  const cmValues = { 14: 4110, 12: 6530, 10: 10380, 8: 16510, 6: 26240, 4: 41740, 2: 66360 };
+  const cm = cmValues[wire] || 6530;
+
+  const vd = (K * current * length) / cm;
+  const vdPercent = (vd / voltage) * 100;
+  const passes3 = vdPercent <= 3;
+  const passes5 = vdPercent <= 5;
+
+  const el = document.getElementById('vd-result');
+  el.classList.add('show');
+  document.getElementById('vd-value').textContent = `${vd.toFixed(2)}V drop (${vdPercent.toFixed(2)}%) — ${passes3 ? '✅ Under 3%' : passes5 ? '⚠️ Under 5% but over 3%' : '❌ Exceeds 5%'}`;
+  document.getElementById('vd-detail').textContent = `Formula: VD = (${K} × ${current}A × ${length}ft) ÷ ${cm} CM = ${vd.toFixed(2)}V on ${voltage}V system`;
+  document.getElementById('vd-ref').textContent = `→ NEC 210.19(A) Informational Note | 215.2(A) — Recommended max 3% branch, 5% combined`;
+  el.style.borderColor = passes3 ? 'rgba(0,230,118,0.3)' : passes5 ? 'rgba(255,107,0,0.3)' : 'rgba(255,61,61,0.3)';
+}
+
+function calcMotor() {
+  const type = document.getElementById('m-type').value;
+  const hp = parseFloat(document.getElementById('m-hp').value);
+  const voltage = parseInt(document.getElementById('m-voltage').value);
+
+  let flc = 0;
+  if (type === '3phase' && motorFLC3phase[hp] && motorFLC3phase[hp][voltage]) {
+    flc = motorFLC3phase[hp][voltage];
+  } else {
+    flc = (hp * 746) / (voltage * 0.85 * (type === '3phase' ? 1.732 : 1));
+  }
+
+  const conductorAmp = flc * 1.25;
+  const overload = flc * 1.15;
+  const ocpd = flc * 2.5;
+
+  let condSize = '14 AWG';
+  if (conductorAmp > 70) condSize = '#4 AWG';
+  else if (conductorAmp > 55) condSize = '#6 AWG';
+  else if (conductorAmp > 40) condSize = '#8 AWG';
+  else if (conductorAmp > 30) condSize = '#10 AWG';
+  else if (conductorAmp > 20) condSize = '#12 AWG';
+  else condSize = '#14 AWG';
+
+  const el = document.getElementById('m-result');
+  el.classList.add('show');
+  document.getElementById('m-value').textContent = `FLC = ${flc.toFixed(1)}A | Conductor: ${condSize}`;
+  document.getElementById('m-detail').textContent =
+    `Conductor: ${flc.toFixed(1)}A × 125% = ${conductorAmp.toFixed(1)}A minimum | Overload: ${flc.toFixed(1)}A × 115% = ${overload.toFixed(1)}A | OCPD (Inv. Time CB): ${flc.toFixed(1)}A × 250% = ${ocpd.toFixed(1)}A → Use ${Math.ceil(ocpd/5)*5}A breaker`;
+  document.getElementById('m-ref').textContent = `→ NEC 430.22 (conductors) | 430.32 (overload) | 430.52 (OCPD) | Table 430.250`;
+}
+
+function calcTransformer() {
+  const kva = parseFloat(document.getElementById('t-kva').value);
+  const primary = parseFloat(document.getElementById('t-primary').value);
+  const secondary = parseFloat(document.getElementById('t-secondary').value);
+  const phase = parseInt(document.getElementById('t-phase').value);
+
+  const sqrtFactor = phase === 3 ? Math.sqrt(3) : 1;
+  const iPrimary = (kva * 1000) / (primary * sqrtFactor);
+  const iSecondary = (kva * 1000) / (secondary * sqrtFactor);
+  const primaryOCPD = iPrimary * 1.25;
+  const secondaryOCPD = iSecondary * 1.25;
+
+  const el = document.getElementById('t-result');
+  el.classList.add('show');
+  document.getElementById('t-value').textContent = `Primary: ${iPrimary.toFixed(1)}A | Secondary: ${iSecondary.toFixed(1)}A`;
+  document.getElementById('t-detail').textContent =
+    `Primary OCPD (125%): ${primaryOCPD.toFixed(1)}A | Secondary OCPD (125%): ${secondaryOCPD.toFixed(1)}A | Formula: I = kVA × 1000 ÷ (V × ${sqrtFactor.toFixed(3)})`;
+  document.getElementById('t-ref').textContent = `→ NEC 450.3(B) | Table 450.3(B) | Article 450`;
+}
+
+function calcDerating() {
+  const baseAmp = { 14: 20, 12: 25, 10: 35, 8: 50, 6: 65, 4: 85 };
+  const wire = parseInt(document.getElementById('d-wire').value);
+  const tempFactor = parseFloat(document.getElementById('d-temp').value);
+  const fillFactor = parseFloat(document.getElementById('d-ccc').value);
+
+  const base = baseAmp[wire] || 25;
+  const derated = base * tempFactor * fillFactor;
+
+  const el = document.getElementById('d-result');
+  el.classList.add('show');
+  document.getElementById('d-value').textContent = `${derated.toFixed(1)}A Derated Ampacity`;
+  document.getElementById('d-detail').textContent =
+    `Base (90°C col): ${base}A × Temp factor: ${tempFactor} × Fill factor: ${fillFactor} = ${derated.toFixed(1)}A. Note: Final value limited to 75°C terminal rating.`;
+  document.getElementById('d-ref').textContent = `→ NEC 310.15(B)(1) (temp) | 310.15(C)(1) (fill) | Table 310.16`;
+}
+
+// ============================================================
+// NEC TABLE 310.16
+// ============================================================
+
+function buildTable() {
+  const body = document.getElementById('tableBody');
+  const labels = ['14', '12', '10', '8', '6', '4', '3', '2', '1', '1/0', '2/0', '3/0', '4/0', '250', '300', '350', '400', '500'];
+  const ocpdMap = { 14: 15, 12: 20, 10: 30, 8: 50, 6: 60, 4: 70, 3: 85, 2: 95, 1: 110, '1/0': 125, '2/0': 145, '3/0': 175, '4/0': 200, 250: 215, 300: 240, 350: 260, 400: 280, 500: 320 };
+  body.innerHTML = labels.map(k => {
+    const d = wireData[k];
+    if (!d) return '';
+    return `<tr>
+      <td class="awg-cell">${isNaN(k) ? k : '#'+k}</td>
+      <td class="amp-cell">${d.area60}A</td>
+      <td class="amp-cell">${d.area75}A</td>
+      <td class="amp-cell">${d.area90}A</td>
+      <td class="area-cell">${d.sqIn} in²</td>
+      <td class="area-cell">${d.cm.toLocaleString()}</td>
+      <td style="color:var(--orange)">${ocpdMap[k] || d.area75}A</td>
+    </tr>`;
+  }).join('');
+}
+
+function filterTable() {
+  const awgFilter = document.getElementById('tableFilter').value.toLowerCase();
+  const ampFilter = document.getElementById('ampFilter').value;
+  const rows = document.querySelectorAll('#tableBody tr');
+  rows.forEach(row => {
+    const awg = row.cells[0]?.textContent.toLowerCase() || '';
+    const amp = parseInt(row.cells[2]?.textContent) || 0;
+    const showAwg = !awgFilter || awg.includes(awgFilter);
+    const showAmp = !ampFilter || amp >= parseInt(ampFilter);
+    row.style.display = showAwg && showAmp ? '' : 'none';
+  });
+}
+
+// ============================================================
+// EXAM MODE
+// ============================================================
+let currentLevel = 'apprentice';
+let currentIndex = 0;
+let score = 0;
+let totalAnswered = 0;
+let answered = false;
+let questionPool = [];
+
+function filterQuestions() {
+  if (currentLevel === 'all') return [...questions];
+  return questions.filter(q => q.level === currentLevel);
+}
+
+function loadQuestion() {
+  questionPool = filterQuestions();
+  if (questionPool.length === 0) {
+    document.getElementById('question-en').textContent = 'No questions available for this level.';
+    document.getElementById('question-es').textContent = '';
+    document.getElementById('options-grid').innerHTML = '';
+    document.getElementById('next-btn').style.display = 'none';
+    return;
+  }
+  currentIndex = Math.floor(Math.random() * questionPool.length);
+  const q = questionPool[currentIndex];
+  answered = false;
+  document.getElementById('q-level-badge').textContent = q.level.toUpperCase();
+  document.getElementById('q-number').textContent = `Question ${totalAnswered + 1}`;
+  document.getElementById('q-score').textContent = `Score: ${score}/${totalAnswered}`;
+  document.getElementById('question-en').textContent = q.en;
+  document.getElementById('question-es').textContent = q.es;
+  const optsGrid = document.getElementById('options-grid');
+  optsGrid.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.innerHTML = `<span class="option-letter">${String.fromCharCode(65 + i)}</span> ${opt}`;
+    btn.onclick = () => checkAnswer(i, q);
+    optsGrid.appendChild(btn);
+  });
+  document.getElementById('explanation-box').classList.remove('show');
+  document.getElementById('next-btn').style.display = 'none';
+}
+
+function checkAnswer(selected, q) {
+  if (answered) return;
+  answered = true;
+  totalAnswered++;
+  const buttons = document.querySelectorAll('#options-grid .option-btn');
+  buttons.forEach((btn, i) => {
+    if (i === q.correct) btn.classList.add('correct');
+    if (i === selected && i !== q.correct) btn.classList.add('wrong');
+    btn.style.pointerEvents = 'none';
+  });
+  if (selected === q.correct) score++;
+  document.getElementById('exp-text').textContent = q.explanation;
+  document.getElementById('exp-ref').textContent = q.ref;
+  document.getElementById('explanation-box').classList.add('show');
+  document.getElementById('q-score').textContent = `Score: ${score}/${totalAnswered}`;
+  document.getElementById('next-btn').style.display = 'inline-block';
+}
+
+function nextQuestion() {
+  loadQuestion();
+}
+
+function setLevel(level, btn) {
+  currentLevel = level;
+  document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  score = 0;
+  totalAnswered = 0;
+  loadQuestion();
+}
+
+// ============================================================
+// GLOSSARY
+// ============================================================
+let currentGlossLang = 'both';
+
+function setGlossLang(lang, btn) {
+  currentGlossLang = lang;
+  document.querySelectorAll('.gloss-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  buildGlossary();
+}
+
+function filterGlossary() {
+  buildGlossary();
+}
+
+function buildGlossary() {
+  const search = document.getElementById('glossSearch').value.toLowerCase();
+  const grid = document.getElementById('glossary-grid');
+  grid.innerHTML = glossaryData.filter(g => {
+    if (search && !g.term.toLowerCase().includes(search) && !g.termEs.toLowerCase().includes(search)) return false;
+    return true;
+  }).map(g => {
+    let title = '';
+    let subtitle = '';
+    let def = '';
+    if (currentGlossLang === 'both' || currentGlossLang === 'en') {
+      title += g.term;
+      def += g.def;
+    }
+    if (currentGlossLang === 'both') {
+      subtitle += g.termEs;
+      def += '<br><br>' + g.defEs;
+    } else if (currentGlossLang === 'es') {
+      title = g.termEs;
+      subtitle = g.term;
+      def = g.defEs;
+    }
+    return `
+      <div class="gloss-card">
+        <div class="gloss-term">${title}</div>
+        ${subtitle ? `<div class="gloss-term-es">${subtitle}</div>` : ''}
+        <div class="gloss-def">${def}</div>
+        <div class="gloss-ref">${g.ref}</div>
+      </div>
+    `;
+  }).join('');
+}
+</script>
+</body>
+</html>
