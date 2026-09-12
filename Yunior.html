@@ -1,351 +1,1817 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/><title>CONÓCETE 8D · Herramienta de Autoconocimiento</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/><style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--bg:#0a192f;--surface:#112a44;--surface2:#1a3650;--border:#2c4c6e;--gold:#FFD700;--gold-light:#FFE44D;--gold-dim:rgba(255,215,0,0.15);--text:#FFFFFF;--text2:#E0E8F0;--muted:#B0C4DE;--muted2:#8AA0B8;--good:#4caf82;--warn:#e8855a;--radius:18px;--radius-sm:12px}
-html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;line-height:1.6;-webkit-text-size-adjust:100%;font-size:17px}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
-@keyframes a{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes b{0%{background-position:-200% center}100%{background-position:200% center}}
-@keyframes c{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes d{0%,100%{box-shadow:0 0 30px rgba(255,215,0,.3)}50%{box-shadow:0 0 50px rgba(255,215,0,.6)}}
-@keyframes e{from{transform:rotate(0deg) translateX(100px) rotate(0deg)}to{transform:rotate(360deg) translateX(100px) rotate(-360deg)}}
-@keyframes f{from{width:0}to{width:var(--w)}}
-@keyframes g{0%{transform:scale(0);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
-#app{max-width:560px;width:100%;margin:0 auto;padding:0 18px 60px;position:relative;z-index:1}
-.p{display:none}.p.a{display:block;animation:a .4s ease both}
-.pw{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 0 30px}
-.oc{position:relative;width:180px;height:180px;margin:0 auto 22px;animation:c 5s ease-in-out infinite}
-.o{width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--gold-light),var(--gold) 50%,#b8860b 100%);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);animation:d 3s ease-in-out infinite}
-.or{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,215,0,.25)}
-.od{width:10px;height:10px;border-radius:50%;background:var(--gold);position:absolute;top:50%;left:50%;transform-origin:0 0;animation:e 7s linear infinite}
-.od:nth-child(3){animation-delay:-3.5s;width:6px;height:6px;background:var(--gold-light)}
-.pt{font-family:'Playfair Display',serif;font-size:clamp(3.8rem,15vw,5.5rem);font-weight:900;line-height:.95;letter-spacing:-.02em;color:var(--text);margin-bottom:6px;animation:a .5s .1s ease both}
-.p8{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,6vw,2.2rem);font-weight:700;letter-spacing:.06em;background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:b 4s linear infinite,a .5s .15s ease both;margin-bottom:14px;display:block}
-.pb{display:inline-flex;align-items:center;gap:8px;background:var(--gold-dim);border:1px solid rgba(255,215,0,.4);border-radius:60px;padding:8px 20px;font-size:.95rem;font-weight:600;color:var(--gold-light);margin-bottom:14px;animation:a .5s .2s ease both}
-.pf{margin-bottom:20px;animation:a .5s .25s ease both}
-.pfr{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1rem,3.8vw,1.15rem);color:var(--muted);line-height:1.55;margin-bottom:10px;padding:0 6px}
-.pe{font-size:2.4rem;margin-bottom:20px;display:block;animation:a .5s .3s ease both}
-.dp{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:26px;animation:a .5s .35s ease both}
-.dc{background:var(--surface);border:1px solid var(--border);border-radius:60px;padding:7px 16px;font-size:.9rem;color:var(--text2);font-weight:500}
-.pm{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 22px;margin-bottom:28px;text-align:left;width:100%;animation:a .5s .4s ease both}
-.pg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.pi{display:flex;align-items:flex-start;gap:10px;font-size:1rem;color:var(--text2);line-height:1.4}
-.pn{font-size:1.15rem;flex-shrink:0;margin-top:1px}
-.pc{display:flex;flex-direction:column;gap:13px;width:100%;animation:a .5s .45s ease both}
-.bg{background:var(--gold);color:#0a1628;border:none;width:100%;padding:19px 24px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1.2rem;font-weight:700;border-radius:60px;cursor:pointer;box-shadow:0 8px 30px rgba(255,215,0,.4);transition:transform .15s;-webkit-tap-highlight-color:transparent}
-.bg:active{transform:scale(.98)}
-.bh{background:transparent;color:var(--text2);border:1.5px solid var(--border);width:100%;padding:16px 24px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1.05rem;font-weight:500;border-radius:60px;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.pno{font-size:.85rem;color:var(--muted2);margin-top:12px;animation:a .5s .5s ease both}
-.py{font-size:.95rem;color:var(--muted2);margin-top:10px;letter-spacing:.08em;animation:a .5s .55s ease both}
-.mw{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 0}
-.me{font-size:4rem;margin-bottom:28px;display:block;animation:a .5s ease both}
-.mt{font-family:'Playfair Display',serif;font-size:clamp(2rem,8vw,2.8rem);font-weight:900;line-height:1.15;color:var(--text);margin-bottom:24px;animation:a .5s .1s ease both}
-.mt span{background:linear-gradient(90deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.mc{font-size:clamp(1.05rem,4vw,1.2rem);color:var(--text2);line-height:1.75;max-width:38ch;margin:0 auto 32px;animation:a .5s .2s ease both}
-.mcs{display:flex;flex-direction:column;gap:14px;width:100%;margin-bottom:24px;animation:a .5s .3s ease both}
-.mca{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 20px;display:flex;align-items:flex-start;gap:16px;text-align:left}
-.mci{font-size:1.8rem;flex-shrink:0;margin-top:2px}
-.mct{font-size:1.05rem;font-weight:700;color:var(--gold);margin-bottom:6px}
-.mcx{font-size:1rem;color:var(--text2);line-height:1.5}
-.mfr{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.05rem,4vw,1.2rem);color:var(--gold);margin-bottom:32px;border-left:4px solid var(--gold);padding:14px 18px;text-align:left;background:var(--gold-dim);border-radius:0 var(--radius-sm) var(--radius-sm) 0;animation:a .5s .35s ease both}
-.mctb{animation:a .5s .4s ease both;width:100%}
-.ms{font-size:.9rem;color:var(--muted2);margin-top:12px;animation:a .5s .45s ease both}
-.ph{position:sticky;top:0;z-index:50;background:rgba(10,25,47,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:16px 0 13px;margin-bottom:28px}
-.pi2{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.pl{font-size:.95rem;font-weight:700;color:var(--gold);letter-spacing:.04em}
-.pco{font-size:.95rem;color:var(--text2)}
-.pt2{height:4px;background:var(--surface2);border-radius:10px;overflow:hidden}
-.pf2{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:10px;transition:width .5s ease}
-.dh{margin-bottom:26px}
-.dn{font-size:.9rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.dnm{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;line-height:1.1;margin-bottom:10px;color:var(--text)}
-.dd{font-size:1.05rem;color:var(--text2);background:var(--surface);border-left:4px solid var(--gold);padding:12px 16px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;line-height:1.5}
-.pr{background:var(--surface);border:2px solid var(--border);border-radius:var(--radius);padding:22px 18px;margin-bottom:16px;transition:border-color .2s}
-.pr.r{border-color:rgba(255,215,0,.5)}
-.pnu{font-size:.85rem;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
-.ptx{font-size:1.2rem;font-weight:600;color:var(--text);margin-bottom:18px;line-height:1.5}
-.op{display:flex;flex-direction:column;gap:10px}
-.op2{background:var(--surface2);border:2px solid var(--border);border-radius:var(--radius-sm);padding:16px 16px;cursor:pointer;text-align:left;font-size:1.05rem;font-weight:500;color:var(--text2);transition:border-color .15s,background .15s,color .15s;line-height:1.4;-webkit-tap-highlight-color:transparent;user-select:none}
-.op2:active{transform:scale(.98)}
-.op2.s{background:var(--gold-dim);border-color:var(--gold);color:var(--gold);font-weight:700}
-.nb{display:flex;gap:14px;margin-top:28px}
-.bab{background:transparent;border:1.5px solid var(--border);color:var(--text2);padding:16px 18px;border-radius:60px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1.05rem;font-weight:500;cursor:pointer;flex:1;-webkit-tap-highlight-color:transparent}
-.bab:disabled{opacity:.3;cursor:not-allowed}
-.ban{background:var(--gold);border:none;color:#0a1628;padding:16px 22px;border-radius:60px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1.05rem;font-weight:700;cursor:pointer;flex:2;box-shadow:0 6px 24px rgba(255,215,0,.35);-webkit-tap-highlight-color:transparent}
-.ban:disabled{opacity:.3;cursor:not-allowed;box-shadow:none}
-.ban:active{transform:scale(.98)}
-.ph2{text-align:center;padding:40px 0 32px;border-bottom:1px solid var(--border);margin-bottom:30px}
-.pi3{font-size:3.5rem;margin-bottom:18px;display:block;animation:g .6s ease both}
-.pt3{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;line-height:1;margin-bottom:10px;color:var(--text)}
-.pt3 span{color:var(--gold)}
-.ps{font-size:1.05rem;color:var(--text2);max-width:34ch;margin:0 auto;line-height:1.55}
-.rv{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px 20px;margin-bottom:26px}
-.rt{font-size:.9rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
-.bd{margin-bottom:16px}
-.bl{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.bna{font-size:1rem;font-weight:600;color:var(--text)}
-.bni{font-size:.85rem;font-weight:700;padding:4px 12px;border-radius:30px}
-.na{background:rgba(76,175,130,.2);color:#6dd4a0}
-.nm{background:rgba(255,215,0,.2);color:var(--gold)}
-.nb2{background:rgba(232,133,90,.2);color:#f0a07a}
-.bt{height:6px;background:var(--surface2);border-radius:10px;overflow:hidden}
-.bfi{height:100%;border-radius:10px;width:var(--w,0%);animation:f .8s ease both;animation-delay:var(--delay,0s)}
-.fa{background:linear-gradient(90deg,#4caf82,#6dd4a0)}
-.fm{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
-.fb{background:linear-gradient(90deg,#e8855a,#f0a07a)}
-.pi4{background:linear-gradient(135deg,rgba(255,215,0,.1),rgba(255,215,0,.04));border:1px solid rgba(255,215,0,.35);border-radius:var(--radius);padding:26px 20px;margin-bottom:26px}
-.pit{font-size:.9rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.pis{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--text);margin-bottom:14px;line-height:1.2}
-.pit2{font-size:1.05rem;color:var(--text2);line-height:1.7;margin-bottom:18px}
-.pip{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
-.pii{display:flex;align-items:flex-start;gap:12px;font-size:1rem;color:var(--text2);line-height:1.45}
-.pip2{font-size:1.2rem;flex-shrink:0;margin-top:1px}
-.pcb{background:var(--surface2);border-radius:var(--radius-sm);padding:14px 16px;font-size:1rem;color:var(--text2);line-height:1.5;font-style:italic;border-left:4px solid var(--gold)}
-.ps2{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 20px;margin-bottom:18px}
-.sh{display:flex;align-items:center;gap:14px;margin-bottom:16px}
-.se{width:50px;height:50px;background:var(--gold-dim);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0}
-.sm{flex:1}
-.sn{font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
-.st{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;line-height:1.2;color:var(--text)}
-.sr{font-size:1.05rem;color:var(--text2);line-height:1.65;margin-bottom:18px}
-.sm2{background:rgba(255,215,0,.08);border-left:4px solid var(--gold);padding:12px 16px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:1rem;color:var(--text2);font-style:italic;margin-bottom:12px;line-height:1.5}
-.sm2 strong{color:var(--gold);font-style:normal}
-.sr2{font-size:1rem;color:var(--text2);background:var(--surface2);padding:12px 16px;border-radius:var(--radius-sm);line-height:1.5}
-.sr2 strong{color:var(--text)}
-.pce{text-align:center;padding:36px 16px;border-top:1px solid var(--border);margin-top:28px}
-.ct{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;margin-bottom:12px;color:var(--text)}
-.ctx{font-size:1.05rem;color:var(--text2);max-width:40ch;margin:0 auto 28px;line-height:1.6}
-.br{background:transparent;border:1.5px solid var(--border);color:var(--text2);padding:15px 32px;border-radius:60px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.mw2{margin-bottom:28px}
-.mrt{font-size:.9rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.mrs{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:22px;line-height:1.2}
-.mrc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 18px;margin-bottom:14px;position:relative;overflow:hidden}
-.mrc::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--gold),var(--gold-light))}
-.mrh{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.mrn{display:flex;align-items:center;gap:10px;font-size:.95rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
-.mrb{font-size:.8rem;font-weight:700;padding:4px 14px;border-radius:30px}
-.mba{background:rgba(76,175,130,.2);color:#6dd4a0}
-.mbm{background:rgba(255,215,0,.2);color:var(--gold)}
-.mbb{background:rgba(232,133,90,.2);color:#f0a07a}
-.mrc2{font-size:1rem;color:var(--text2);line-height:1.65;margin-bottom:12px}
-.mrr{font-size:.95rem;color:var(--text2);font-style:italic;background:var(--surface2);border-radius:var(--radius-sm);padding:12px 14px;line-height:1.5;border-left:3px solid rgba(255,215,0,.5)}
-.mrr strong{color:var(--gold);font-style:normal}
-.exec{background:linear-gradient(135deg,rgba(255,215,0,.1),rgba(255,215,0,.03));border:1px solid rgba(255,215,0,.35);border-radius:var(--radius);padding:24px 20px;margin-bottom:26px}
-.exet{font-size:.9rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-.exr{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.07)}
-.exr:last-child{border-bottom:none}
-.exl{font-size:.92rem;color:var(--muted);flex-shrink:0;padding-top:2px}
-.exv{font-size:1.05rem;font-weight:700;color:var(--text);text-align:right}
-.exv2{font-size:.82rem;color:var(--gold-light);font-weight:600;display:block;margin-top:3px}
-.discl{background:var(--surface2);border:1px dashed var(--border);border-radius:var(--radius-sm);padding:13px 15px;font-size:.88rem;color:var(--muted);line-height:1.55;text-align:left}
-.discl strong{color:var(--gold-light)}
-.fdgrid{display:grid;grid-template-columns:1fr;gap:12px;margin:14px 0}
-.fdbox{background:var(--surface2);border-radius:var(--radius-sm);padding:14px 14px}
-.fdtt{font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:6px}
-.fdli{font-size:.94rem;color:var(--text2);line-height:1.5;margin-bottom:7px;padding-left:18px;position:relative}
-.fdli::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
-.fdli:last-child{margin-bottom:0}
-.rline{font-size:.95rem;color:#f0a07a;background:rgba(232,133,90,.1);border-radius:var(--radius-sm);padding:11px 13px;margin-bottom:10px;line-height:1.45}
-.lline{font-size:.92rem;color:var(--text2);background:rgba(255,215,0,.08);border-left:3px solid var(--gold);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:11px 13px;line-height:1.5}
-.lline strong{color:var(--gold)}
-.estag{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#0a1628;font-size:.82rem;font-weight:700;padding:6px 14px;border-radius:30px;margin-bottom:8px}
-.secbadge{display:inline-flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-size:.85rem;font-weight:600;padding:6px 14px;border-radius:30px;margin-top:8px}
-@media(max-width:420px){.pt{font-size:3.2rem}.pg{grid-template-columns:1fr}.dnm{font-size:1.8rem}.ptx{font-size:1.1rem}.op2{font-size:1rem;padding:14px 14px}.exr{flex-direction:column;gap:4px}.exv{text-align:left}}
-</style></head><body><div id="app"></div><script>
-/* ============ 8 DIMENSIONES — alineadas al libro "¿Por qué soy así?" ============ */
-const D=[
-{id:0,emoji:'🌡️',nombre:'Temperamento',descripcion:'Tu forma natural de reaccionar ante el mundo y relacionarte con los demás.',preguntas:['En general, ¿cómo es tu energía habitual?','Cuando algo te apasiona, ¿cómo actúas?','Ante la tristeza o decepción, ¿cómo sueles reaccionar?','En situaciones de calma o rutina, ¿cómo te sientes?'],opciones:[['Intensa y activa','Moderada, equilibrada','Variable, depende del día','Tranquila, prefiero la calma'],['Con mucho entusiasmo y urgencia','Con planificación y análisis','Con profunda emoción interna','Con calma, sin prisa'],['Me afecta poco; paso rápido','Lo proceso internamente pero sigo','Lo siento muy intensamente','Busco estabilidad y evito dramas'],['Me aburre, necesito movimiento','La disfruto si hay orden','La aprecio para reflexionar','Me siento en mi elemento']]},
-{id:1,emoji:'🧱',nombre:'Tolerancia a la frustración',descripcion:'Cómo manejas los obstáculos, la incomodidad y los resultados que no esperabas.',preguntas:['Cuando una tarea se complica mucho, tiendo a...','Si algo no sale como esperaba, suelo...','Mi nivel de exigencia personal me hace...','Ante fracasos repetidos, mi reacción es...'],opciones:[['Abandonarla fácilmente','Buscar ayuda antes de rendirme','Insistir aunque me cueste','Reorganizarme y seguir con calma'],['Reaccionar con enojo o frustración fuerte','Sentirme mal un rato pero adaptarme','Analizarlo sin perder el hilo','Tomarlo como parte del proceso'],['Presionarme demasiado y agotarme','Esforzarme pero con ciertos límites','Apuntar alto y disfrutarlo','Ser realista y mantener ritmo constante'],['Rendirme o desconectarme del todo','Necesitar tiempo para recuperarme','Cuestionarme pero volver a intentar','Mantener la calma y ajustar la estrategia']]},
-{id:2,emoji:'⚔️',nombre:'Gestión de conflictos',descripcion:'Tu estilo para enfrentar desacuerdos, tensiones y situaciones de choque.',preguntas:['En una discusión, mi tendencia natural es...','Cuando alguien me molesta repetidamente, yo...','Poner límites claros me resulta...','Después de un conflicto, me siento...'],opciones:[['Evitarla o ceder para que pase','Ceder al principio pero guardar resentimiento','Defender mi postura aunque haya tensión','Buscar acuerdo de forma directa y respetuosa'],['Acumulo hasta que exploto','Me distancio sin decir nada','Lo expreso cuando se repite demasiado','Lo digo en el momento, sin acumular'],['Muy difícil, me genera culpa','Difícil, me cuesta ser firme','Posible si me preparo bien','Natural, lo hago sin mayor esfuerzo'],['Agotado/a por mucho tiempo','Aliviado/a aunque algo incómodo/a','Bien; siento que avancé','En paz, lo proceso y suelto rápido']]},
-{id:3,emoji:'🙈',nombre:'No ver el mal',descripcion:'Las realidades que prefieres ignorar o que te cuesta mirar de frente.',preguntas:['Ante problemas evidentes en mi entorno o relaciones, tiendo a...','Cuando algo en mi vida claramente no funciona, yo...','Reconocer mis propios patrones negativos me resulta...','Ante señales de alarma en una relación importante, suelo...'],opciones:[['Ignorarlos, no quiero verlos','Verlos pero prefiero no intervenir','Reconocerlos aunque me incomode','Enfrentarlos de forma directa'],['Seguir como si nada, es mejor así','Saberlo pero no querer pensarlo','Reconocerlo aunque me cueste actuar','Enfrentarlo para poder cambiarlo'],['Casi imposible, me defiendo o justifico','Difícil, prefiero no mirar ahí','Lo hago cuando alguien me lo señala','Lo hago con bastante honestidad'],['Ignorarlas completamente','Verlas pero esperar que pasen solas','Notarlas y sentir incomodidad sin actuar','Enfrentarlas a tiempo aunque duela']]},
-{id:4,emoji:'🙉',nombre:'No oír el mal',descripcion:'Cómo filtras lo que te llega: críticas, emociones ajenas y señales del entorno.',preguntas:['Cuando alguien me da una crítica, aunque sea constructiva, tiendo a...','Escuchar algo que contradice lo que yo pienso me resulta...','Cuando alguien cercano me expresa su malestar, yo...','En conversaciones difíciles, mi forma de escuchar es...'],opciones:[['Defenderme o desestimar lo que dicen','Escuchar pero sentirme herido/a','Reflexionar antes de responder','Recibirla con apertura genuina'],['Muy difícil, lo rechazo internamente','Incómodo/a, pero intento escuchar','Posible si confío en la persona','Natural, me interesa aunque no lo comparta'],['Minimizo lo que siente o cambio el tema','Escucho pero no sé cómo responder','Lo escucho aunque me cueste sostenerlo','Estoy presente y le doy espacio real'],['Escucho para responder, no para entender','Filtro lo que me conviene y lo demás lo ignoro','Intento escuchar pero me distraigo','Escucho de verdad antes de reaccionar']]},
-{id:5,emoji:'🙊',nombre:'No hablar el mal',descripcion:'Tu manera de expresar o callar lo que sientes, necesitas y piensas.',preguntas:['Cuando algo me molesta, mi reacción habitual es...','Decir lo que necesito en una relación me resulta...','Cuando guardo silencio sobre algo que me duele, es porque...','Expresar mis opiniones cuando pueden generar conflicto me...'],opciones:[['Callarlo para no generar problemas','Decirlo de forma indirecta o con rodeos','Decirlo cuando ya no aguanto más','Decirlo en el momento con calma'],['Casi imposible, me genera mucha culpa','Muy difícil, prefiero no pedir','Posible si hay mucha confianza','Natural, lo hago sin drama'],['Temo el rechazo o el conflicto','No sé cómo decirlo sin herir','Creo que no vale la pena o no me escucharán','Elijo el momento adecuado conscientemente'],['Resulta muy difícil, prefiero callar','Cuesta mucho, pero a veces lo hago','Es posible si me preparo','Resulta natural aunque haya tensión']]},
-{id:6,emoji:'🧠',nombre:'Autoconciencia y gestión emocional',descripcion:'Tu capacidad de identificar lo que sientes mientras lo sientes, y de responder con conciencia en lugar de solo reaccionar.',preguntas:['Cuando algo me afecta emocionalmente, ¿en qué momento logro identificar con claridad qué estoy sintiendo?','Ante una emoción intensa (enojo, miedo, tristeza), mi primera reacción suele ser...','¿Qué tan seguido identifico la emoción real detrás de otra (ej. sentirme herido pero mostrar enojo)?','Cuando tomo una decisión importante en medio de una emoción fuerte, suelo...'],opciones:[['Casi nunca; solo sé que algo anda mal','Después de que todo pasó, en retrospectiva','Mientras ocurre, aunque me cuesta un poco','En el momento mismo, con bastante claridad'],['Actuar de inmediato según lo que siento','Reaccionar y luego entender qué pasó','Notar la emoción pero a veces igual reacciono rápido','Hacer una pausa antes de responder'],['Casi nunca lo noto','Lo descubro tiempo después','A veces lo noto en el momento','Frecuentemente puedo distinguirlo'],['Decidir según lo que siento en ese momento','Decidir y a veces arrepentirme después','Esperar un poco, aunque no siempre lo logro','Esperar a que la emoción baje antes de decidir']]},
-{id:7,emoji:'🧭',nombre:'Integración y dirección personal',descripcion:'Qué tan coherente es tu vida diaria con lo que sabes y valoras de ti mismo/a — y cuánta dirección consciente tienen tus decisiones.',preguntas:['¿Siento que actúo de forma coherente con lo que realmente soy?','¿Me conozco bien: sé lo que quiero, lo que me duele y lo que me mueve?','¿Puedo observar mis patrones sin juzgarme ni justificarme?','¿Estoy dispuesto/a a seguir conociéndome aunque lo que vea no me guste?'],opciones:[['Casi nunca, vivo en piloto automático','A veces, en algunos contextos','Con bastante frecuencia','Sí, hay coherencia real en mí'],['No mucho, aún hay mucha confusión','Algo, pero quedan zonas oscuras','Bastante bien, aunque siempre hay más','Sí, con bastante claridad'],['Me cuesta mucho, tiendo a justificarme','A veces puedo, otras me defiendo','Con frecuencia puedo hacerlo','Sí, lo hago con honestidad y compasión'],['Prefiero no mirar lo que no me gusta','A veces sí, depende de lo que sea','Generalmente estoy abierto/a a eso','Sí, el autoconocimiento es una prioridad para mí']]}
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conócete | Lenguaje corporal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body style="margin:0;background:#050B18;">
+<div id="root"></div>
+<script type="text/babel">
+const { useState } = React;
+const {
+  Eye, Anchor, Hand, Footprints, RefreshCcw, Briefcase, Heart, Crown, Search, Smile, Fingerprint, Magnet,
+  ChevronRight, ChevronLeft, RotateCcw, Sparkles, Check, X: XIcon, Compass, BookHeart, Lightbulb
+} = Object.fromEntries([
+  ['Eye', '◉'], ['Anchor', '⚓'], ['Hand', '✋'], ['Footprints', '♧'], ['RefreshCcw', '↻'],
+  ['Briefcase', '▣'], ['Heart', '♥'], ['Crown', '♛'], ['Search', '⌕'], ['Smile', '☺'],
+  ['Fingerprint', '◌'], ['Magnet', '∪'], ['ChevronRight', '›'], ['ChevronLeft', '‹'],
+  ['RotateCcw', '↶'], ['Sparkles', '✦'], ['Check', '✓'], ['X', '×'], ['Compass', '⊙'],
+  ['BookHeart', '♡'], ['Lightbulb', '♧']
+].map(([name, symbol]) => [name, ({ size = 16, className = '', style = {} }) => (
+  <span aria-hidden="true" className={className} style={{ fontSize: size, lineHeight: 1, ...style }}>{symbol}</span>
+)]));
+
+function ResponsiveContainer({ children }) { return <div className="w-full h-full">{children}</div>; }
+function RadarChart({ children }) { return <div className="w-full h-full flex items-center justify-center text-6xl" style={{ color: '#D4AF37' }}>◈</div>; }
+function PolarGrid() { return null; }
+function PolarAngleAxis() { return null; }
+function Radar() { return null; }
+
+/* ------------------------------------------------------------------ */
+/* DATA: rasgos, plantillas de reflexión y módulos                     */
+/* ------------------------------------------------------------------ */
+
+const TRAIT_INFO = {
+  apertura: {
+    label: 'Apertura', color: '#D4AF37', mirrorTitle: 'El cuerpo que se abre',
+    text: (tema) => `En ${tema}, tu cuerpo elige la apertura antes que la protección. Buscas contacto visual, ocupas tu espacio sin pedir permiso de más, y esa disposición suele leerse como seguridad genuina, no impostada.`
+  },
+  alerta: {
+    label: 'Alerta', color: '#C9744A', mirrorTitle: 'El cuerpo en vigilia',
+    text: (tema) => `En ${tema}, tu cuerpo entra en modo vigilancia. No es debilidad: es un sistema nervioso que ha aprendido a anticipar. El reto no es apagar esa alerta, sino aprender a nombrarla antes de que hable por ti.`
+  },
+  contencion: {
+    label: 'Contención', color: '#6E9BC7', mirrorTitle: 'El cuerpo que aún se protege',
+    text: (tema) => `En ${tema}, tu cuerpo sostiene una calma cuidada, incluso cuando algo distinto se mueve por dentro. No es falsedad: es una armadura que alguna vez te protegió. Vale la pena preguntarte, a solas, si todavía la necesitas.`
+  },
+  presencia: {
+    label: 'Presencia', color: '#A78BC4', mirrorTitle: 'El cuerpo que ya llegó',
+    text: (tema) => `En ${tema}, te mantienes centrado. No necesitas acelerar ni encogerte: tu cuerpo ya sabe ocupar su propio ritmo, y eso, como hemos visto en este viaje, se nota antes de decir una palabra.`
+  },
+  conexion: {
+    label: 'Conexión', color: '#C97B93', mirrorTitle: 'El cuerpo que busca al otro',
+    text: (tema) => `En ${tema}, tu cuerpo busca sintonía con quien tiene delante. Te inclinas, escuchas con los pies tanto como con los oídos, y esa disponibilidad es, en sí misma, una forma silenciosa de cuidado.`
+  }
+};
+
+const MODULES = [
+  {
+    id: 'm1', Icon: Eye,
+    title: 'El teatro de las emociones',
+    subtitle: 'Emociones y microexpresiones',
+    theme: 'la forma en que tu rostro reacciona ante lo inesperado',
+    questions: [
+      { prompt: 'Alguien te da una noticia que no esperabas. ¿Qué hace tu rostro en el primer segundo?',
+        options: [
+          { text: 'Se abre: cejas arriba, ojos bien abiertos, sin filtro.', trait: 'apertura' },
+          { text: 'Se congela un instante, como evaluando el terreno.', trait: 'alerta' },
+          { text: 'Sonríe por reflejo, aunque por dentro sienta otra cosa.', trait: 'contencion' },
+          { text: 'Se mantiene neutro; tomo un segundo antes de reaccionar.', trait: 'presencia' },
+        ] },
+      { prompt: 'Cuando algo te hace gracia de verdad, ¿qué pasa con tus ojos?',
+        options: [
+          { text: 'Se arrugan, casi no puedo evitarlo.', trait: 'apertura' },
+          { text: 'Sigo riendo, pero contengo el volumen por si acaso.', trait: 'contencion' },
+          { text: 'Miro alrededor, para ver si los demás también se ríen.', trait: 'conexion' },
+          { text: 'Se me corta la risa rápido, vuelvo al control enseguida.', trait: 'alerta' },
+        ] },
+      { prompt: 'Disimulas una emoción incómoda en público (fastidio, tristeza, aburrimiento). ¿Qué es lo más probable?',
+        options: [
+          { text: 'Se me nota igual; mi cara no sabe mentir mucho tiempo.', trait: 'apertura' },
+          { text: 'Sostengo la máscara bastante bien, casi nadie lo nota.', trait: 'contencion' },
+          { text: 'Me tenso, y esa tensión se filtra en otra parte del cuerpo.', trait: 'alerta' },
+          { text: 'Busco la mirada de alguien de confianza, casi pidiendo apoyo.', trait: 'conexion' },
+        ] },
+    ]
+  },
+  {
+    id: 'm2', Icon: Anchor,
+    title: 'La postura, la base de todo',
+    subtitle: 'Postura y presencia física',
+    theme: 'cómo tu cuerpo se planta frente al mundo',
+    questions: [
+      { prompt: 'Antes de entrar a una reunión o situación importante, ¿cómo llegas?',
+        options: [
+          { text: 'Con el pecho abierto, hombros atrás, ocupando mi espacio.', trait: 'apertura' },
+          { text: 'Encorvado sobre el móvil hasta el último segundo.', trait: 'alerta' },
+          { text: 'Repasando mentalmente cómo debo comportarme, ya en modo actuación.', trait: 'contencion' },
+          { text: 'Con calma, sin prisa, llegando a mi propio ritmo.', trait: 'presencia' },
+        ] },
+      { prompt: 'Cuando alguien con más autoridad que tú entra en la sala, ¿qué hace tu columna?',
+        options: [
+          { text: 'Se mantiene igual; no cambio mi postura por jerarquía.', trait: 'presencia' },
+          { text: 'Se endereza de golpe, casi como un acto reflejo.', trait: 'alerta' },
+          { text: 'Se encoge un poco, ocupo menos espacio.', trait: 'contencion' },
+          { text: 'Me inclino levemente hacia esa persona, buscando conectar.', trait: 'conexion' },
+        ] },
+      { prompt: 'Si tuvieras que describir tu espalda en un día normal de trabajo, ¿cuál se parece más?',
+        options: [
+          { text: 'Recta, relajada, sin esfuerzo consciente.', trait: 'presencia' },
+          { text: 'Encorvada hacia la pantalla, sin darme cuenta.', trait: 'alerta' },
+          { text: 'Erguida casi con rigidez, como una armadura.', trait: 'contencion' },
+          { text: 'Cambia según con quién hablo; se adapta al otro.', trait: 'conexion' },
+        ] },
+    ]
+  },
+  {
+    id: 'm3', Icon: Hand,
+    title: 'Manos, brazos, pies y piernas',
+    subtitle: 'Gestos de manos y pies',
+    theme: 'lo que tus extremidades dicen cuando tú no estás mirando',
+    questions: [
+      { prompt: 'En una conversación que te incomoda un poco, ¿dónde terminan tus brazos?',
+        options: [
+          { text: 'Sueltos, gesticulando, sin darme cuenta de que hablo con las manos.', trait: 'apertura' },
+          { text: 'Cruzados sobre el pecho, como una barrera.', trait: 'alerta' },
+          { text: 'Cruzados, pero porque me siento cómodo así, es costumbre.', trait: 'contencion' },
+          { text: 'Buscando el brazo o el hombro del otro, algún punto de contacto.', trait: 'conexion' },
+        ] },
+      { prompt: 'Cuando alguien te tiende la mano para saludarte, ¿cómo respondes casi sin pensarlo?',
+        options: [
+          { text: 'Con la palma vertical, un apretón firme e igualitario.', trait: 'presencia' },
+          { text: 'Envuelvo su mano con las dos mías; quiero transmitir calidez.', trait: 'conexion' },
+          { text: 'Aprieto fuerte, casi de más, para marcar seguridad.', trait: 'alerta' },
+          { text: 'Dejo que el otro marque el tono, sigo su ritmo.', trait: 'contencion' },
+        ] },
+      { prompt: 'En una sala de espera, ¿hacia dónde apuntan tus pies la mayor parte del tiempo?',
+        options: [
+          { text: 'Hacia la puerta, aunque no tenga prisa por irme.', trait: 'alerta' },
+          { text: 'Hacia la persona con la que hablo, si hay alguien.', trait: 'conexion' },
+          { text: 'Quietos, apoyados con calma, sin urgencia.', trait: 'presencia' },
+          { text: 'Los cruzo por el tobillo y me olvido de ellos.', trait: 'contencion' },
+        ] },
+    ]
+  },
+  {
+    id: 'm4', Icon: Footprints,
+    title: 'El espacio y tu forma de caminar',
+    subtitle: 'Proxémica y forma de caminar',
+    theme: 'el ritmo con el que ocupas el mundo',
+    questions: [
+      { prompt: '¿Cómo describirías tu forma de caminar en un día cualquiera?',
+        options: [
+          { text: 'Rápida; casi siempre voy un paso por delante de mí mismo.', trait: 'alerta' },
+          { text: 'Firme y pausada, sin prisa por llegar.', trait: 'presencia' },
+          { text: 'Cambia mucho según mi estado de ánimo del día.', trait: 'contencion' },
+          { text: 'Atenta a quién va conmigo; ajusto el paso al otro.', trait: 'conexion' },
+        ] },
+      { prompt: 'Entras a un lugar donde no conoces a nadie. ¿Qué hace tu cuerpo primero?',
+        options: [
+          { text: 'Ocupa el espacio con naturalidad, camino como si perteneciera ahí.', trait: 'apertura' },
+          { text: 'Busca la salida o un punto de referencia, por si acaso.', trait: 'alerta' },
+          { text: 'Se hace un poco más pequeño, más discreto.', trait: 'contencion' },
+          { text: 'Busca una cara conocida o amistosa a la que acercarse.', trait: 'conexion' },
+        ] },
+      { prompt: '¿Qué distancia te resulta cómoda al hablar con alguien que acabas de conocer?',
+        options: [
+          { text: 'Bastante cerca; soy de contacto y cercanía.', trait: 'conexion' },
+          { text: 'Prefiero mi espacio, me tenso si alguien se acerca demasiado.', trait: 'alerta' },
+          { text: 'La distancia "de manual", ni muy cerca ni muy lejos.', trait: 'presencia' },
+          { text: 'Depende del contexto; la ajusto sin pensarlo.', trait: 'apertura' },
+        ] },
+    ]
+  },
+  {
+    id: 'm5', Icon: RefreshCcw,
+    title: 'El espejo roto',
+    subtitle: 'Estrés y autenticidad',
+    theme: 'lo que tu cuerpo hace cuando protege algo que no quieres mostrar',
+    questions: [
+      { prompt: 'Algo te duele pero estás en público. ¿Qué es lo más probable?',
+        options: [
+          { text: 'Sonrío igual; la sonrisa social se activa sola.', trait: 'contencion' },
+          { text: 'Se me tensan la mandíbula y los hombros sin que lo decida.', trait: 'alerta' },
+          { text: 'Me muevo más de la cuenta, hablo más, me distraigo.', trait: 'apertura' },
+          { text: 'Busco a alguien de confianza y se lo digo directamente.', trait: 'conexion' },
+        ] },
+      { prompt: '¿Con qué frecuencia sientes que tu cara dice "estoy bien" cuando no lo estás?',
+        options: [
+          { text: 'Casi nunca; mi cara me delata rápido.', trait: 'apertura' },
+          { text: 'Bastante seguido; se me da bien sostenerlo.', trait: 'contencion' },
+          { text: 'Depende de quién esté mirando.', trait: 'conexion' },
+          { text: 'Prefiero no sonreír si no lo siento, aunque incomode.', trait: 'presencia' },
+        ] },
+      { prompt: 'Cuando necesitas calmarte, ¿qué hace tu cuerpo sin que lo pienses?',
+        options: [
+          { text: 'Se mueve: tamborileo, piernas, algo necesita salir.', trait: 'alerta' },
+          { text: 'Se queda muy quieto, casi rígido, como aguantando.', trait: 'contencion' },
+          { text: 'Busca el abrazo o la voz de alguien cercano.', trait: 'conexion' },
+          { text: 'Respira hondo y baja el ritmo por sí solo; ya lo tengo entrenado.', trait: 'presencia' },
+        ] },
+    ]
+  },
+  {
+    id: 'm6', Icon: Briefcase,
+    title: 'Entrevistas y negociaciones',
+    subtitle: 'Negocios, entrevistas y primeras impresiones',
+    theme: 'cómo te comportas cuando el resultado importa',
+    questions: [
+      { prompt: 'Te hacen una pregunta difícil en una entrevista. ¿Qué hace tu cuerpo antes de responder?',
+        options: [
+          { text: 'Se adelanta; respondo casi de inmediato, sin pausa.', trait: 'alerta' },
+          { text: 'Se toma un segundo; respiro y ordeno la idea.', trait: 'presencia' },
+          { text: 'Se cierra un poco; cruzo brazos o piernas.', trait: 'contencion' },
+          { text: 'Busca conectar con quien pregunta antes de hablar.', trait: 'conexion' },
+        ] },
+      { prompt: 'En una negociación notas que el otro no está del todo convencido. ¿Qué haces?',
+        options: [
+          { text: 'Insisto con más argumentos, subo el ritmo.', trait: 'alerta' },
+          { text: 'Hago una pausa y pregunto qué necesita para sentirse seguro.', trait: 'conexion' },
+          { text: 'Mantengo mi postura; dejo que el silencio trabaje.', trait: 'presencia' },
+          { text: 'Sonrío y sigo adelante, aunque note la duda.', trait: 'contencion' },
+        ] },
+      { prompt: 'Al despedirte después de una reunión importante, ¿cómo sueles irte?',
+        options: [
+          { text: 'Con el mismo aplomo con el que entré, sin mirar atrás.', trait: 'presencia' },
+          { text: 'Aliviado; se me nota en el cuerpo que ya terminó.', trait: 'alerta' },
+          { text: 'Repasando mentalmente todo lo que dije, en modo revisión.', trait: 'contencion' },
+          { text: 'Con una última mirada o gesto amable hacia el otro.', trait: 'conexion' },
+        ] },
+      { prompt: 'Llegas a una reunión con un cliente potencial. En los primeros quince segundos, ¿qué hace tu cuerpo?',
+        options: [
+          { text: 'Se planta con calma: espalda recta, manos visibles, sin prisa por sentarme.', trait: 'presencia' },
+          { text: 'Entra ya revisando el móvil o el reloj, repasando datos de última hora.', trait: 'alerta' },
+          { text: 'Sonríe de inmediato y busca romper el hielo con humor.', trait: 'conexion' },
+          { text: 'Se mantiene formal y algo distante hasta "ganarme" su confianza.', trait: 'contencion' },
+        ] },
+      { prompt: 'Antes de proponer un negocio importante, ¿qué te preocupa más de tu presencia?',
+        options: [
+          { text: 'Que mi entusiasmo se note demasiado y parezca desesperación.', trait: 'contencion' },
+          { text: 'Que mi lenguaje corporal transmita la misma seguridad que mis palabras.', trait: 'presencia' },
+          { text: 'Que el otro no conecte conmigo como persona, más allá del trato.', trait: 'conexion' },
+          { text: 'Que se note si estoy nervioso; me cuesta disimularlo.', trait: 'alerta' },
+        ] },
+    ]
+  },
+  {
+    id: 'm7', Icon: Heart,
+    title: 'El lenguaje del corazón',
+    subtitle: 'Pareja, amistad y familia',
+    theme: 'cómo se mueve tu cuerpo cerca de quienes quieres',
+    questions: [
+      { prompt: 'Cuando alguien te gusta, ¿qué es lo primero que cambia en tu cuerpo?',
+        options: [
+          { text: 'Los pies; se orientan hacia esa persona sin que lo decida.', trait: 'conexion' },
+          { text: 'El pulso; me pongo alerta, como si algo estuviera en juego.', trait: 'alerta' },
+          { text: 'Me arreglo, me acomodo el pelo o la ropa sin darme cuenta.', trait: 'apertura' },
+          { text: 'Me pongo más serio de lo normal; controlo más mis gestos.', trait: 'contencion' },
+        ] },
+      { prompt: 'Tienes que decir algo difícil a alguien que quieres. ¿Cómo te sientas?',
+        options: [
+          { text: 'Enfrente, directo, aunque incomode.', trait: 'apertura' },
+          { text: 'Al lado, buscando que sea menos confrontación y más conversación.', trait: 'conexion' },
+          { text: 'Con los brazos ya cruzados antes de empezar a hablar.', trait: 'alerta' },
+          { text: 'Con la postura muy controlada, casi ensayada.', trait: 'contencion' },
+        ] },
+      { prompt: '¿Qué tipo de abrazo das con más frecuencia?',
+        options: [
+          { text: 'Completo, cuerpo contra cuerpo, sin prisa por soltar.', trait: 'conexion' },
+          { text: 'Con palmaditas en la espalda, como cerrando rápido.', trait: 'contencion' },
+          { text: 'Breve y algo rígido; no soy muy de contacto.', trait: 'alerta' },
+          { text: 'Depende del día; a veces me permito más que otras.', trait: 'presencia' },
+        ] },
+    ]
+  },
+  {
+    id: 'm8', Icon: Crown,
+    title: 'Imagen, voz y poder',
+    subtitle: 'Imagen, voz y presencia digital',
+    theme: 'lo que proyectas antes, durante y después de hablar',
+    questions: [
+      { prompt: 'Bajo presión, ¿qué le pasa a tu voz?',
+        options: [
+          { text: 'Se acelera y sube de tono sin que pueda evitarlo.', trait: 'alerta' },
+          { text: 'Se vuelve más pausada, casi más grave, para compensar.', trait: 'presencia' },
+          { text: 'La controlo mucho; cuido cada palabra.', trait: 'contencion' },
+          { text: 'Busco un tono cálido, casi conciliador.', trait: 'conexion' },
+        ] },
+      { prompt: 'En una videollamada importante, ¿qué es lo que más te cuesta?',
+        options: [
+          { text: 'Mantener la mirada en la cámara y no en mi propia imagen.', trait: 'alerta' },
+          { text: 'Nada especial; me siento igual que en persona.', trait: 'presencia' },
+          { text: 'Mostrarme natural; siento que actúo un poco.', trait: 'contencion' },
+          { text: 'No poder leer bien el lenguaje corporal del otro.', trait: 'conexion' },
+        ] },
+      { prompt: 'Alguien usa contigo un gesto de poder (invade tu espacio, sostiene la mirada de más, te interrumpe). ¿Qué haces?',
+        options: [
+          { text: 'Mantengo mi espacio y mi mirada, sin agrandarme ni encogerme.', trait: 'presencia' },
+          { text: 'Se me tensa el cuerpo; entro en alerta.', trait: 'alerta' },
+          { text: 'Me encojo un poco, cedo terreno casi sin darme cuenta.', trait: 'contencion' },
+          { text: 'Intento leer qué hay detrás de ese gesto, más que reaccionar.', trait: 'conexion' },
+        ] },
+      { prompt: 'Antes de una primera impresión importante (una reunión, una cita, una entrevista), ¿qué cuidas más de tu imagen?',
+        options: [
+          { text: 'La ropa y el aseo; quiero que se note que me importa esto.', trait: 'apertura' },
+          { text: 'Nada en particular; confío en que mi actitud hable por sí sola.', trait: 'presencia' },
+          { text: 'Reviso varias veces los detalles, hasta sentirme "protegido" con la imagen.', trait: 'contencion' },
+          { text: 'Pienso en qué le va a gustar o incomodar a la otra persona.', trait: 'conexion' },
+        ] },
+    ]
+  },
+  {
+    id: 'm9', type: 'quiz', Icon: Smile,
+    title: 'El diccionario de las emociones',
+    subtitle: 'Microexpresiones',
+    theme: 'tu entrenamiento para reconocer las siete emociones universales del rostro',
+    questions: [
+      {
+        prompt: 'El músculo orbicular de los ojos se contrae, las mejillas se elevan y aparecen las "patas de gallo". ¿Qué microexpresión es esta?',
+        options: [
+          { text: 'Alegría genuina (sonrisa de Duchenne).', correct: true },
+          { text: 'Sorpresa.', correct: false },
+          { text: 'Desprecio.', correct: false },
+          { text: 'Asco.', correct: false },
+        ],
+        explanation: 'Es la sonrisa de Duchenne: si los ojos no se arrugan, la boca puede estar mintiendo educadamente. Aquí sí lo hacen, así que la alegría es genuina.'
+      },
+      {
+        prompt: 'Los párpados superiores caen ligeramente, la mirada pierde enfoque y las comisuras de los labios se inclinan hacia abajo. ¿Qué microexpresión es esta?',
+        options: [
+          { text: 'Tristeza.', correct: true },
+          { text: 'Ira.', correct: false },
+          { text: 'Miedo.', correct: false },
+          { text: 'Alegría.', correct: false },
+        ],
+        explanation: 'La tristeza apaga el rostro: invade todo el semblante sin pedir permiso y es de las emociones más difíciles de ocultar.'
+      },
+      {
+        prompt: 'Los ojos se abren al máximo, las cejas se levantan y se juntan, y los labios se estiran horizontalmente. ¿Qué microexpresión es esta?',
+        options: [
+          { text: 'Miedo.', correct: true },
+          { text: 'Sorpresa.', correct: false },
+          { text: 'Asco.', correct: false },
+          { text: 'Desprecio.', correct: false },
+        ],
+        explanation: 'Es la respuesta de un organismo que se prepara para huir o luchar, escrita en el rostro en milisegundos.'
+      },
+      {
+        prompt: 'Las cejas bajan y se juntan, los párpados se tensan y los labios se aprietan con fuerza, como conteniendo un volcán. ¿Qué microexpresión es esta?',
+        options: [
+          { text: 'Ira.', correct: true },
+          { text: 'Tristeza.', correct: false },
+          { text: 'Sorpresa.', correct: false },
+          { text: 'Alegría.', correct: false },
+        ],
+        explanation: 'La ira consume energía: es tan potente que, al verla, se activa nuestro propio sistema de alerta.'
+      },
+      {
+        prompt: 'La nariz se arruga, el labio superior se eleva y las mejillas suben. ¿Qué microexpresión es esta?',
+        options: [
+          { text: 'Asco.', correct: true },
+          { text: 'Miedo.', correct: false },
+          { text: 'Ira.', correct: false },
+          { text: 'Desprecio.', correct: false },
+        ],
+        explanation: 'Es una emoción de rechazo, ya sea ante un alimento en mal estado o una situación moralmente inaceptable.'
+      },
+      {
+        prompt: 'Las cejas se arquean, los ojos se abren y la mandíbula cae ligeramente; dura apenas una fracción de segundo. ¿Qué microexpresión es esta?',
+        options: [
+          { text: 'Sorpresa.', correct: true },
+          { text: 'Miedo.', correct: false },
+          { text: 'Ira.', correct: false },
+          { text: 'Tristeza.', correct: false },
+        ],
+        explanation: 'Es la más breve de todas. Si ves una expresión de sorpresa que dura más de un segundo, con toda probabilidad es fingida.'
+      },
+      {
+        prompt: 'Una sola comisura de la boca se eleva y se tensa, de forma asimétrica. ¿Qué microexpresión es esta?',
+        options: [
+          { text: 'Desprecio.', correct: true },
+          { text: 'Alegría.', correct: false },
+          { text: 'Sorpresa.', correct: false },
+          { text: 'Tristeza.', correct: false },
+        ],
+        explanation: 'Es la emoción más sutil y venenosa: una media sonrisa que no tiene nada de alegre y que comunica superioridad y juicio.'
+      },
+    ]
+  },
+  {
+    id: 'm10', type: 'quiz', multi: true, Icon: Fingerprint,
+    title: 'Un gesto no es una sentencia',
+    subtitle: 'Indicios',
+    theme: 'la diferencia entre un indicio aislado y una certeza',
+    questions: [
+      {
+        prompt: 'Ves solo esto, sin ningún otro dato: alguien cruza los brazos sobre el pecho durante toda la reunión. Marca todas las causas que podrían explicarlo por sí solas.',
+        options: [
+          { text: 'Podría tener frío; es una respuesta física, no emocional.', correct: true },
+          { text: 'Podría sentirse a la defensiva o insegura en ese momento.', correct: true },
+          { text: 'Es una prueba segura de que está mintiendo.', correct: false },
+          { text: 'Significa, sin duda, que quiere terminar la reunión ya.', correct: false },
+        ],
+        explanation: 'Cruzar los brazos es de los gestos más malinterpretados: puede deberse a frío, comodidad, concentración o defensividad. Aislado, no permite descartar ninguna.'
+      },
+      {
+        prompt: 'Ves solo esto: alguien se toca la nariz varias veces mientras habla. Marca todas las causas plausibles.',
+        options: [
+          { text: 'Puede ser una alergia o un picor real.', correct: true },
+          { text: 'Puede reflejar nerviosismo ante una pregunta incómoda.', correct: true },
+          { text: 'Es un gesto exclusivo y garantizado de mentira.', correct: false },
+          { text: 'Significa desprecio hacia quien tiene delante.', correct: false },
+        ],
+        explanation: 'Atribuirle automáticamente el significado de "mentira" es un error de principiante. Un picor real y el nerviosismo son igual de plausibles sin más contexto.'
+      },
+      {
+        prompt: 'Ves solo esto: alguien evita el contacto visual mientras te responde. Marca todas las causas plausibles.',
+        options: [
+          { text: 'Puede ser timidez o inseguridad social.', correct: true },
+          { text: 'Puede ser respeto cultural hacia una figura de autoridad.', correct: true },
+          { text: 'Es prueba directa de que se siente culpable.', correct: false },
+          { text: 'Significa que no le importas en absoluto.', correct: false },
+        ],
+        explanation: 'En algunas culturas, evitar la mirada es señal de respeto, no de culpa. La timidez es igual de común. Ninguna certeza aislada.'
+      },
+      {
+        prompt: 'Ves solo esto: alguien mira el reloj varias veces durante la conversación. Marca todas las causas plausibles.',
+        options: [
+          { text: 'Puede tener prisa real o estar esperando a alguien.', correct: true },
+          { text: 'Puede sentirse aburrida o desconectada del momento.', correct: true },
+          { text: 'Es la prueba de que está mintiendo sobre algo.', correct: false },
+          { text: 'Demuestra un interés profundo en el tema.', correct: false },
+        ],
+        explanation: 'Un solo indicio es un rumor. Mirar el reloj admite varias lecturas —prisa, aburrimiento, ansiedad, costumbre— hasta que se combina con otras señales.'
+      },
+      {
+        prompt: 'Ves solo esto: alguien inclina la cabeza hacia un lado mientras escucha. Marca todas las causas plausibles.',
+        options: [
+          { text: 'Puede reflejar interés genuino y escucha activa.', correct: true },
+          { text: 'Puede ser solo un ajuste para oír mejor.', correct: true },
+          { text: 'Es prueba garantizada de atracción romántica.', correct: false },
+          { text: 'Indica que está a punto de irse.', correct: false },
+        ],
+        explanation: 'Inclinar la cabeza puede ser escucha activa, empatía o, simplemente, un ajuste auditivo momentáneo; ninguna lectura es segura por sí sola.'
+      },
+      {
+        prompt: 'Ves solo esto: alguien sonríe, pero sus ojos no se arrugan. Marca todas las causas plausibles.',
+        options: [
+          { text: 'Puede ser cortesía social, sin más carga emocional.', correct: true },
+          { text: 'Puede estar ocultando una emoción que prefiere no mostrar.', correct: true },
+          { text: 'Prueba, sin duda, que es una persona falsa.', correct: false },
+          { text: 'Prueba que no le agradas en absoluto.', correct: false },
+        ],
+        explanation: 'No toda sonrisa social es una mentira malintencionada; a menudo es solo el lubricante que permite que la maquinaria social funcione, u oculta una emoción distinta.'
+      },
+    ]
+  },
+  {
+    id: 'm11', type: 'quiz', Icon: Search,
+    title: 'Cuando todo encaja',
+    subtitle: 'Microexpresiones e indicios',
+    theme: 'tu entrenamiento para leer clústeres de señales, nunca un gesto suelto',
+    questions: [
+      {
+        prompt: 'Notas esta combinación en alguien: cejas que bajan y se juntan (microexpresión de ira), puños cerrados, cuerpo inclinado hacia adelante. ¿Qué es más probable?',
+        options: [
+          { text: 'Está a punto de estallar en enfado; conviene desescalar.', correct: true },
+          { text: 'Está profundamente aburrido de la conversación.', correct: false },
+          { text: 'Siente timidez y busca esconderse.', correct: false },
+          { text: 'Está sorprendido por algo que acaba de escuchar.', correct: false },
+        ],
+        explanation: 'Es una de las combinaciones más fiables del lenguaje no verbal: la microexpresión delata la emoción real, los puños indican tensión contenida y la inclinación hacia adelante prepara el cuerpo para una posible confrontación.'
+      },
+      {
+        prompt: 'Ojos muy abiertos, cejas levantadas y juntas (microexpresión de miedo) + manos frías y sudorosas + pies orientados hacia la puerta. ¿Qué indica este racimo de señales?',
+        options: [
+          { text: 'El sistema nervioso está en alerta; el cuerpo se prepara para huir.', correct: true },
+          { text: 'Está relajado y cómodo en la conversación.', correct: false },
+          { text: 'Siente curiosidad genuina por el tema.', correct: false },
+          { text: 'Está fingiendo interés por cortesía.', correct: false },
+        ],
+        explanation: 'El miedo activa el sistema nervioso simpático de inmediato: la microexpresión es la primera señal, las manos sudorosas confirman la activación fisiológica, y los pies hacia la salida delatan el deseo inconsciente de huir.'
+      },
+      {
+        prompt: 'Sonrisa sin que se arruguen los ojos + brazos cruzados + distancia física marcada. ¿Cómo se siente probablemente esta persona?',
+        options: [
+          { text: 'Incómoda; no quiere estar ahí, pero las normas sociales se lo impiden.', correct: true },
+          { text: 'Completamente feliz y a gusto.', correct: false },
+          { text: 'Concentrada en resolver un problema mental.', correct: false },
+          { text: 'Atraída románticamente por quien tiene delante.', correct: false },
+        ],
+        explanation: 'La sonrisa sin arrugas en los ojos es una máscara social. Combinada con brazos cruzados y distancia física, la probabilidad de que la persona esté incómoda u oculte una emoción negativa es muy alta.'
+      },
+      {
+        prompt: 'Mirar el reloj + tamborilear los dedos + suspiros profundos, todo junto. ¿Qué está comunicando este cuerpo?',
+        options: [
+          { text: 'Impaciencia o ansiedad que busca liberarse, aunque no lo diga en voz alta.', correct: true },
+          { text: 'Total desinterés por el resultado de la reunión.', correct: false },
+          { text: 'Una necesidad física de estirar las piernas.', correct: false },
+          { text: 'Un hábito sin ninguna carga emocional.', correct: false },
+        ],
+        explanation: 'Ningún indicio aislado basta, pero esta tríada junta —mirar el reloj, tamborilear, suspirar— eleva considerablemente la probabilidad de impaciencia o ansiedad contenida que busca que la situación termine.'
+      },
+      {
+        prompt: 'Elevación asimétrica de una sola comisura (microexpresión de desprecio) + brazos cruzados + cabeza ligeramente inclinada hacia atrás. ¿Qué sugiere este conjunto?',
+        options: [
+          { text: 'Una sensación de superioridad y un rechazo silencioso hacia lo que se dice.', correct: true },
+          { text: 'Un interés genuino y una escucha activa.', correct: false },
+          { text: 'Vergüenza o inseguridad social.', correct: false },
+          { text: 'Cansancio físico acumulado.', correct: false },
+        ],
+        explanation: 'El desprecio combina superioridad y rechazo. Los brazos cruzados refuerzan el cierre emocional y la cabeza inclinada hacia atrás crea distancia jerárquica: la persona se sitúa, sin palabras, por encima de la situación.'
+      },
+      {
+        prompt: 'Microexpresión de tristeza (párpados caídos, comisuras hacia abajo) + mirada perdida + suspiro profundo. ¿Qué está atravesando esta persona?',
+        options: [
+          { text: 'Un momento de agotamiento emocional o tristeza genuina.', correct: true },
+          { text: 'Está profundamente concentrada resolviendo un problema.', correct: false },
+          { text: 'Está a punto de reírse de algo.', correct: false },
+          { text: 'Siente atracción hacia alguien en la sala.', correct: false },
+        ],
+        explanation: 'La tristeza apaga el rostro y el cuerpo. Si además los hombros están caídos y la voz es monótona, la persona está atravesando un momento de agotamiento emocional.'
+      },
+    ]
+  },
+  {
+    id: 'm12', type: 'quiz', Icon: Magnet,
+    title: 'Señales de atracción',
+    subtitle: 'Coqueteo y atracción',
+    theme: 'las señales corporales del interés y el deseo que el libro describe en "El lenguaje del corazón"',
+    questions: [
+      {
+        prompt: 'Sus pupilas se dilatan ligeramente mientras te mira, aunque la luz del lugar no ha cambiado. ¿Qué sugiere esto?',
+        options: [
+          { text: 'Una respuesta involuntaria asociada al interés genuino; es difícil de fingir.', correct: true },
+          { text: 'Simple cansancio ocular.', correct: false },
+          { text: 'Un efecto de la iluminación, nada más.', correct: false },
+          { text: 'Molestia por la conversación.', correct: false },
+        ],
+        explanation: 'La dilatación pupilar es involuntaria: no se puede fingir, y por eso es una de las señales de interés más fiables en una primera cita.'
+      },
+      {
+        prompt: 'Sin darse cuenta, se acomoda el pelo, se ajusta la ropa y se toca el cuello varias veces mientras hablan. ¿Qué gesto es este y qué suele indicar?',
+        options: [
+          { text: '"Acicalamiento": el cuerpo quiere estar presentable ante quien le interesa.', correct: true },
+          { text: 'Un tic nervioso sin relación con la conversación.', correct: false },
+          { text: 'Señal de que quiere terminar la charla.', correct: false },
+          { text: 'Un hábito de higiene sin más.', correct: false },
+        ],
+        explanation: 'Cuando alguien nos gusta, el cuerpo quiere estar presentable, quiere brillar, y lo hace sin pedirnos permiso.'
+      },
+      {
+        prompt: 'Aunque su torso está ligeramente girado hacia otro lado, sus pies apuntan hacia ti durante toda la charla. ¿Qué indican los pies en este caso?',
+        options: [
+          { text: 'Interés real; los pies son de los indicadores más honestos y difíciles de controlar.', correct: true },
+          { text: 'Que quiere marcharse pronto.', correct: false },
+          { text: 'Incomodidad física, nada emocional.', correct: false },
+          { text: 'Que está distraída con otra persona.', correct: false },
+        ],
+        explanation: 'Los pies son extraordinariamente honestos: si apuntan hacia ti, hay interés y conexión, aunque el resto del cuerpo esté girado hacia otro lado.'
+      },
+      {
+        prompt: 'Al sentarse, orienta ligeramente la pelvis hacia ti, un detalle que casi nadie nota conscientemente. ¿Qué comunica este gesto?',
+        options: [
+          { text: 'Apertura y disponibilidad hacia la persona con la que habla.', correct: true },
+          { text: 'Simple comodidad postural sin más carga.', correct: false },
+          { text: 'Cansancio acumulado.', correct: false },
+          { text: 'Incomodidad con la silla.', correct: false },
+        ],
+        explanation: 'Es un gesto sutil pero inconfundible de apertura y disponibilidad; el inconsciente de quien lo recibe lo registra sin que nadie lo verbalice.'
+      },
+      {
+        prompt: 'Justo después de un cumplido tuyo, cruza los brazos y aprieta ligeramente los labios. ¿Qué es esto?',
+        options: [
+          { text: 'Un microrrechazo: su cuerpo dice "no" aunque sus palabras sean amables.', correct: true },
+          { text: 'Una señal clara de atracción intensa.', correct: false },
+          { text: 'Timidez que confirma interés romántico.', correct: false },
+          { text: 'Simplemente tiene frío.', correct: false },
+        ],
+        explanation: 'El cuerpo también dice "no" de formas muy claras. Aprender a leer y respetar estos microrrechazos es un acto de inteligencia emocional, tanto propia como ajena.'
+      },
+      {
+        prompt: 'Mientras conversan, notas que el ritmo de parpadeo de ambos empieza a coincidir, sin que nadie lo haga a propósito. ¿Qué sugiere esta sincronía?',
+        options: [
+          { text: 'Sintonía y conexión emocional entre ambos.', correct: true },
+          { text: 'Que los dos están cansados al mismo tiempo.', correct: false },
+          { text: 'Una coincidencia sin ningún significado.', correct: false },
+          { text: 'Que uno está imitando deliberadamente al otro.', correct: false },
+        ],
+        explanation: 'El parpadeo que se sincroniza es una forma de sincronización biológica que refleja la sintonía emocional entre dos personas, casi como si sus cuerpos bailaran al mismo ritmo.'
+      },
+    ]
+  },
 ];
-let E={respuestas:{},pasoActual:-2};
-function G(){try{localStorage.setItem('c8d_v6',JSON.stringify(E))}catch(e){}}
-function C(){try{const d=localStorage.getItem('c8d_v6');if(d){E=JSON.parse(d);return true}}catch(e){}return false}
-function L(){try{localStorage.removeItem('c8d_v6')}catch(e){}}
-function R(d,p){const k=`d${d}_p${p}`;return E.respuestas[k]!==undefined?E.respuestas[k]:null}
-function S(d,p,v){E.respuestas[`d${d}_p${p}`]=v;G()}
-function DC(d){return D[d].preguntas.every((_,i)=>R(d,i)!==null)}
-function TC(){return D.every((_,i)=>DC(i))}
-function GP(d){let s=0;for(let i=0;i<4;i++){const r=R(d,i);s+=(r!==null?r:0)}return s}
-function GN(p){return p<=4?'bajo':p<=8?'medio':'alto'}
-function GPct(p){return Math.round((p/12)*100)}
-function GVote(d,codes){const counts={};const sums={};for(let i=0;i<4;i++){const v=R(d,i);if(v===null)continue;const c=codes[v];counts[c]=(counts[c]||0)+1;sums[c]=(sums[c]||0)+v}let best=codes[3],bestN=-1;codes.forEach(c=>{const n=counts[c]||0;if(n>bestN||(n===bestN&&(sums[c]||0)>(sums[best]||0))){best=c;bestN=n}});return best}
 
-/* ============ TEMPERAMENTO (con secundario) ============ */
-function GT(){
-const r=[0,1,2,3].map(i=>R(0,i));let s=0,c=0,m=0,f=0;
-if(r[0]===0){s++;c++}if(r[0]===1||r[0]===3){f++}if(r[0]===2){m++}
-if(r[1]===0){s++}if(r[1]===1){m++;c++}if(r[1]===2){m++}if(r[1]===3){f++}
-if(r[2]===0){s++;c++}if(r[2]===1){m++;f++}if(r[2]===2){m++}if(r[2]===3){f++}
-if(r[3]===0){s++;c++}if(r[3]===1){c++;m++}if(r[3]===2){m++}if(r[3]===3){f++}
-const TXT={s:{tipo:'Sanguíneo 😄',desc:'Eres extrovertido/a, entusiasta y buscas novedad y conexión social. Tu energía es contagiosa. El reto puede ser la constancia cuando la novedad pasa.'},c:{tipo:'Colérico 😤',desc:'Eres directo/a, decidido/a y orientado/a a resultados. Tienes una energía que empuja a actuar. Tu reto suele ser la paciencia con los procesos lentos.'},m:{tipo:'Melancólico 🌧️',desc:'Eres profundo/a, analítico/a y muy sensible a los detalles y emociones. Percibes cosas que otros no ven. Tu reto puede ser no quedarte en el análisis o la autocrítica.'},f:{tipo:'Flemático 😌',desc:'Eres calmado/a, paciente y buscas armonía y estabilidad. Eres un ancla para quienes te rodean. Tu reto puede ser expresar más lo que necesitas.'}};
-const SEC={s:'Además, hay en ti una parte que disfruta la conexión social y se entusiasma rápido con lo nuevo.',c:'Además, hay en ti una parte que empuja hacia los resultados y no le gusta quedarse esperando.',m:'Además, hay en ti una parte que analiza con profundidad y se exige bastante en lo que hace.',f:'Además, hay en ti una parte que busca calma y prefiere observar antes que reaccionar de inmediato.'};
-const mx=Math.max(s,c,m,f);
-if(mx<3){return{tipo:'Temperamento mixto 🔀',desc:'Tu perfil combina rasgos de varios temperamentos según el contexto. Eso habla de flexibilidad y adaptación, aunque también puede significar que aún estás descubriendo cuál es tu base natural.',secundario:null}}
-let pk='f';if(s===mx){pk='s'}else if(c===mx){pk='c'}else if(m===mx){pk='m'}
-const primary=TXT[pk];
-const vals={s,c,m,f};
-const others=Object.keys(vals).filter(k=>k!==pk).map(k=>({k,v:vals[k]})).sort((a,b)=>b.v-a.v);
-let secundario=null;
-if(others[0]&&others[0].v>=2){secundario={tipo:TXT[others[0].k].tipo,desc:SEC[others[0].k]}}
-return{...primary,secundario}
-}
-const TEMP_FD={
-'Sanguíneo 😄':{f:['Conectas con facilidad y generas ambientes amigables.','Transmites entusiasmo de forma natural y contagias motivación.'],d:['El interés inicial puede bajar cuando la novedad se acaba.','Puedes decir "sí" por impulso y luego costarte sostenerlo.']},
-'Colérico 😤':{f:['Tienes iniciativa real para que las cosas avancen.','Sostienes proyectos incluso bajo presión.'],d:['La impaciencia puede aparecer cuando otros van a otro ritmo.','Delegar o ceder el control puede costarte.']},
-'Melancólico 🌧️':{f:['Percibes matices y detalles que otros pasan por alto.','Te comprometes profundamente con lo que haces.'],d:['La autoexigencia puede volverse agotadora.','Cuesta soltar errores pequeños.']},
-'Flemático 😌':{f:['Aportas estabilidad y calma en medio del caos.','Escuchas sin necesidad de imponerte.'],d:['Puedes postergar decisiones esperando "el momento correcto".','Evitar conflictos a veces te cuesta más de lo que aparenta.']},
-'Temperamento mixto 🔀':{f:['Te adaptas según el contexto, sin quedar atado/a a un solo patrón.','Tienes flexibilidad para responder de distintas formas.'],d:['Puede ser más difícil identificar tu patrón de base.','A veces no sabes cuál de tus "modos" activar en el momento justo.']}
+const EMPTY_SCORES = { apertura: 0, alerta: 0, contencion: 0, presencia: 0, conexion: 0 };
+const TOTAL_QUESTIONS = MODULES.reduce((n, m) => n + m.questions.length, 0);
+const LEVEL_SIGNALS = {
+  m1: ['Cejas elevadas', 'Ojos muy abiertos', 'Sonrisa que llega a los ojos', 'Mandíbula tensa', 'Mirada perdida', 'Cambio rápido de expresión'],
+  m2: ['Hombros relajados', 'Pecho abierto', 'Espalda encorvada', 'Postura rígida', 'Cabeza gacha', 'Cambio de postura ante autoridad'],
+  m3: ['Palmas visibles', 'Brazos cruzados', 'Puños cerrados', 'Manos inquietas', 'Pies orientados hacia alguien', 'Contacto físico'],
+  m4: ['Caminar con prisa', 'Pasos firmes', 'Cuerpo que ocupa espacio', 'Buscar la salida', 'Distancia muy corta', 'Distancia que aumenta'],
+  m5: ['Mandíbula apretada', 'Tamborileo de dedos', 'Respiración superficial', 'Sonrisa social', 'Cuerpo rígido', 'Movimiento para distraerse'],
+  m6: ['Mirada serena', 'Manos visibles', 'Pausa antes de responder', 'Pies firmes en el suelo', 'Cuerpo que se echa atrás', 'Gestos de nerviosismo'],
+  m7: ['Contacto visual', 'Pies orientados hacia la persona', 'Sonrisa genuina', 'Distancia cómoda', 'Cuerpo que se acerca', 'Cuerpo que se retira'],
+  m8: ['Ropa cuidada', 'Voz pausada', 'Mirada a la cámara', 'Manos visibles', 'Postura estable', 'Gestos de autoridad'],
+  m9: ['Alegría', 'Tristeza', 'Miedo', 'Ira', 'Asco', 'Sorpresa o desprecio'],
+  m10: ['Frío o comodidad', 'Nerviosismo', 'Timidez', 'Picor físico', 'Aburrimiento', 'Respeto cultural'],
+  m11: ['Microexpresión facial', 'Postura coherente', 'Manos tensas', 'Respiración acelerada', 'Pies hacia la salida', 'Cambio de voz'],
+  m12: ['Pupilas dilatadas', 'Acicalamiento', 'Pies orientados hacia ti', 'Sincronía corporal', 'Brazos cruzados', 'Distancia física'],
+};
+const LEVEL_DYNAMICS = {
+  m1: [
+    { perceive: 'Alguien recibe una noticia inesperada. ¿Qué señales notas primero?', options: ['Cejas que suben', 'Ojos que se abren', 'Boca que se entreabre', 'Rostro que se congela', 'Sonrisa automática', 'Mirada que busca apoyo'], act: 'La próxima vez que recibas una noticia inesperada, ¿cómo responderías?', actions: ['Respirar antes de hablar', 'Pedir un momento', 'Nombrar lo que siento', 'Mantener una expresión neutral', 'Preguntar para comprender', 'Expresar mi reacción con honestidad'] },
+    { perceive: 'En una conversación divertida, ¿qué cambios del rostro identificas?', options: ['Arrugas junto a los ojos', 'Mejillas elevadas', 'Risa contenida', 'Mirada que se aparta', 'Labios tensos', 'Expresión que cambia rápido'], act: 'Si una emoción aparece mientras conversas, ¿qué harías?', actions: ['Permitir una sonrisa natural', 'No fingir entusiasmo', 'Observar mi reacción', 'Compartir lo que siento', 'Bajar el ritmo', 'Aceptar una emoción mezclada'] },
+    { perceive: 'Alguien intenta ocultar una emoción incómoda. ¿Qué observas?', options: ['Sonrisa que no llega a los ojos', 'Mandíbula apretada', 'Parpadeo acelerado', 'Mirada perdida', 'Cambio breve de expresión', 'Rostro que vuelve a la máscara'], act: 'Si tú intentaras ocultar una emoción, ¿cómo te prepararías?', actions: ['Reconocerla internamente', 'Relajar la mandíbula', 'Pedir privacidad', 'No obligarme a sonreír', 'Hablar cuando esté listo', 'Buscar apoyo'] },
+  ],
+  m2: [
+    { perceive: 'Una persona entra a una reunión importante. ¿Qué postura percibes?', options: ['Pecho abierto', 'Hombros elevados', 'Espalda encorvada', 'Pasos firmes', 'Cuerpo rígido', 'Pies bien apoyados'], act: 'Antes de entrar tú a una situación importante, ¿qué harías?', actions: ['Apoyar ambos pies', 'Soltar los hombros', 'Respirar profundo', 'Caminar sin prisa', 'Ocupar mi espacio', 'Evitar una postura forzada'] },
+    { perceive: 'Una figura de autoridad entra en la sala. ¿Qué cambios notas?', options: ['Columna que se endereza', 'Cuerpo que se encoge', 'Cabeza que baja', 'Pecho que se expande', 'Brazos que se cierran', 'Postura que permanece estable'], act: 'Si aparece una autoridad frente a ti, ¿cómo actuarías?', actions: ['Mantener mi postura', 'Escuchar sin encogerme', 'Pedir claridad', 'Relajar las manos', 'Sostener una mirada tranquila', 'Tomar una pausa'] },
+    { perceive: 'Durante el trabajo, ¿qué señales de postura sostenida identificas?', options: ['Cuello adelantado', 'Espalda redondeada', 'Hombros tensos', 'Postura relajada', 'Rigidez en la espalda', 'Cambios frecuentes de posición'], act: 'Si notas tensión mientras trabajas, ¿qué harías?', actions: ['Cambiar de posición', 'Estirar suavemente', 'Alejarme de la pantalla', 'Apoyar la espalda', 'Hacer una pausa', 'Consultar si el dolor continúa'] },
+  ],
+  m7: [
+    { perceive: 'En una conversación cercana, ¿qué señales observas?', options: ['Pies orientados hacia la persona', 'Mirada que se sostiene', 'Cuerpo que se acerca', 'Brazos que se cierran', 'Distancia que aumenta', 'Sonrisa genuina'], act: 'Si quisieras acercarte a alguien, ¿cómo actuarías?', actions: ['Preguntar si está cómodo', 'Mantener una distancia respetuosa', 'Escuchar sin invadir', 'Observar reciprocidad', 'Aceptar un no', 'Hablar directamente'] },
+    { perceive: 'En una primera cita o encuentro, ¿qué combinación notas?', options: ['Pupilas más abiertas', 'Acicalamiento', 'Risa nerviosa', 'Mirada hacia el teléfono', 'Cuerpo girado hacia la salida', 'Sincronía de movimientos'], act: 'Si te interesa alguien, ¿qué harías?', actions: ['Mostrar interés con palabras', 'No asumir que existe atracción', 'Respetar su espacio', 'Preguntar antes de tocar', 'Observar si hay reciprocidad', 'Aceptar la distancia'] },
+    { perceive: 'Durante un desacuerdo, ¿qué señales de límite identificas?', options: ['Cuerpo que retrocede', 'Labios apretados', 'Mirada que evita', 'Brazos cruzados', 'Tono que baja', 'Manos que buscan distancia'], act: 'Si la otra persona muestra incomodidad, ¿cómo responderías?', actions: ['Detener la presión', 'Preguntar qué necesita', 'Bajar el tono', 'Dar espacio', 'No interpretar el silencio', 'Retomar después'] },
+  ],
+  m10: [
+    { perceive: 'En una reunión, alguien cruza los brazos. ¿Qué explicaciones plausibles puedes considerar?', options: ['Puede tener frío', 'Puede estar cómodo', 'Puede estar concentrado', 'Puede sentirse inseguro', 'Puede estar en desacuerdo', 'El gesto no basta para saberlo'], act: 'Si vieras ese gesto, ¿cómo actuarías?', actions: ['No acusar ni etiquetar', 'Observar otros indicios', 'Revisar la temperatura y el contexto', 'Preguntar con naturalidad', 'Escuchar la respuesta', 'No sacar una conclusión todavía'] },
+    { perceive: 'Una persona se toca la nariz mientras responde. ¿Qué puedes identificar sin afirmar que miente?', options: ['Puede tener alergia', 'Puede sentir picor', 'Puede estar nerviosa', 'Puede estar pensando', 'Puede sentirse incómoda', 'No demuestra una mentira'], act: 'Si ocurre durante una conversación importante, ¿qué harías?', actions: ['No señalar el gesto como prueba', 'Observar si aparece un patrón', 'Comparar con su conducta habitual', 'Hacer una pregunta abierta', 'Escuchar el contenido', 'Evitar una acusación'] },
+    { perceive: 'Alguien evita el contacto visual. ¿Qué posibilidades caben?', options: ['Timidez', 'Inseguridad social', 'Respeto cultural', 'Vergüenza', 'Cansancio', 'Deseo de ocultar una emoción'], act: 'Si necesitas saber qué ocurre, ¿cómo actuarías?', actions: ['No asumir culpa', 'Considerar su cultura', 'Dar tiempo para responder', 'Preguntar si está cómodo', 'Escuchar sin presionar', 'Aceptar que puede no querer mirar'] },
+    { perceive: 'Una persona mira el reloj durante una conversación. ¿Qué indicios alternativos observas?', options: ['Tiene prisa real', 'Espera a alguien', 'Está aburrida', 'Está ansiosa', 'Tiene una costumbre', 'Quiere terminar la conversación'], act: 'Si notas ese gesto, ¿qué respuesta sería más adecuada?', actions: ['Preguntar si necesita terminar', 'Resumir lo importante', 'No tomarlo como rechazo', 'Observar otros cambios', 'Ofrecer continuar después', 'Respetar su tiempo'] },
+    { perceive: 'Alguien inclina la cabeza mientras te escucha. ¿Qué lecturas puedes mantener abiertas?', options: ['Interés genuino', 'Escucha activa', 'Empatía', 'Quiere oír mejor', 'Está procesando la información', 'No confirma atracción'], act: 'Si interpretas la señal, ¿cómo actuarías?', actions: ['Seguir explicando con claridad', 'Comprobar si entendió', 'No asumir interés romántico', 'Mantener una distancia respetuosa', 'Observar si también asiente', 'Preguntar directamente si hace falta'] },
+    { perceive: 'Una persona sonríe, pero sus ojos no se arrugan. ¿Qué puede estar ocurriendo?', options: ['Cortesía social', 'Sonrisa profesional', 'Incomodidad', 'Emoción oculta', 'Hábito personal', 'No demuestra falsedad'], act: 'Si recibes esa sonrisa, ¿cómo actuarías?', actions: ['No llamar a la persona falsa', 'Observar el tono y la postura', 'Mantener un trato respetuoso', 'Preguntar cómo se siente si hay confianza', 'No forzar una conversación', 'Esperar más contexto'] },
+  ],
+};
+const LEVEL_ACTION_OPTIONS = {
+  m3: [['Mostrar las manos sin exagerar', 'Saludar respetando el estilo del otro', 'Dejar los pies estables', 'Evitar señalar', 'No tocar sin permiso', 'Abrir la postura'], ['Pedir tiempo para pensar', 'Mantener las manos relajadas', 'Mostrar desacuerdo con palabras', 'Evitar gestos agresivos', 'Preguntar antes de aceptar', 'Cuidar la distancia'], ['Apoyar los pies', 'Relajar las manos', 'Soltar el cruce de tobillos', 'Respirar despacio', 'Reconocer la espera', 'Levantarte solo si lo necesitas']],
+  m4: [['Orientarme antes de avanzar', 'Caminar a mi ritmo', 'Dejar espacio a otros', 'Buscar un punto seguro', 'No invadir una distancia', 'Preguntar si necesito ayuda'], ['Preguntar si está bien', 'Ajustar el paso', 'No obligar a correr', 'Proponer una pausa', 'Respetar su espacio', 'Continuar con calma'], ['Retroceder un poco', 'Preguntar si está cómodo', 'No bloquear la salida', 'Mantener distancia social', 'Bajar la intensidad', 'Aceptar que necesita espacio']],
+  m5: [['Hacer una pausa breve', 'Nombrar la tensión', 'Bajar el ritmo', 'Pedir apoyo', 'No fingir que todo está bien', 'Elegir cuándo continuar'], ['Notar la señal sin juzgarla', 'Respirar lentamente', 'Apoyar las manos', 'Pedir que repitan', 'Ordenar la idea', 'Buscar una pausa segura'], ['Reconocer que algo cambió', 'No responder rápido', 'Explicar lo que necesito', 'Pedir privacidad', 'Escuchar mi cuerpo', 'Buscar ayuda si continúa']],
+  m6: [['Probar mi postura', 'Ensayar una pausa', 'Preparar ejemplos', 'Dejar las manos libres', 'Respirar antes de entrar', 'Escuchar antes de responder'], ['Preguntar qué necesita aclarar', 'No presionar', 'Resumir la propuesta', 'Ofrecer una alternativa', 'Escuchar la objeción', 'Confirmar por escrito'], ['Repetir la pregunta', 'Pedir unos segundos', 'Responder con honestidad', 'Mantener voz pausada', 'No inventar', 'Volver al punto principal']],
+  m8: [['Probar cámara y micrófono', 'Ajustar la luz', 'Mirar a la lente', 'Dejar espacio en el encuadre', 'Hablar con pausas', 'Ocultar mi vista previa'], ['Hablar sin acelerar', 'Mantener manos abiertas', 'No invadir espacio', 'Hacer pausas', 'Escuchar antes de ordenar', 'Ajustar mi imagen'], ['Escribir con claridad', 'Preguntar antes de asumir', 'Usar voz calmada', 'Explicar el tono', 'No discutir por mensajes', 'Proponer una conversación']],
+  m9: [['No etiquetar rápidamente', 'Dar espacio', 'Preguntar cómo se siente', 'Escuchar antes de aconsejar', 'No manipular', 'Responder con empatía'], ['No afirmar que vi la verdad', 'Esperar información', 'Observar el contexto', 'Preguntar con cuidado', 'Recordar que es una pista', 'Respetar la privacidad'], ['Aceptar la complejidad', 'No reducir a una emoción', 'Escuchar la historia', 'Evitar juicio rápido', 'Preguntar qué necesita', 'Acompañar sin invadir']],
+  m10: [['No acusar ni etiquetar', 'Observar otros indicios', 'Revisar el contexto físico', 'Preguntar con naturalidad', 'Escuchar la respuesta', 'No concluir todavía'], ['No señalarlo como prueba', 'Observar si hay un patrón', 'Comparar con su conducta habitual', 'Hacer una pregunta abierta', 'Escuchar el contenido', 'Evitar una acusación'], ['No asumir culpa', 'Considerar la cultura', 'Dar tiempo para responder', 'Preguntar si está cómodo', 'Escuchar sin presionar', 'Aceptar que puede no querer mirar']],
+  m11: [['Bajar la presión', 'Hacer una pausa', 'Preguntar qué ocurre', 'Dar una salida', 'No confrontar de inmediato', 'Confirmar antes de concluir'], ['Considerarlo una hipótesis', 'Comprobar el contexto', 'Hablar con calma', 'Dar espacio si hay miedo', 'Desescalar si hay ira', 'No tratarlo como certeza'], ['No decir “tu cuerpo te delata”', 'Preguntar de forma abierta', 'Escuchar ambas partes', 'Dar tiempo', 'No presionar', 'Aceptar la respuesta verbal']],
+  m12: [['Mostrar interés con palabras', 'Preguntar antes de acercarte', 'Observar reciprocidad', 'Respetar un retroceso', 'No interpretar como permiso', 'Aceptar un no'], ['Detener el avance', 'Dar espacio', 'Preguntar si está cómodo', 'Cambiar de tema', 'No insistir', 'Respetar la decisión'], ['Conversar con naturalidad', 'No convertirlo en promesa', 'Confirmar con palabras', 'Mantener límites', 'Avanzar con reciprocidad', 'Dejar que se desarrolle']],
 };
 
-/* ============ CONTENIDO POR DIMENSIÓN (Fortalezas / Debilidades / Riesgo / Lectura) ============ */
-const PD={
-1:{nombre:['Baja tolerancia a la frustración','Tolerancia en desarrollo','Alta tolerancia a la frustración'],bajo:'Tus respuestas muestran que los obstáculos y resultados inesperados te generan un impacto fuerte. Tiendes a ceder o desconectarte ante la dificultad. No es un defecto: es la señal de que ese músculo interno tiene mucho margen para crecer.',medio:'Tu tolerancia es real pero inconsistente. A veces te adaptas bien, otras el peso de la frustración te frena. Tienes los recursos — el trabajo está en activarlos más seguido.',alto:'Puedes mantenerte de pie ante lo que no sale como esperabas. Ajustas, sigues y no te derrumbas fácil. Eso es una fortaleza real que pocos desarrollan.'},
-2:{nombre:['Estilo evitador / explosivo','Estilo en transición','Estilo asertivo-colaborativo'],bajo:'Los conflictos se acumulan, se evitan o dejan huella larga. Sea porque explotas o porque tragas, ambos extremos te desgastan a ti y a tus relaciones.',medio:'Tienes herramientas para gestionar conflictos, pero no siempre las usas con la misma eficacia. Estás en proceso — y eso ya es mucho.',alto:'Afrontas los desacuerdos de forma directa sin acumular ni explotar. Puedes poner límites y recuperarte. Eso es madurez relacional genuina.'},
-3:{nombre:['Evitador (alto nivel de evitación)','Selectivo (nivel medio de evitación)','Confrontador (bajo nivel de evitación)'],bajo:'Tus respuestas sugieren que prefieres no mirar ciertas realidades — en tu entorno, en tus relaciones o en ti mismo/a. Puede ser protección, pero a veces lo que no miramos es lo que más nos cuesta.',medio:'Ves algunas cosas con claridad, pero hay zonas donde prefieres no entrar. La buena noticia es que ya reconoces esas zonas — eso es el primer paso.',alto:'Tiendes a mirar las realidades de frente, incluso las incómodas. Eso requiere valentía y es una base sólida para crecer de verdad.'},
-4:{nombre:['Escucha defensiva','Escucha selectiva','Escucha abierta'],bajo:'Te cuesta recibir lo que te llega sin filtro — críticas, emociones ajenas, señales del entorno. Eso puede dejarte más solo/a de lo que quisieras, aunque no siempre te des cuenta.',medio:'A veces escuchas de verdad, otras activas el filtro. El desafío es hacerlo más conscientemente: elegir cuándo abrir y cuándo protegerte, no que lo decida el miedo.',alto:'Puedes recibir lo que te llega con apertura real, incluso cuando contradice lo que piensas. Eso es raro y valioso.'},
-5:{nombre:['Comunicación con tendencia al silencio','Comunicación en desarrollo','Comunicación asertiva'],bajo:'Tiendes a callarte lo que sientes, necesitas o piensas. Ese silencio te protege a corto plazo, pero a largo plazo pesa — en ti y en tus relaciones.',medio:'Hay momentos en que te expresas con claridad y otros en que prefieres callar. El patrón no es fijo: puedes seguir abriéndolo.',alto:'Puedes decir lo que necesitas, lo que sientes y lo que piensas — incluso cuando es difícil. Eso construye relaciones reales.'},
-6:{nombre:['Baja autoconciencia','Autoconciencia media','Alta autoconciencia'],bajo:'Sueles reaccionar antes de comprender lo que estás sintiendo. Sabes que algo pasa, pero no siempre logras ponerle nombre a tiempo. No es un defecto de carácter — es una habilidad que se entrena observando.',medio:'Muchas veces entiendes tus emociones, pero después de actuar, no mientras ocurren. Estás justo en la etapa donde más se acorta esa distancia con la práctica.',alto:'Puedes reconocer lo que sientes casi en el momento en que aparece. Eso te da una ventaja real: puedes elegir tu respuesta en lugar de solo reaccionar.'},
-7:{nombre:['Persona reactiva','Persona consciente pero inconsistente','Persona integrada'],bajo:'Tus decisiones dependen mucho del momento, la emoción del día o la presión externa. Reconocerlo ya es el primer paso hacia más dirección propia.',medio:'Tienes momentos reales de lucidez sobre tus patrones y sabes bastante bien qué necesitas cambiar. El reto está en sostenerlo cuando aparece el cansancio o la presión.',alto:'Tus decisiones reflejan cada vez más lo que valoras. Eso no significa perfección — significa coherencia progresiva, y eso ya es mucho.'}
+function getLevelDynamic(module, index) {
+  const custom = LEVEL_DYNAMICS[module.id]?.[index];
+  if (custom) return custom;
+  const signals = LEVEL_SIGNALS[module.id] || [];
+  const actions = LEVEL_ACTION_OPTIONS[module.id]?.[index] || ['Observar antes de concluir', 'Respirar y hacer una pausa', 'Comparar con el contexto', 'Preguntar con respeto', 'Dar espacio', 'Respetar los límites'];
+  return {
+    perceive: `En la situación ${index + 1}, ¿qué señales de ${module.subtitle.toLowerCase()} identificas?`,
+    options: signals.slice(index * 2).concat(signals.slice(0, index * 2)).slice(0, 6),
+    act: `Si vivieras una situación parecida de ${module.subtitle.toLowerCase()}, ¿cómo actuarías?`,
+    actions,
+  };
+}
+const LEVEL_ACTIONS = {
+  m1: 'Nombra primero la emoción sin juzgarla. Antes de reaccionar, respira y comprueba si tu rostro coincide con lo que realmente sientes.',
+  m2: 'Ajusta tu postura sin forzarla: apoya los pies, relaja los hombros y deja espacio para responder con seguridad, especialmente ante una figura de autoridad.',
+  m3: 'Observa tus manos y pies antes de interpretar a otra persona. Mantén las palmas visibles, respeta el espacio ajeno y pregunta antes de iniciar contacto físico.',
+  m4: 'Baja el ritmo y observa la distancia. No invadas ni retrocedas automáticamente: adapta tu paso y tu espacio al contexto y a la comodidad de la otra persona.',
+  m5: 'Si detectas tensión, introduce una pausa. Reduce el ritmo, respira y pregunta qué ocurre en lugar de asumir que la persona está mintiendo o rechazándote.',
+  m6: 'Prepárate con una pausa, manos visibles y una postura estable. En una entrevista o negociación, escucha los cambios del otro y formula una pregunta antes de presionar.',
+  m7: 'No conviertas una señal en una conclusión sobre el interés de alguien. Observa el conjunto, pregunta con respeto y acepta cualquier límite o señal de distancia.',
+  m8: 'Alinea imagen, voz y postura con el contexto. Antes de una cámara, entrevista o presentación, prueba el encuadre, respira y habla con un ritmo que puedas sostener.',
+  m9: 'Usa la microexpresión como una pista emocional, no como una prueba. Dale espacio a la persona, escucha sus palabras y evita etiquetarla por una reacción fugaz.',
+  m10: 'Busca explicaciones alternativas antes de juzgar. Compara la señal con la línea base de la persona y el contexto; si necesitas saber algo, pregunta directamente.',
+  m11: 'Cuando varias señales coincidan, baja la intensidad de la interacción. Da espacio, escucha y confirma lo que ocurre antes de tomar una decisión o confrontar.',
+  m12: 'Trata las señales de atracción como posibilidades, nunca como consentimiento. Avanza solo con reciprocidad clara, comunicación directa y respeto por los límites.',
 };
-const FD={
-1:{bajo:{f:['Sientes con intensidad, lo que te conecta rápido con lo que te importa.','Tu incomodidad es honesta: no finges que todo está bien.'],d:['Los obstáculos pueden hacerte abandonar antes de ver resultados.','El malestar se siente como amenaza en vez de etapa normal.']},medio:{f:['Tienes recursos reales para adaptarte, aunque no siempre los activas.','Reconoces cuándo algo te frustra — ya es una forma de conciencia.'],d:['La constancia depende mucho de tu estado de ánimo del día.','A veces el cansancio te hace ceder antes de tiempo.']},alto:{f:['Mantienes el rumbo incluso cuando los resultados tardan.','Sabes distinguir entre aceptar y resignarte.'],d:['Puede costarte pedir ayuda porque "sabes aguantar".','Tu calma a veces se confunde con falta de urgencia para actuar.']}},
-2:{bajo:{f:['Evitas conflictos innecesarios y no te dejas llevar por cada discusión.','Cuando hablas, suele ser porque ya no puedes callarlo más — y eso muestra honestidad tardía.'],d:['Lo que no se dice se acumula y sale con más fuerza de la necesaria.','Puede generarse distancia emocional con quienes te importan.']},medio:{f:['Puedes adaptarte a distintas formas de afrontar un desacuerdo.','Reconoces cuándo algo necesita resolverse, aunque no siempre actúes a tiempo.'],d:['El resultado de un conflicto depende mucho de tu energía ese día.','A veces cedes en cosas que en realidad sí te importaban.']},alto:{f:['Puedes expresar lo que piensas sin necesidad de imponerte ni desaparecer.','Buscas soluciones que consideren a ambas partes.'],d:['Puedes agotarte intentando que todos queden conformes.','A veces te frustra cuando el otro no quiere colaborar igual.']}},
-3:{bajo:{f:['Sabes protegerte de niveles de estrés que podrían desbordarte.','No te involucras impulsivamente en cada conflicto que aparece.'],d:['Lo que evitas mirar sigue activo, aunque no lo veas.','Puedes perder oportunidades de cambio importantes por no mirar a tiempo.']},medio:{f:['No te sobrecargas con cada problema del entorno.','Sabes priorizar tus batallas.'],d:['A veces usas "elegir mis batallas" como excusa para no enfrentar algo incómodo.','Puede haber posposición de decisiones necesarias.']},alto:{f:['Actúas con base en hechos y no solo en lo que deseas que sea cierto.','Detectas señales de alerta antes de que se vuelvan inmanejables.'],d:['Tu claridad puede sonar dura si no la suavizas con sensibilidad.','Puedes vivir en estado de vigilancia constante.']}},
-4:{bajo:{f:['Sabes defender lo que consideras importante.','Tienes sensibilidad para detectar lo que podría afectarte.'],d:['Puedes interpretar como ataque algo que era solo una observación.','La defensa rápida deja poco espacio para comprender el mensaje completo.']},medio:{f:['Mantienes el foco en lo que consideras relevante.','Tienes claridad sobre tus propios valores.'],d:['Puedes escuchar solo lo que confirma lo que ya piensas.','Pierdes perspectivas que podrían ampliar tu punto de vista.']},alto:{f:['Aprendes constantemente porque no te cierras a perspectivas distintas.','Construyes relaciones más sólidas porque la gente se siente escuchada.'],d:['Puedes absorber preocupaciones ajenas que no te corresponden.','A veces das demasiado peso a opiniones que no deberían influir tanto.']}},
-5:{bajo:{f:['Piensas en el impacto de tus palabras antes de decirlas.','Evitas conflictos innecesarios.'],d:['Lo que callas se acumula y puede transformarse en resentimiento.','Otros pueden tomar decisiones por ti si nunca expresas lo que necesitas.']},medio:{f:['A veces logras decir lo que sientes con bastante claridad.','Estás en proceso de encontrar tu propio equilibrio al hablar.'],d:['El estilo cambia según el cansancio o la confianza con la persona.','Puede haber indirectas en lugar de mensajes directos.']},alto:{f:['Puedes decir lo que piensas, sientes y necesitas con respeto.','Generas relaciones más transparentes.'],d:['No todas las personas reaccionarán bien a tu nueva claridad.','Puede tomar práctica sostenerlo en momentos de alta emoción.']}},
-6:{bajo:{f:['Actúas con rapidez sin perderte en el análisis excesivo.','Te enfocas en lo externo, lo que ayuda a decidir rápido en momentos de acción.'],d:['Puede costarte explicar por qué reaccionaste de cierta manera.','Tiendes a repetir situaciones similares sin identificar el patrón emocional detrás.']},medio:{f:['Reflexionas después de cada situación y aprendes de ella.','Empiezas a notar conexiones entre lo que sientes y lo que haces.'],d:['Sueles entender la emoción después de haber actuado, no durante.','En momentos de alta intensidad, puedes volver a reaccionar por impulso.']},alto:{f:['Puedes reconocer tus emociones mientras están ocurriendo.','Tomas decisiones más conscientes y menos impulsivas.'],d:['Puedes caer en exceso de análisis y quedarte solo observando sin actuar.','El autoanálisis constante puede volverse agotador.']}},
-7:{bajo:{f:['Te adaptas rápido a lo que el momento exige.','Tienes apertura para vivir distintas experiencias sin rigidez.'],d:['Tus decisiones dependen mucho del entorno y del estado de ánimo del momento.','Cuesta sostener hábitos, acuerdos o propósitos en el tiempo.']},medio:{f:['Tienes momentos reales de lucidez sobre tus patrones.','Identificas con bastante claridad qué necesitas cambiar.'],d:['La claridad no siempre se traduce en acción sostenida.','Puedes volver a patrones conocidos cuando aparece el cansancio o la presión.']},alto:{f:['Tus decisiones reflejan cada vez más lo que valoras.','Puedes observarte, comprenderte y elegir una respuesta alineada con quien quieres ser.'],d:['Integrado/a no significa perfecto/a: seguirás teniendo días de retroceso.','Puede aparecer la exigencia de "mantenerte siempre coherente", lo cual genera presión innecesaria.']}}
+const BOOK_PARTS = {
+  m1: 'Parte I · Tu cuerpo nunca deja de hablar',
+  m2: 'Parte II · Aprende a escucharte',
+  m3: 'Parte II · Aprende a escucharte',
+  m4: 'Parte II · Aprende a escucharte',
+  m5: 'Parte III · Comprende a los demás',
+  m6: 'Parte III · Comprende a los demás',
+  m7: 'Parte III · Comprende a los demás',
+  m8: 'Parte IV · Transforma tu presencia',
+  m9: 'Bonus · Herramientas prácticas',
+  m10: 'Bonus · Herramientas prácticas',
+  m11: 'Bonus · Herramientas prácticas',
+  m12: 'Bonus · Herramientas prácticas',
 };
-const RIESGO={
-1:{bajo:'Riesgo de evitar sistemáticamente metas valiosas solo porque exigen sostener incomodidad.',medio:"Riesgo de quedarte en el 'casi lo logro' por falta de continuidad, no por falta de capacidad.",alto:'Riesgo de normalizar situaciones que ya no te hacen bien, solo porque sabes tolerarlas.'},
-2:{bajo:'Riesgo de que el silencio prolongado se convierta en resentimiento o en una explosión desproporcionada.',medio:'Riesgo de acuerdos superficiales que no resuelven la causa real del conflicto.',alto:'Riesgo de cargar tú solo/a con el peso de mantener la armonía en una relación.'},
-3:{bajo:'Riesgo de recibir "impactos inesperados" por señales que decidiste no observar a tiempo.',medio:'Riesgo de confundir evitación disfrazada de prudencia con verdadera tranquilidad.',alto:'Riesgo de desgaste emocional por estar siempre enfocado/a en lo que falta corregir.'},
-4:{bajo:'Riesgo de perder información valiosa por responder antes de entender.',medio:'Riesgo de quedarte encerrado/a en tus propias conclusiones.',alto:'Riesgo de cargar con expectativas o críticas ajenas que no merecían tanto espacio en ti.'},
-5:{bajo:'Riesgo de sentirte invisible en tus propias decisiones.',medio:'Riesgo de generar malentendidos cuando el mensaje no se expresa con claridad.',alto:'Riesgo bajo — solo mantén la coherencia entre firmeza y respeto.'},
-6:{bajo:'Riesgo de explosiones emocionales que parecen "salir de la nada" pero son emociones acumuladas sin reconocer.',medio:'Riesgo de frustrarte por "saber lo que debías hacer" pero actuar distinto en el momento.',alto:'Riesgo de quedarte "pensando la emoción" en vez de también vivirla y actuar.'},
-7:{bajo:'Riesgo de inestabilidad: cada emoción nueva puede tomar el volante de tus decisiones.',medio:'Riesgo de frustrarte en el ciclo de "saber pero no sostener", sin ver que ya es un avance real.',alto:'Riesgo de juzgarte con dureza cuando, ocasionalmente, vuelves a un patrón antiguo.'}
-};
-const LECTURA={
-1:{bajo:'Dimensión 2 — revisa el perfil que más se repite en tus respuestas (Intolerancia emocional / al malestar / al fracaso).',medio:"Dimensión 2 — 'Regula la emoción de la frustración' (los pasos prácticos).",alto:"Dimensión 2 — 'Alta tolerancia: tus puntos ciegos' (la diferencia entre aceptación y resignación)."},
-2:{bajo:"Dimensión 3 — Estilo evitador (y revisa también 'Estilo acomodador' si tiendes a ceder en silencio).",medio:"Dimensión 3 — Estilo comprometedor ('resolver rápido no siempre significa resolver bien').",alto:"Dimensión 3 — Estilo colaborativo ('Tus puntos ciegos')."},
-3:{bajo:'Dimensión 4 — Evitador (alto nivel de evitación).',medio:'Dimensión 4 — Selectivo (nivel medio de evitación).',alto:'Dimensión 4 — Confrontador (bajo nivel de evitación).'},
-4:{bajo:'Dimensión 5 — Escucha defensiva.',medio:'Dimensión 5 — Escucha selectiva.',alto:'Dimensión 5 — Escucha abierta.'},
-5:{bajo:'Dimensión 6 — Comunicación pasiva.',medio:"Dimensión 6 — 'Antes de hablar, filtra' (las 4 preguntas).",alto:'Dimensión 6 — Comunicación asertiva.'},
-6:{bajo:"Dimensión 7 — Baja autoconciencia ('la falta de conciencia suele generar repetición').",medio:'Dimensión 7 — Autoconciencia media (la etapa de transición).',alto:"Dimensión 7 — Alta autoconciencia ('sentir, comprender y actuar')."},
-7:{bajo:'Dimensión 8 — Persona reactiva.',medio:'Dimensión 8 — Persona consciente pero inconsistente.',alto:"Dimensión 8 — Persona integrada ('la integración no exige perfección')."}
-};
-const ESTILOC={Evitador:{blurb:'Tu primera reacción ante un desacuerdo suele ser tomar distancia o esperar que se calme solo/a.',lectura:'Dimensión 3 — Estilo evitador'},Acomodador:{blurb:'Tiendes a priorizar la armonía y ceder para proteger la relación, incluso cuando algo te incomoda.',lectura:'Dimensión 3 — Estilo acomodador'},Competitivo:{blurb:'Defiendes tu posición con firmeza y no cedes solo para evitar la tensión.',lectura:'Dimensión 3 — Estilo competitivo'},Colaborativo:{blurb:'Buscas soluciones que consideren las necesidades de ambas partes en el desacuerdo.',lectura:'Dimensión 3 — Estilo colaborativo (y Comprometedor)'}};
-const ESTILOM={pasiva:{blurb:'Sueles guardarte lo que piensas o sientes para evitar generar tensión.',lectura:'Dimensión 6 — Comunicación pasiva'},'pasivo-agresiva':{blurb:'El malestar aparece más por indirectas, silencios o sarcasmo que por una conversación directa.',lectura:'Dimensión 6 — Comunicación pasivo-agresiva'},agresiva:{blurb:'Sueles decir lo que piensas con firmeza, aunque eso a veces genere más tensión de la necesaria.',lectura:'Dimensión 6 — Comunicación agresiva'},asertiva:{blurb:'Puedes expresar lo que sientes y necesitas con claridad y respeto.',lectura:'Dimensión 6 — Comunicación asertiva'}};
 
-function D1Sub(){const subs=['Intolerancia al malestar (disconfort)','Intolerancia emocional','Intolerancia al fracaso','Intolerancia al fracaso'];const vals=[0,1,2,3].map(i=>R(1,i));let mi=0;for(let i=1;i<4;i++){if(vals[i]<vals[mi])mi=i}return subs[mi]}
-
-function FDBlock(d,n){
-const fd=FD[d][n];
-let h=`<div class="fdgrid"><div class="fdbox"><div class="fdtt">✅ Fortalezas</div>${fd.f.map(x=>`<div class="fdli">${x}</div>`).join('')}</div><div class="fdbox"><div class="fdtt">⚠️ Áreas de cuidado</div>${fd.d.map(x=>`<div class="fdli">${x}</div>`).join('')}</div></div>`;
-h+=`<div class="rline">🚩 <strong>Riesgo emocional:</strong> ${RIESGO[d][n]}</div>`;
-if(d===2){const ec=GVote(2,['Evitador','Acomodador','Competitivo','Colaborativo']);const ei=ESTILOC[ec];h+=`<div class="estag">🎯 Estilo predominante: ${ec}</div><div class="lline" style="margin-bottom:10px">${ei.blurb}</div>`}
-if(d===5){const em=GVote(5,['pasiva','pasivo-agresiva','agresiva','asertiva']);const ei=ESTILOM[em];const lab=em.charAt(0).toUpperCase()+em.slice(1);h+=`<div class="estag">💬 Estilo predominante: ${lab}</div><div class="lline" style="margin-bottom:10px">${ei.blurb}</div>`}
-if(d===1&&n!=='alto'){h+=`<div class="lline" style="margin-bottom:10px">🔍 <strong>Patrón específico a revisar:</strong> ${D1Sub()} (dentro de la Dimensión 2 del libro).</div>`}
-h+=`<div class="lline">📖 <strong>Para profundizar:</strong> ${LECTURA[d][n]}</div>`;
-return h;
+function getDynamicAssessment(perceive = [], act = []) {
+  const perceptionText = perceive.length
+    ? `Percibiste ${perceive.length}: ${perceive.join(', ')}.`
+    : 'No registraste señales percibidas.';
+  const actionText = act.length
+    ? `Elegiste ${act.length} formas de actuar: ${act.join(', ')}.`
+    : 'No registraste una forma de actuar.';
+  const coherence = perceive.length && act.length
+    ? 'La dinámica está completa: primero observaste señales y después elegiste una respuesta para esa situación.'
+    : 'La dinámica está incompleta: necesitas relacionar lo que percibes con una forma concreta de actuar.';
+  return { perceptionText, actionText, coherence };
 }
 
-/* ============ RESUMEN EJECUTIVO ============ */
-function REJ(){
-const t=GT();
-const ec=GVote(2,['Evitador','Acomodador','Competitivo','Colaborativo']);
-const em=GVote(5,['pasiva','pasivo-agresiva','agresiva','asertiva']);
-const p7=GP(7);const n7=GN(p7);const ix7=n7==='bajo'?0:n7==='medio'?1:2;
-const decLabel=PD[7].nombre[ix7];
-const emLabel=em.charAt(0).toUpperCase()+em.slice(1);
-return `<div class="exec"><div class="exet">📋 Resumen ejecutivo</div>
-<div class="exr"><span class="exl">Temperamento predominante</span><span class="exv">${t.tipo}${t.secundario?`<span class="exv2">+ rasgos de ${t.secundario.tipo}</span>`:''}</span></div>
-<div class="exr"><span class="exl">Estilo de comunicación</span><span class="exv">${emLabel}</span></div>
-<div class="exr"><span class="exl">Estilo ante el conflicto</span><span class="exv">${ec}</span></div>
-<div class="exr"><span class="exl">Estilo de toma de decisiones</span><span class="exv">${decLabel}</span></div>
-</div>`;
+function getLevelSummary(module, tally, dynamic = { perceive: [], act: [] }) {
+  const dominant = module.type === 'quiz' ? null : getDominant(tally);
+  const trait = dominant ? TRAIT_INFO[dominant] : null;
+  const assessment = getDynamicAssessment(dynamic.perceive, dynamic.act);
+  if (module.type === 'quiz') {
+    return `Este nivel entrena tu capacidad para distinguir un gesto aislado de un conjunto de señales. ${assessment.perceptionText} ${assessment.actionText} ${assessment.coherence}`;
+  }
+  if (!trait) return `Tu selección se centró en observar señales concretas del nivel. ${assessment.perceptionText} ${assessment.actionText} ${assessment.coherence}`;
+  return `${trait.label} es la tendencia que más apareció en tus respuestas. ${trait.text(module.theme)} ${assessment.perceptionText} ${assessment.actionText} ${assessment.coherence}`;
 }
 
-/* ============ SÍNTESIS GENERAL (cruza todas las dimensiones) ============ */
-function GPI(){
-const nl=[1,2,3,4,5,6].map(i=>GN(GP(i)));
-const p8=GP(7);const n8=GN(p8);
-const bj=nl.filter(n=>n==='bajo').length;const al=nl.filter(n=>n==='alto').length;
-const names=['','Tolerancia a la frustración','Gestión de conflictos','No ver','No oír','No hablar','Autoconciencia y gestión emocional'];
-const nm=[1,2,3,4,5,6].filter(i=>GN(GP(i))==='bajo').map(i=>names[i]);
-const na=[1,2,3,4,5,6].filter(i=>GN(GP(i))==='alto').map(i=>names[i]);
-let st='',tx='',pt=[],ct='';
-if(bj>=4){st='En el inicio del camino';tx=`Hay varios frentes donde aún es difícil verte con claridad, expresarte o gestionar lo que sientes. Eso no significa que estés mal: significa que acabas de empezar a mirarte de verdad. Y eso, por sí solo, ya es mucho.`;pt=[{icon:'💡',txt:'El primer paso siempre es reconocer. Tú ya lo estás haciendo.'},{icon:'🌱',txt:'No hay que transformar todo a la vez. Elige una dimensión y empieza ahí.'},{icon:'🤝',txt:'El autoconocimiento no tiene que hacerse solo. Acompañamiento puede acelerar todo.'}];ct='Tu mayor fortaleza ahora mismo es haber llegado hasta aquí con honestidad.'}
-else if(bj>=2&&al<=2){st='En proceso real de crecimiento';tx=`Hay áreas donde ya funciona bien y otras donde aún cuesta. Eso es lo más común — y lo más honesto. No estás al principio ni al final: estás en el medio, que es donde ocurre el trabajo real.`;pt=[{icon:'⚡',txt:na.length?`Tus puntos fuertes — ${na.slice(0,2).join(' y ')} — son tu base. Apóyate en ellos.`:'Ya tienes recursos internos disponibles. El trabajo está en activarlos más seguido.'},{icon:'🔍',txt:nm.length?`Las áreas que más piden atención: ${nm.slice(0,2).join(' y ')}.`:'Sigue explorando las zonas que todavía se sienten densas.'},{icon:'🔄',txt:'El crecimiento no es lineal. Los retrocesos también enseñan.'}];ct='Estás en el lugar exacto donde el cambio real empieza a ocurrir.'}
-else if(al>=4){st='Alta integración personal';tx=`Tus respuestas muestran un nivel de autoconocimiento sólido. Puedes verte con honestidad, gestionar lo que sientes y actuar desde un lugar más consciente. Eso no significa que todo esté resuelto — significa que tienes la base para seguir creciendo.`;pt=[{icon:'✨',txt:'Quien se conoce bien tiene menos sorpresas desagradables — y más libertad de elegir.'},{icon:'🧭',txt:nm.length?`Aún hay zonas por explorar: ${nm.join(' y ')}.`:'Sigue cultivando lo que ya funciona — el equilibrio hay que mantenerlo.'},{icon:'💬',txt:'Tu nivel de integración es un regalo para quienes te rodean también.'}];ct='El autoconocimiento no es un destino. Es una práctica. Sigue eligiéndola.'}
-else{st='Perfil equilibrado en construcción';tx=`Tienes una mezcla interesante: áreas donde ya hay solidez y otras donde aún hay margen. Ese equilibrio imperfecto es exactamente lo que te hace humano/a — y también lo que te da tanto por descubrir.`;pt=[{icon:'🌗',txt:'No necesitas estar "completo/a" para avanzar. Solo necesitas seguir mirando.'},{icon:'🔑',txt:na.length?`Lo que ya funciona en ti — ${na.slice(0,2).join(' y ')} — es tu punto de apoyo.`:'Cada dimensión que entiendes mejor es una puerta que se abre.'},{icon:'🌀',txt:'El autoconocimiento no se termina. Cada etapa de vida te devuelve un reflejo nuevo.'}];ct='Conocerte mejor no te hace más complicado/a — te hace más libre.'}
-const it={bajo:'Tu nivel de coherencia interna aún está desarrollándose — hay distancia entre quién eres y cómo te muestras. Eso es el punto de partida más honesto que existe.',medio:'Hay momentos de coherencia real y otros donde el piloto automático toma el control. Reconocerlo ya es un paso enorme.',alto:'Tus respuestas en la dimensión de integración muestran que vives desde un lugar relativamente consciente y coherente. Eso se nota en todo lo demás.'};
-return{subtipo:st,texto:tx,puntos:pt,cta:ct,integText:it[n8]};
-}
-function GPIBlock(i){
-return `<div class="pi4"><div class="pit">🧩 SÍNTESIS GENERAL — Cómo se conecta todo</div><div class="pis">${i.subtipo}</div><div class="pit2">${i.texto}</div><div class="pit2" style="font-style:italic;color:var(--muted);font-size:1rem;">${i.integText}</div><div class="pip">${i.puntos.map(p=>`<div class="pii"><span class="pip2">${p.icon}</span><span>${p.txt}</span></div>`).join('')}</div><div class="pcb">${i.cta}</div></div>`;
+function getSignalReading(signal) {
+  const readings = {
+    'Cejas elevadas': 'Puede indicar sorpresa, atención o incredulidad; observa cuánto dura y qué hacen los ojos y la boca.',
+    'Ojos muy abiertos': 'Puede aparecer ante sorpresa, miedo o alerta; el contexto decide cuál lectura tiene más sentido.',
+    'Sonrisa que llega a los ojos': 'Suele acompañar una alegría genuina o una conexión positiva, aunque siempre debe observarse el conjunto.',
+    'Mandíbula tensa': 'Puede revelar esfuerzo, estrés, contención o enojo; no demuestra por sí sola una emoción concreta.',
+    'Mirada perdida': 'Puede relacionarse con tristeza, cansancio, reflexión o desconexión del momento.',
+    'Cambio rápido de expresión': 'Puede mostrar el paso de una reacción espontánea a una expresión socialmente controlada.',
+  };
+  return readings[signal] || 'Es un indicio para observar junto con la postura, la voz, el contexto y las demás señales marcadas.';
 }
 
-/* ============ "LO QUE CADA DIMENSIÓN REVELA" ============ */
-function RMR(){
-const t=GT();
-const C=[
-{emoji:'🌡️',nombre:'Temperamento',concepto:'Tu temperamento es el sistema operativo con el que llegaste al mundo. No lo elegiste, pero opera en ti todo el tiempo: define cómo reaccionas ante lo inesperado, cómo tomas decisiones bajo presión y cómo te relacionas con los demás. Conocerlo te da el mapa para usarlo a tu favor.',remates:{Sanguíneo:'Tu energía y entusiasmo son motores poderosos. El reto es que cuando la novedad baja, también puede bajar tu compromiso. Conocer eso te da ventaja.',Colérico:'Eres el tipo de persona que hace que las cosas pasen. Tu riesgo está en la impaciencia. Cuando lo sabes, puedes elegir cuándo frenar.',Melancólico:'Percibes lo que otros ignoran. Tu profundidad es un don real. El peligro está en que ese mismo análisis puede volverse parálisis si no lo gestionas.',Flemático:'Eres el ancla que muchos necesitan. Tu calma es valiosa. El riesgo es que lo que no expresas a tiempo puede costarte oportunidades y relaciones.','Temperamento mixto':'Tu flexibilidad es genuina. Según el contexto, puedes activar distintas respuestas. El desafío está en aprender cuál activar de forma consciente, no por impulso.'}},
-{emoji:'🧱',nombre:'Tolerancia a la frustración',concepto:'La tolerancia a la frustración no es paciencia. Es la capacidad de seguir funcionando cuando las cosas no salen como esperabas. No es un rasgo fijo: es un músculo. Pero si no sabes cómo está ese músculo hoy, no puedes entrenarlo.',remates:{alto:'Tu tolerancia es real. Eso significa que los obstáculos no te definen — tú los defines a ellos. Sigue cultivándola: es una de las ventajas más escasas.',medio:'Tienes recursos, pero no siempre los activas. La diferencia entre tu techo actual y el siguiente nivel está en cuánto confías en ti cuando la situación se pone difícil.',bajo:'Los obstáculos te pesan más de lo que te gustaría. Eso no es un defecto de carácter — es la señal de que este músculo tiene mucho margen de crecimiento. Y el margen es oportunidad.'}},
-{emoji:'⚔️',nombre:'Gestión de conflictos',concepto:'El conflicto no es el problema. La forma en que lo manejamos sí puede serlo. Tu estilo de conflicto se formó antes de que pudieras elegirlo. Pero hoy, si lo conoces, puedes decidir si quieres seguir usándolo o cambiarlo.',remates:{alto:'Puedes enfrentar los desacuerdos sin destruir lo que hay alrededor. Eso es madurez relacional real — y es más escasa de lo que parece.',medio:'A veces navegas bien el conflicto, otras el viejo patrón toma el control. Estás en el punto exacto donde la consciencia puede hacer la diferencia.',bajo:'El conflicto te cuesta — ya sea porque explotas o porque tragas. Ambos extremos tienen un precio. Saberlo ya es el primer paso para cambiar el patrón.'}},
-{emoji:'🙈',nombre:'No ver el mal',concepto:'Todos tenemos zonas ciegas: realidades que están ahí pero que preferimos no mirar. No verlo no lo hace desaparecer — solo lo deja operar sin control. La diferencia entre quien crece y quien se estanca muchas veces es simplemente la disposición a mirar lo que duele.',remates:{alto:'Tienes la valentía de mirar donde muchos prefieren no hacerlo. Eso es lo que permite el cambio real, no solo el deseo de cambiar.',medio:'Hay cosas que ves y cosas que prefieres no mirar todavía. Reconocer dónde está esa línea ya es una forma de honestidad.',bajo:'Hay zonas de tu vida o de ti mismo/a que aún no estás listo/a para mirar. No hay juicio en eso — pero sí hay un costo. Y ya lo sabes.'}},
-{emoji:'🙉',nombre:'No oír el mal',concepto:'Escuchar no es dejar que los sonidos lleguen a tus oídos. Es dejar que lo que el otro dice te llegue de verdad, antes de que tu mente active la defensa. Saber cómo filtras te da el poder de elegir cuándo abrir el filtro.',remates:{alto:'Puedes recibir lo que te llega con apertura real. Eso te da acceso a información — sobre ti, sobre otros — que la mayoría pierde.',medio:'A veces escuchas de verdad y otras activas el filtro. El trabajo está en hacerlo más consciente: que sea una elección, no un reflejo.',bajo:'Lo que no puedes escuchar sigue afectándote igual — solo que sin que puedas procesarlo. Abrir ese canal, aunque sea un poco, cambia lo que eres capaz de recibir.'}},
-{emoji:'🙊',nombre:'No hablar el mal',concepto:'Lo que no dices no desaparece. Se acumula. Se convierte en distancia, en resentimiento, en una versión de ti que actúa desde lo que calla y no desde lo que elige. Quien aprende a expresar lo que necesita con claridad construye relaciones reales.',remates:{alto:'Puedes decir lo que necesitas y lo que sientes, incluso cuando es difícil. Eso no es poca cosa — es la base de las relaciones que valen la pena.',medio:'Hay momentos en que te expresas bien y otros en que el silencio gana. Seguir empujando esa frontera es parte del trabajo.',bajo:'Llevas cosas que no has dicho. Eso tiene un peso. No tienes que decirlo todo de golpe — pero sí vale la pena preguntarte qué te cuesta más callar y por qué.'}},
-{emoji:'🧠',nombre:'Autoconciencia y gestión emocional',concepto:'La autoconciencia emocional es la capacidad de reconocer lo que sientes mientras lo sientes — no horas o días después. Es el paso que viene antes de cualquier gestión emocional real: no puedes regular lo que ni siquiera reconoces.',remates:{alto:'Reconoces tus emociones casi en el momento en que aparecen. Eso te da una ventaja real: puedes elegir tu respuesta en lugar de solo reaccionar.',medio:'A veces entiendes tus emociones mientras ocurren, otras solo después. Estás exactamente en la etapa donde más se acorta esa distancia con la práctica.',bajo:'Sueles reaccionar antes de comprender lo que sentiste. No es un defecto — es una habilidad que, como cualquier otra, se entrena con observación.'}},
-{emoji:'🧭',nombre:'Integración y dirección personal',concepto:'La integración personal es el punto donde todo lo demás se conecta. Es la diferencia entre conocerte en teoría y vivir realmente desde lo que sabes de ti — sin dejar de sentir, sin dejar de equivocarte, pero con más coherencia.',remates:{alto:'Tus decisiones reflejan cada vez más lo que valoras. Eso no significa perfección — significa coherencia progresiva.',medio:'Tienes momentos reales de claridad sobre ti mismo/a, aunque sostenerlos en la práctica todavía es un trabajo en proceso.',bajo:'Tus decisiones dependen mucho del momento, la emoción o la presión externa. Reconocerlo ya es el primer paso hacia más dirección propia.'}}
-];
-function TH(d,n,tt){let rm='';if(d.nombre==='Temperamento'){const tk=Object.keys(d.remates).find(k=>tt&&tt.includes(k.split(' ')[0]));rm=d.remates[tk]||d.remates['Temperamento mixto']}else{rm=d.remates[n]||''}
-const bc=n==='alto'?'mba':n==='medio'?'mbm':'mbb';const bl=n==='alto'?'Alto':n==='medio'?'Medio':'Bajo';
-const bh=d.nombre!=='Temperamento'?`<span class="mrb ${bc}">${bl}</span>`:`<span class="mrb mbm">${tt}</span>`;
-return `<div class="mrc"><div class="mrh"><div class="mrn">${d.emoji} ${d.nombre}</div>${bh}</div><div class="mrc2">${d.concepto}</div><div class="mrr"><strong>En tu caso:</strong> ${rm}</div></div>`}
-const tt=t.tipo;
-const c0=TH(C[0],null,tt);
-const cs=[1,2,3,4,5,6,7].map(i=>{const p=GP(i);const n=GN(p);return TH(C[i],n,null)}).join('');
-return `<div class="mw2"><div class="mrt">📖 Lo que cada dimensión revela</div><div class="mrs">Tu fotografía en 8 dimensiones</div>${c0}${cs}</div>`;
+function getDynamicReading(type, option) {
+  if (type === 'perceive') {
+    const readings = {
+      'Cejas que suben': 'Puede señalar sorpresa, atención o incredulidad. Mira cuánto dura y qué ocurre después.',
+      'Ojos que se abren': 'Puede aparecer ante sorpresa, miedo o alerta. Necesita el contexto de la situación.',
+      'Boca que se entreabre': 'Suele acompañar una reacción inesperada, pero también puede ser una pausa antes de responder.',
+      'Rostro que se congela': 'Puede mostrar bloqueo momentáneo, cautela o esfuerzo por controlar la reacción.',
+      'Sonrisa automática': 'Puede ser cortesía, nerviosismo o una forma de ocultar otra emoción. No confirma alegría.',
+      'Mirada que busca apoyo': 'Puede indicar necesidad de seguridad, conexión o confirmación de alguien cercano.',
+      'Arrugas junto a los ojos': 'Suelen acompañar una sonrisa genuina, aunque deben observarse junto con el resto del rostro.',
+      'Mejillas elevadas': 'Pueden acompañar alegría o entusiasmo; también pueden aparecer al forzar una sonrisa.',
+      'Risa contenida': 'Puede reflejar autocontrol, incomodidad o deseo de no llamar la atención.',
+      'Mirada que se aparta': 'Puede ser timidez, reflexión, incomodidad o una costumbre personal.',
+      'Labios tensos': 'Pueden señalar contención, concentración o desacuerdo. No prueban enojo por sí solos.',
+      'Expresión que cambia rápido': 'Puede mostrar una reacción espontánea seguida de una expresión social controlada.',
+      'Sonrisa que no llega a los ojos': 'Puede ser una sonrisa social o una máscara; conviene observar el tono y la postura.',
+      'Mandíbula apretada': 'Suele relacionarse con tensión, esfuerzo o contención emocional.',
+      'Parpadeo acelerado': 'Puede aparecer con nerviosismo, cansancio o cambios de atención.',
+      'Mirada perdida': 'Puede indicar tristeza, cansancio, reflexión o desconexión del momento.',
+      'Cambio breve de expresión': 'Puede ser una microexpresión, pero necesita otros indicios para interpretarse.',
+      'Rostro que vuelve a la máscara': 'Puede mostrar un intento de recuperar el control social después de una reacción emocional.',
+      'Puede tener frío': 'El frío puede explicar los brazos cruzados sin que exista una emoción defensiva.',
+      'Puede estar cómodo': 'Algunas personas cruzan los brazos por costumbre o comodidad; observa su línea base.',
+      'Puede estar concentrado': 'El gesto puede ayudar a recogerse mientras procesa información.',
+      'Puede sentirse inseguro': 'Puede ser una barrera corporal ante una situación que genera tensión, pero no lo confirma.',
+      'Puede estar en desacuerdo': 'Puede coincidir con desacuerdo si también aparecen distancia, tensión o cambios de voz.',
+      'El gesto no basta para saberlo': 'Esta es la lectura prudente: un gesto aislado necesita contexto y señales adicionales.',
+      'Puede tener alergia': 'Tocarse la nariz puede deberse a una reacción física y no a una intención de ocultar algo.',
+      'Puede sentir picor': 'Un picor real es una explicación simple que debe considerarse antes de sospechar.',
+      'Puede estar nerviosa': 'El nerviosismo puede aumentar los gestos de autoconfort, pero no equivale a mentira.',
+      'Puede estar pensando': 'La persona puede tocarse la nariz mientras organiza una respuesta difícil.',
+      'Puede sentirse incómoda': 'La incomodidad es posible si el gesto aparece junto con otros cambios, no por sí solo.',
+      'No demuestra una mentira': 'El libro insiste en que no existe un gesto único que pruebe engaño.',
+      'Timidez': 'Evitar la mirada puede relacionarse con timidez y no con culpa.',
+      'Inseguridad social': 'Puede ser una forma de reducir la exposición cuando la interacción resulta intensa.',
+      'Respeto cultural': 'En algunas culturas, bajar la mirada ante una autoridad comunica respeto.',
+      'Vergüenza': 'Puede aparecer al sentirse expuesto, aunque hace falta preguntar antes de interpretarlo.',
+      'Cansancio': 'El cansancio reduce el contacto visual y la energía sin que exista un mensaje oculto.',
+      'Deseo de ocultar una emoción': 'Es una posibilidad entre varias, no una conclusión automática.',
+      'Tiene prisa real': 'Mirar el reloj puede responder a una obligación concreta o a una cita pendiente.',
+      'Espera a alguien': 'Puede estar comprobando la hora por otra persona, no por desinterés hacia ti.',
+      'Está aburrida': 'El aburrimiento es una lectura posible si coincide con desconexión y respuestas breves.',
+      'Está ansiosa': 'La ansiedad puede aumentar la vigilancia del tiempo y la necesidad de terminar.',
+      'Tiene una costumbre': 'Algunas personas miran el reloj automáticamente sin intención comunicativa.',
+      'Quiere terminar la conversación': 'Puede serlo si aparece junto con cuerpo orientado hacia la salida y tono de cierre.',
+      'Interés genuino': 'Inclinar la cabeza puede acompañar una escucha atenta, aunque no lo demuestra por sí solo.',
+      'Escucha activa': 'Puede mostrar atención cuando coincide con asentir y una postura orientada hacia quien habla.',
+      'Empatía': 'Puede expresar sintonía emocional, pero debe confirmarse con la conversación.',
+      'Quiere oír mejor': 'También puede ser un ajuste físico para escuchar con claridad.',
+      'Está procesando la información': 'La inclinación puede acompañar un esfuerzo de comprensión.',
+      'No confirma atracción': 'Una inclinación de cabeza nunca debe interpretarse como consentimiento o interés romántico.',
+      'Cortesía social': 'Una sonrisa puede cumplir una norma de amabilidad sin expresar alegría profunda.',
+      'Sonrisa profesional': 'En atención al público puede ser un gesto aprendido y no una señal de falsedad.',
+      'Incomodidad': 'Puede acompañar incomodidad si coincide con rigidez, distancia o tono tenso.',
+      'Emoción oculta': 'Es posible, pero solo como hipótesis que necesita conversación y más contexto.',
+      'Hábito personal': 'Cada persona tiene una forma habitual de sonreír que debe conocerse antes de juzgar.',
+      'No demuestra falsedad': 'Una sonrisa sin arrugas en los ojos no convierte automáticamente a alguien en falso.',
+    };
+    return readings[option] || getSignalReading(option);
+  }
+  const actions = {
+    'Respirar antes de hablar': 'Te da tiempo para regular la emoción y responder sin hacerlo por impulso.',
+    'Pedir un momento': 'Permite reconocer lo que ocurre y evita responder bajo presión.',
+    'Nombrar lo que siento': 'Convierte una reacción interna en una comunicación clara y responsable.',
+    'Mantener una expresión neutral': 'Puede ayudarte a observar, aunque no conviene usarla para negar lo que sientes.',
+    'Preguntar para comprender': 'Reduce las suposiciones y abre espacio para conocer el contexto real.',
+    'Expresar mi reacción con honestidad': 'Favorece una respuesta congruente entre lo que sientes, dices y muestras.',
+    'No acusar ni etiquetar': 'Evita convertir un gesto ambiguo en una acusación que puede dañar la conversación.',
+    'Observar otros indicios': 'Permite formar una hipótesis más responsable a partir de un conjunto de señales.',
+    'Revisar la temperatura y el contexto': 'Comprueba primero una causa física o situacional antes de atribuir una emoción.',
+    'Preguntar con naturalidad': 'Abre la posibilidad de conocer la causa real sin presionar ni acusar.',
+    'Escuchar la respuesta': 'Las palabras y el contexto ayudan a contrastar lo que el cuerpo parece sugerir.',
+    'No sacar una conclusión todavía': 'Mantiene la interpretación abierta hasta tener información suficiente.',
+    'No señalar el gesto como prueba': 'Protege la conversación de un juicio basado en un mito del lenguaje corporal.',
+    'Observar si aparece un patrón': 'Un cambio repetido y contextualizado aporta más información que un gesto único.',
+    'Comparar con su conducta habitual': 'La línea base permite distinguir un hábito personal de un cambio relevante.',
+    'Hacer una pregunta abierta': 'Invita a explicar lo ocurrido sin imponer una respuesta o una sospecha.',
+    'Escuchar el contenido': 'Evita que la atención a un gesto haga olvidar lo que la persona está diciendo.',
+    'Evitar una acusación': 'Mantiene la relación segura mientras reúnes información y respetas la presunción de buena fe.',
+    'No asumir culpa': 'Evita interpretar una mirada apartada como prueba de responsabilidad.',
+    'Considerar su cultura': 'Reduce errores de interpretación producidos por diferencias culturales.',
+    'Dar tiempo para responder': 'Baja la presión y puede ayudar a que la persona se exprese con más claridad.',
+    'Preguntar si está cómodo': 'Convierte una observación en una conversación respetuosa.',
+    'Escuchar sin presionar': 'Permite cuidar el vínculo y respetar el ritmo de la otra persona.',
+    'Aceptar que puede no querer mirar': 'Respeta que el contacto visual no es una obligación ni una prueba de honestidad.',
+    'Preguntar si necesita terminar': 'Aclara la prisa sin convertirla en un rechazo personal.',
+    'Resumir lo importante': 'Cuida el tiempo de la otra persona y mantiene el objetivo de la conversación.',
+    'No tomarlo como rechazo': 'Evita personalizar una señal que puede tener muchas explicaciones.',
+    'Observar otros cambios': 'Ayuda a saber si el reloj es un hábito o parte de un patrón de desconexión.',
+    'Ofrecer continuar después': 'Da una salida respetuosa sin exigir que la persona permanezca.',
+    'Respetar su tiempo': 'Reconoce que una conversación clara también necesita límites temporales.',
+    'Seguir explicando con claridad': 'Aprovecha una posible señal de atención sin forzar una interpretación.',
+    'Comprobar si entendió': 'La pregunta directa confirma comprensión mejor que cualquier gesto.',
+    'No asumir interés romántico': 'Evita convertir una señal de escucha en una afirmación sobre atracción.',
+    'Mantener una distancia respetuosa': 'Permite que la otra persona conserve control sobre su espacio.',
+    'Esperar más contexto': 'La prudencia evita etiquetar una sonrisa por un único detalle facial.',
+    'Mantener un trato respetuoso': 'La cortesía no exige que conozcas o adivines la emoción de la otra persona.',
+    'No forzar una conversación': 'Respeta una posible incomodidad sin convertirla en un conflicto.',
+  };
+  if (actions[option]) return actions[option];
+  if (/preguntar|escuchar|hablar|decir|compartir|comunicar/i.test(option)) return 'Favorece una comunicación directa y reduce el riesgo de interpretar sin comprobar.';
+  if (/espacio|distancia|aceptar|detener|no invadir|límite/i.test(option)) return 'Ayuda a respetar la comodidad y los límites de la otra persona.';
+  if (/respirar|pausa|relajar|bajar|calma/i.test(option)) return 'Ayuda a regular la activación antes de elegir una respuesta.';
+  if (/observar|mirar|comparar/i.test(option)) return 'Permite reunir más información antes de sacar una conclusión.';
+  return 'Es una forma de prepararte para responder con más conciencia en una situación parecida.';
 }
 
-/* ============ TARJETAS POR DIMENSIÓN ============ */
-const M=['La frustración no mide tu valor, mide tu entrenamiento. Cada vez que no abandonas, te haces más fuerte.','Los conflictos no destruyen relaciones; la forma en que los manejamos sí lo hace, o las fortalece.','Lo que no miras sigue ahí. Pero lo que sí miras, aunque duela, te devuelve poder.','Escuchar de verdad no significa estar de acuerdo. Significa dejar que lo que el otro dice te llegue antes de reaccionar.','Callar lo que necesitas no es proteger al otro. A veces es protegerte tú de la incomodidad de decirlo.','Una emoción reconocida deja de arrastrarte y empieza a convertirse en información que puedes usar.','La coherencia no se construye en un día perfecto. Se construye en pequeñas decisiones repetidas con intención.'];
-const RF=['¿Qué tipo de obstáculos te cuestan más? ¿Qué necesitarías para sostenerte un poco más ante ellos?','¿Qué estilo de conflicto usas más? ¿Está funcionando o te está costando relaciones?','¿Hay algo que sabes que existe en tu vida pero prefieres no mirar? ¿Qué temes que pasaría si lo vieras?','¿Hay algo que alguien te ha dicho muchas veces y no has podido realmente escuchar?','¿Hay algo que llevas tiempo sin decir? ¿Qué te lo impide realmente?','¿Sueles entender lo que sentiste mientras ocurre, o casi siempre lo comprendes después?','¿En qué área de tu vida sientes más distancia entre lo que dices valorar y lo que realmente haces?'];
-function SH(em,no,tp,re,mo,rf,extra){extra=extra||'';return `<div class="ps2"><div class="sh"><div class="se">${em}</div><div class="sm"><div class="sn">${no}</div><div class="st">${tp}</div></div></div><div class="sr">${re}</div>${extra}<div class="sm2"><strong>Moraleja:</strong> ${mo}</div><div class="sr2"><strong>🔎 Para ti:</strong> ${rf}</div></div>`}
-function SG(d){const dm=D[d];const p=GP(d);const n=GN(p);const pf=PD[d];const ix=n==='bajo'?0:n==='medio'?1:2;const extra=FDBlock(d,n);return SH(dm.emoji,dm.nombre,pf.nombre[ix],pf[n],M[d-1],RF[d-1],extra)}
-
-/* ============ RENDER ============ */
-const A=document.getElementById('app');
-function RP(){const hp=Object.keys(E.respuestas).length>0&&!TC();return`<div class="p a"><div class="pw"><div class="oc"><div class="or"></div><div class="o"></div><div class="od"></div><div class="od"></div></div><h1 class="pt">CONÓCETE</h1><span class="p8">8 Dimensiones</span><div class="pb">✦ 32 preguntas · Tu mini-perfil integrador</div><div class="discl" style="max-width:340px;margin:0 auto 20px">🧭 <strong>Herramienta de autoconocimiento y aprendizaje</strong> — no es un diagnóstico clínico ni psicológico. Está inspirada en el libro "¿Por qué soy así?".</div><div class="pf"><p class="pfr">"El espejo no miente, solo refleja lo que eres capaz de ver."</p><p class="pfr">"Tu pasado es el reflejo de tu presente, tu presente es el espejo de tu futuro."</p></div><span class="pe">🤔</span><div class="dp">${D.map(d=>`<span class="dc">${d.emoji} ${d.nombre}</span>`).join('')}</div><div class="pm"><div class="pg"><div class="pi"><span class="pn">🔍</span><span>Descubre patrones que repites sin darte cuenta</span></div><div class="pi"><span class="pn">🧭</span><span>Entiende cómo reaccionas bajo presión real</span></div><div class="pi"><span class="pn">💡</span><span>Identifica tus áreas de crecimiento más urgentes</span></div><div class="pi"><span class="pn">📊</span><span>Recibe un mini-perfil personalizado en 8 dimensiones</span></div></div></div><div class="pc"><button class="bg" id="b1">▶ Comenzar test ahora</button>${hp?'<button class="bh" id="b2">⏵ Continuar donde lo dejaste</button>':''}</div><p class="pno">~8 minutos · Respuestas privadas · Resultado inmediato</p><p class="py">2026</p></div></div>`}
-function RM(){return`<div class="p a"><div class="mw"><span class="me">🪞</span><h2 class="mt">¿Cuánto te <span>conoces</span> de verdad?</h2><p class="mc">No cuántos años llevas siendo tú. Sino cuánto sabes de cómo funcionas por dentro, por qué reaccionas como reaccionas y qué patrones repites sin darte cuenta.</p><div class="mcs"><div class="mca"><span class="mci">🧠</span><div><div class="mct">No es un test de personalidad</div><div class="mcx">Es un espejo. Te devuelve lo que ya está en ti, pero que quizás nunca nadie te había mostrado tan claro.</div></div></div><div class="mca"><span class="mci">🔑</span><div><div class="mct">Sin respuestas correctas</div><div class="mcx">Solo hay respuestas honestas. Y la honestidad contigo mismo/a es el único camino hacia algo diferente.</div></div></div><div class="mca"><span class="mci">🌱</span><div><div class="mct">8 dimensiones de tu vida</div><div class="mcx">Desde cómo manejas los conflictos hasta cómo gestionas tus emociones. Cada área dice algo de quién eres realmente.</div></div></div></div><div class="discl">📍 Este es un <strong>mini-análisis</strong> de acompañamiento al libro — no sustituye una evaluación psicológica profesional. Para un perfil completo de personalidad se necesita más tiempo, más herramientas y, si lo deseas, apoyo profesional.</div><div class="mfr" style="margin-top:24px">"Quien se conoce a sí mismo tiene en sus manos la clave de su propio cambio. No porque sea perfecto, sino porque ya no se engaña."</div><div class="mctb"><button class="bg" id="b3">Estoy listo/a — Empezar</button></div><p class="ms">Tus respuestas son privadas · Solo tú verás tu perfil</p></div></div>`}
-function RQ(){const dm=D[E.pasoActual];const tl=D.length;const pc=Math.round((E.pasoActual/tl)*100);const cp=DC(E.pasoActual);const ph=dm.preguntas.map((pr,ix)=>{const rs=R(E.pasoActual,ix);const op=dm.opciones[ix].map((tx,vl)=>{const sl=rs===vl?'s':'';return`<div class="op2 ${sl}" data-d="${E.pasoActual}" data-p="${ix}" data-v="${vl}">${tx}</div>`}).join('');return`<div class="pr ${rs!==null?'r':''}" id="pr-${ix}"><div class="pnu">Pregunta ${ix+1} de ${dm.preguntas.length}</div><div class="ptx">${pr}</div><div class="op">${op}</div></div>`}).join('');return`<div class="p a"><div class="ph"><div class="pi2"><span class="pl">${dm.emoji} ${dm.nombre}</span><span class="pco">${E.pasoActual+1} / ${tl}</span></div><div class="pt2"><div class="pf2" style="width:${pc}%"></div></div></div><div class="dh"><div class="dn">Dimensión ${E.pasoActual+1}</div><div class="dnm">${dm.nombre}</div><div class="dd">💡 ${dm.descripcion}</div></div>${ph}<div class="nb"><button class="bab" id="b4" ${E.pasoActual===0?'disabled':''}>← Atrás</button><button class="ban" id="b5" ${!cp?'disabled':''}>${E.pasoActual===tl-1?'Ver mi perfil →':'Siguiente →'}</button></div></div>`}
-function RPF(){
-const t=GT();const i=GPI();
-const bh=[1,2,3,4,5,6,7].map((ix,pos)=>{const dm=D[ix];const p=GP(ix);const pc=GPct(p);const n=GN(p);const l=n==='alto'?'Alto':n==='medio'?'Medio':'Bajo';return `<div class="bd"><div class="bl"><span class="bna">${dm.emoji} ${dm.nombre}</span><span class="bni n${n==='alto'?'a':n==='medio'?'m':'b2'}">${l}</span></div><div class="bt"><div class="bfi f${n==='alto'?'a':n==='medio'?'m':'b'}" style="--w:${pc}%;--delay:${pos*0.08}s"></div></div></div>`}).join('');
-const tfd=TEMP_FD[t.tipo]||TEMP_FD['Temperamento mixto 🔀'];
-let s0extra=`<div class="fdgrid"><div class="fdbox"><div class="fdtt">✅ Fortalezas</div>${tfd.f.map(x=>`<div class="fdli">${x}</div>`).join('')}</div><div class="fdbox"><div class="fdtt">⚠️ Áreas de cuidado</div>${tfd.d.map(x=>`<div class="fdli">${x}</div>`).join('')}</div></div>`;
-if(t.secundario){s0extra+=`<div class="secbadge">🔁 Con rasgos secundarios de ${t.secundario.tipo}</div><div class="lline" style="margin-top:8px">${t.secundario.desc}</div>`}
-const s0=SH('🌡️','Temperamento',t.tipo,t.desc,'Tu temperamento no es una cárcel. Es tu punto de partida. Conocerlo te da libertad para elegir cómo expresarlo.','¿En qué momentos este temperamento te ayuda y en cuáles genera fricción? Ahí está la clave.',s0extra);
-return `<div class="p a"><div class="ph2"><span class="pi3">✨</span><h2 class="pt3">Tu <span>MINI-PERFIL</span> 8D</h2><p class="ps">Resultado basado exactamente en lo que tú marcaste. No hay respuestas correctas ni incorrectas.</p><div class="discl" style="margin-top:16px">📍 Esta es una fotografía inicial basada en 32 respuestas — un <strong>punto de partida</strong> para conocerte, no un diagnóstico clínico completo.</div></div>
-${REJ()}
-<div class="rv"><div class="rt">📊 Resumen — 7 dimensiones medidas</div>${bh}</div>
-${RMR()}
-${s0}
-${[1,2,3,4,5,6,7].map(SG).join('')}
-${GPIBlock(i)}
-<div class="pce"><h3 class="ct">El autoconocimiento es un camino, no un destino.</h3><p class="ctx">Esta app es una herramienta de aprendizaje inspirada en el libro "¿Por qué soy así?". Un perfil completo de personalidad necesita más que 32 preguntas: necesita tiempo, observación constante y, si lo deseas, acompañamiento profesional. Usa este mini-diagnóstico como una puerta de entrada, no como una etiqueta final.</p><button class="br" id="b6">⟳ Hacer el test de nuevo</button></div></div>`;
+function getLevelSections(module, dynamic = { perceive: [], act: [] }) {
+  const signals = [...dynamic.perceive, ...dynamic.act];
+  return {
+    identified: dynamic.perceive.length
+      ? `Identificaste ${dynamic.perceive.length} señal${dynamic.perceive.length === 1 ? '' : 'es'}: ${dynamic.perceive.join(', ')}.`
+      : 'Todavía no identificaste señales en este nivel.',
+    meaning: signals.length
+      ? `Lo que marcaste puede orientar una hipótesis, no una certeza. Percibiste: ${dynamic.perceive.join(', ') || 'ninguna señal'}. Actuarías: ${dynamic.act.join(', ') || 'sin respuesta'}. El contexto, la línea base y la conversación deben confirmar o corregir esa lectura.`
+      : 'Marca las características que realmente observes para construir una lectura más útil y prudente.',
+    action: LEVEL_ACTIONS[module.id],
+  };
 }
-function H(h){A.innerHTML=h;window.scrollTo({top:0,behavior:'smooth'})}
-function U(){if(E.pasoActual===-2)H(RP());else if(E.pasoActual===-3)H(RM());else if(E.pasoActual===-1)H(RPF());else if(E.pasoActual>=0&&E.pasoActual<D.length)H(RQ());else{E.pasoActual=-2;H(RP())}B()}
-function B(){const b1=document.getElementById('b1');if(b1)b1.addEventListener('click',()=>{E={respuestas:{},pasoActual:-3};L();G();U()});const b2=document.getElementById('b2');if(b2)b2.addEventListener('click',()=>{let f=D.findIndex((_,i)=>!DC(i));E.pasoActual=f===-1?-1:f;G();U()});const b3=document.getElementById('b3');if(b3)b3.addEventListener('click',()=>{E.pasoActual=0;G();U()});document.querySelectorAll('.op2').forEach(el=>{el.addEventListener('click',()=>{const sy=window.scrollY;const d=parseInt(el.dataset.d);const p=parseInt(el.dataset.p);const v=parseInt(el.dataset.v);S(d,p,v);document.querySelectorAll(`[data-d="${d}"][data-p="${p}"]`).forEach(o=>{o.classList.toggle('s',parseInt(o.dataset.v)===v)});const c=el.closest('.pr');if(c)c.classList.add('r');const bn=document.getElementById('b5');if(bn)bn.disabled=!DC(d);window.scrollTo({top:sy})})});const b5=document.getElementById('b5');if(b5)b5.addEventListener('click',()=>{E.pasoActual=E.pasoActual===D.length-1?-1:E.pasoActual+1;G();H(E.pasoActual===-1?RPF():RQ());B()});const b4=document.getElementById('b4');if(b4)b4.addEventListener('click',()=>{if(E.pasoActual>0){E.pasoActual--;G();H(RQ());B()}});const b6=document.getElementById('b6');if(b6)b6.addEventListener('click',()=>{E={respuestas:{},pasoActual:-2};L();G();U()})}
-function I(){const h=C();if(!h){E={respuestas:{},pasoActual:-2}}else if(TC()){E.pasoActual=-1}else if(E.pasoActual<-3||E.pasoActual>=D.length){E.pasoActual=-2}G();U()}
-I();
-</script></body></html>
 
+function getDominant(tally) {
+  if (!tally) return null;
+  let best = null, bestVal = -1;
+  for (const k of Object.keys(tally)) { if (tally[k] > bestVal) { bestVal = tally[k]; best = k; } }
+  return best;
+}
+
+/* ------------------------------------------------------------------ */
+/* UI ATOMS                                                            */
+/* ------------------------------------------------------------------ */
+
+function ReadingBar({ pct }) {
+  return (
+    <div className="fixed top-0 left-0 right-0 h-[3px] z-30" style={{ background: 'rgba(212,175,55,0.08)' }}>
+      <div
+        className="h-full transition-all duration-500 ease-out"
+        style={{ width: `${pct}%`, background: 'linear-gradient(90deg, #A9832A, #D4AF37, #F0D479)' }}
+      />
+    </div>
+  );
+}
+
+function NavRow({ onBack, backLabel, onNext, nextLabel, nextDisabled, nextIcon: NextIcon = ChevronRight }) {
+  return (
+    <div className="flex items-center justify-between gap-3 pt-8">
+      <button
+        onClick={onBack}
+        className="inline-flex items-center gap-1.5 text-[13px] font-medium px-4 py-3 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+        style={{ color: '#93A2C0' }}
+      >
+        <ChevronLeft size={16} /> {backLabel}
+      </button>
+      <button
+        onClick={onNext}
+        disabled={nextDisabled}
+        className="inline-flex items-center gap-2 font-semibold text-[13px] px-6 py-3 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+        style={{
+          background: nextDisabled ? 'rgba(212,175,55,0.12)' : 'linear-gradient(135deg, #C9A227, #E8C860)',
+          color: nextDisabled ? '#5B6478' : '#0A1428',
+          cursor: nextDisabled ? 'default' : 'pointer',
+        }}
+      >
+        {nextLabel} <NextIcon size={16} />
+      </button>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* APP                                                                 */
+/* ------------------------------------------------------------------ */
+
+function isQuestionCorrect(mod, qi, ans) {
+  const opts = mod.questions[qi].options;
+  if (mod.multi) {
+    const correctSet = opts.map((o, i) => (o.correct ? i : null)).filter((x) => x !== null).sort();
+    const selSet = (Array.isArray(ans) ? [...ans] : []).sort();
+    return correctSet.length === selSet.length && correctSet.every((v, idx) => v === selSet[idx]);
+  }
+  return ans !== null && !!opts[ans]?.correct;
+}
+
+function emptyAnswers(mod) {
+  return Array(mod.questions.length).fill(mod.multi ? [] : null);
+}
+
+/* ------------------------------------------------------------------ */
+/* APP                                                                 */
+/* ------------------------------------------------------------------ */
+
+function App() {
+  const [screen, setScreen] = useState('intro'); // intro | ethics | map | question | moduleSummary | final | closing
+  const [moduleIndex, setModuleIndex] = useState(0);
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [answers, setAnswers] = useState([null, null, null]);
+  const [checked, setChecked] = useState(false);
+  const [moduleScores, setModuleScores] = useState({});
+  const [completedModules, setCompletedModules] = useState([]);
+  const [scores, setScores] = useState(EMPTY_SCORES);
+  const [direction, setDirection] = useState('forward');
+  const [moduleSignals, setModuleSignals] = useState({});
+  const [dynamicMarks, setDynamicMarks] = useState({});
+
+  const currentModule = MODULES[moduleIndex];
+  const currentQuestion = currentModule.questions[questionIndex];
+  const currentAnswer = answers[questionIndex];
+  const isMulti = !!currentModule.multi;
+  const isQuiz = currentModule.type === 'quiz';
+  const hasAnswer = isMulti ? Array.isArray(currentAnswer) && currentAnswer.length > 0 : currentAnswer !== null;
+  const hasSignals = (moduleSignals[currentModule.id] || []).length > 0;
+  const dynamicKey = `${currentModule.id}-${questionIndex}`;
+  const currentDynamicMarks = dynamicMarks[dynamicKey] || { perceive: [], act: [] };
+  const hasDynamicMarks = currentDynamicMarks.perceive.length > 0 || currentDynamicMarks.act.length > 0;
+  const canContinue = hasAnswer && currentDynamicMarks.perceive.length > 0 && currentDynamicMarks.act.length > 0;
+  const allDone = completedModules.length === MODULES.length;
+
+  const solvedQuestions = completedModules.reduce(
+    (n, id) => n + MODULES.find((m) => m.id === id).questions.length, 0
+  );
+  const inProgress = screen === 'question' && !completedModules.includes(currentModule.id) ? questionIndex : 0;
+  const readingPct = screen === 'intro' ? 0 : Math.min(100, ((solvedQuestions + inProgress) / TOTAL_QUESTIONS) * 100);
+
+  function startModule(idx) {
+    setDirection('forward');
+    setModuleIndex(idx);
+    setQuestionIndex(0);
+    setAnswers(emptyAnswers(MODULES[idx]));
+    setChecked(false);
+    setScreen('question');
+  }
+
+  function selectOption(i) {
+    if (isQuiz && checked) return; // locked once verified
+    setAnswers((prev) => prev.map((a, idx) => {
+      if (idx !== questionIndex) return a;
+      if (isMulti) {
+        const arr = Array.isArray(a) ? a : [];
+        return arr.includes(i) ? arr.filter((x) => x !== i) : [...arr, i];
+      }
+      return i;
+    }));
+  }
+
+  function handleVerify() {
+    if (!hasAnswer) return;
+    setChecked(true);
+  }
+
+  function goBackQuestion() {
+    setDirection('backward');
+    setChecked(false);
+    if (questionIndex > 0) setQuestionIndex((q) => q - 1);
+    else setScreen('map');
+  }
+
+  function goForwardQuestion() {
+    if (!canContinue) return;
+    if (isQuiz && !checked) { handleVerify(); return; }
+    setDirection('forward');
+    if (questionIndex < currentModule.questions.length - 1) {
+      setQuestionIndex((q) => q + 1);
+      setChecked(false);
+    } else if (isQuiz) {
+      let correct = 0;
+      answers.forEach((ans, qi) => { if (isQuestionCorrect(currentModule, qi, ans)) correct += 1; });
+      setModuleScores((prev) => ({ ...prev, [currentModule.id]: { correct, total: currentModule.questions.length } }));
+      setCompletedModules((prev) => (prev.includes(currentModule.id) ? prev : [...prev, currentModule.id]));
+      setScreen('moduleSummary');
+    } else {
+      const tally = {};
+      answers.forEach((ansIdx, qi) => {
+        const option = currentModule.questions[qi].options[ansIdx];
+        if (option?.trait) tally[option.trait] = (tally[option.trait] || 0) + 1;
+      });
+      setScores((prev) => {
+        const next = { ...prev };
+        const old = moduleScores[currentModule.id];
+        if (old && !old.total) { for (const k in old) next[k] = (next[k] || 0) - old[k]; }
+        for (const k in tally) next[k] = (next[k] || 0) + tally[k];
+        return next;
+      });
+      setModuleScores((prev) => ({ ...prev, [currentModule.id]: tally }));
+      setCompletedModules((prev) => (prev.includes(currentModule.id) ? prev : [...prev, currentModule.id]));
+      setScreen('moduleSummary');
+    }
+  }
+
+  function backToLastQuestion() {
+    setDirection('backward');
+    setChecked(isQuiz); // answers already committed; show them checked again
+    setQuestionIndex(currentModule.questions.length - 1);
+    setScreen('question');
+  }
+
+  function goNextModuleOrFinal() {
+    setDirection('forward');
+    if (allDone) { setScreen('final'); return; }
+    if (moduleIndex < MODULES.length - 1) { startModule(moduleIndex + 1); return; }
+    const firstPending = MODULES.findIndex((m) => !completedModules.includes(m.id));
+    if (firstPending !== -1) startModule(firstPending); else setScreen('final');
+  }
+
+  function resetAll() {
+    setScreen('intro');
+    setModuleIndex(0);
+    setQuestionIndex(0);
+    setAnswers([null, null, null]);
+    setChecked(false);
+    setModuleScores({});
+    setCompletedModules([]);
+    setScores(EMPTY_SCORES);
+    setDirection('forward');
+    setModuleSignals({});
+    setDynamicMarks({});
+  }
+
+  function toggleModuleSignal(signal) {
+    setModuleSignals((prev) => {
+      const current = prev[currentModule.id] || [];
+      const next = current.includes(signal) ? current.filter((item) => item !== signal) : [...current, signal];
+      return { ...prev, [currentModule.id]: next };
+    });
+  }
+
+  function toggleDynamicMark(type, value) {
+    setDynamicMarks((prev) => {
+      const current = prev[dynamicKey] || { perceive: [], act: [] };
+      const values = current[type].includes(value)
+        ? current[type].filter((item) => item !== value)
+        : [...current[type], value];
+      return { ...prev, [dynamicKey]: { ...current, [type]: values } };
+    });
+  }
+
+  function getAllDynamicMarks(moduleId) {
+    const marks = Object.entries(dynamicMarks)
+      .filter(([key]) => key.startsWith(`${moduleId}-`))
+      .map(([, value]) => value);
+    return {
+      perceive: marks.flatMap((value) => value.perceive),
+      act: marks.flatMap((value) => value.act),
+    };
+  }
+
+  const pageKey = `${screen}-${moduleIndex}-${questionIndex}`;
+  const pageClass = direction === 'forward' ? 'page-forward' : 'page-back';
+
+  return (
+    <div
+      className="min-h-screen w-full flex flex-col relative"
+      style={{
+        background: 'radial-gradient(ellipse 90% 55% at 50% -8%, #10203C 0%, #081326 55%, #050B18 100%)',
+        color: '#EDE3C8',
+        fontFamily: "ui-sans-serif, system-ui, -apple-system, sans-serif",
+      }}
+    >
+      <style>{`
+        .font-display { font-family: ui-serif, Georgia, 'Times New Roman', serif; }
+        @keyframes slideInRight { from { opacity:0; transform: translateX(18px);} to { opacity:1; transform: translateX(0);} }
+        @keyframes slideInLeft { from { opacity:0; transform: translateX(-18px);} to { opacity:1; transform: translateX(0);} }
+        .page-forward { animation: slideInRight .38s cubic-bezier(.2,.7,.3,1) both; }
+        .page-back { animation: slideInLeft .38s cubic-bezier(.2,.7,.3,1) both; }
+        @keyframes glow { 0%,100% { opacity:.4; } 50% { opacity:.7; } }
+        .glow-pulse { animation: glow 7s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) {
+          .page-forward, .page-back, .glow-pulse { animation: none !important; }
+        }
+        ::selection { background: rgba(212,175,55,0.35); }
+        .cover-grid { background: linear-gradient(110deg, rgba(16,32,60,0.42), rgba(5,11,24,0.08)); }
+        .cover-line { background: linear-gradient(90deg, #D4AF37, rgba(212,175,55,0)); }
+        .signal-card { background: rgba(147,162,192,0.055); border: 1px solid rgba(147,162,192,0.16); }
+        .signal-card:hover { border-color: rgba(212,175,55,0.5); transform: translateY(-2px); }
+        @media (max-width: 640px) {
+          .cover-grid { grid-template-columns: 1fr; }
+          .cover-signals { border-left: 0 !important; border-top: 1px solid rgba(212,175,55,0.22); padding-left: 0 !important; padding-top: 2rem; }
+        }
+      `}</style>
+
+      {screen !== 'intro' && <ReadingBar pct={readingPct} />}
+
+      {/* ---------------- INTRO ---------------- */}
+      {screen === 'intro' && (
+        <div className="flex-1 flex items-center justify-center px-5 sm:px-8 py-10 sm:py-16 relative overflow-hidden">
+          <div className="cover-grid relative grid grid-cols-2 gap-12 max-w-6xl w-full p-2 sm:p-8 lg:p-14 page-forward" style={{ borderLeft: '3px solid #D4AF37' }}>
+            <div className="flex flex-col justify-between min-h-[480px]">
+              <div>
+                <div className="flex items-center gap-3 mb-10" style={{ color: '#D4AF37' }}>
+                  <span className="w-9 h-px" style={{ background: '#D4AF37' }} />
+                  <span className="text-[10px] tracking-[0.28em] uppercase font-semibold">Experiencia interactiva · 2026</span>
+                </div>
+                <p className="text-[13px] tracking-[0.28em] uppercase mb-4" style={{ color: '#93A2C0' }}>Conócete · 2026</p>
+                <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl leading-[0.92] mb-7" style={{ color: '#F0D479' }}>
+                  El lenguaje<br /><em>secreto</em><br />de tu cuerpo
+                </h1>
+                <div className="h-px w-44 mb-6 cover-line" />
+                <p className="text-base sm:text-lg leading-relaxed max-w-lg" style={{ color: '#D7DCE8' }}>
+                  Descubre lo que revelan tus gestos, indicios y microexpresiones, incluso aquello que no ves de ti mismo.
+                </p>
+              </div>
+              <div className="mt-10">
+                <button
+                  onClick={() => setScreen('ethics')}
+                  className="group inline-flex items-center gap-3 font-semibold text-sm px-7 py-4 rounded-full transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+                  style={{ background: 'linear-gradient(135deg, #C9A227, #E8C860)', color: '#0A1428' }}
+                >
+                  Entrar a la experiencia
+                  <ChevronRight size={17} className="group-hover:translate-x-0.5 transition-transform" />
+                </button>
+                <p className="text-[11px] mt-5 tracking-wide" style={{ color: '#5B6478' }}>
+                  Una guía de observación y autoconocimiento basada en el libro de Yoeldis Castillo Quiala y Junior Coronel Durán.
+                </p>
+              </div>
+            </div>
+
+            <div className="cover-signals border-l pl-8 sm:pl-10 flex flex-col justify-center" style={{ borderColor: 'rgba(212,175,55,0.22)' }}>
+              <div className="flex items-center justify-between mb-8">
+                <span className="text-[11px] tracking-[0.25em] uppercase font-semibold" style={{ color: '#D4AF37' }}>Tu mapa de observación</span>
+                <span className="font-display italic text-3xl" style={{ color: '#5B6478' }}>01—12</span>
+              </div>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: '#D7DCE8' }}>
+                <strong style={{ color: '#F0D479' }}>Microexpresiones e indicios</strong><br />
+                Observa lo que aparece en el rostro y las señales del cuerpo que solo adquieren sentido cuando las relacionas con el contexto.
+              </p>
+              <div className="space-y-3">
+                {[
+                  [Smile, 'Microexpresiones', 'emociones que aparecen en el rostro'],
+                  [Search, 'Indicios', 'señales que necesitan contexto'],
+                  [Eye, 'Indicios + microexpresiones', 'cuando ambas señales coinciden'],
+                  [Heart, 'Relaciones', 'interés, distancia y límites'],
+                  [Sparkles, 'Reflejo final', 'tu patrón personal']
+                ].map(([Icon, label, detail], index) => (
+                  <div key={label} className="signal-card flex items-center gap-4 rounded-2xl p-4 transition-all duration-200">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(212,175,55,0.13)', color: '#D4AF37' }}>
+                      <Icon size={18} />
+                    </div>
+                    <div>
+                      <p className="font-display text-lg" style={{ color: '#EDE3C8' }}>{label}</p>
+                      <p className="text-[12px]" style={{ color: '#93A2C0' }}>{detail}</p>
+                    </div>
+                    <span className="ml-auto text-[10px]" style={{ color: '#5B6478' }}>0{index + 1}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-[12px] leading-relaxed mt-8" style={{ color: '#93A2C0' }}>
+                En cada nivel puedes observar microexpresiones, identificar indicios y analizar qué ocurre cuando ambos aparecen juntos.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ---------------- ETHICS / PROPÓSITO ---------------- */}
+      {screen === 'ethics' && (
+        <div className="flex-1 flex items-center justify-center px-6 py-16 max-w-lg mx-auto w-full page-forward">
+          <div className="w-full text-center">
+            <div
+              className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-6"
+              style={{ background: 'rgba(212,175,55,0.14)', color: '#D4AF37' }}
+            >
+              <Compass size={22} />
+            </div>
+            <h2 className="font-display italic text-3xl mb-6" style={{ color: '#F0D479' }}>
+              Antes de empezar, una aclaración
+            </h2>
+            <div className="text-left space-y-4 text-[14px] leading-relaxed mb-10" style={{ color: '#D7DCE8' }}>
+              <p>
+                Esta es una app de <span style={{ color: '#D4AF37', fontWeight: 600 }}>autoconocimiento</span>,
+                no un detector de mentiras. Ningún gesto, aislado, prueba nada sobre ti ni sobre nadie.
+              </p>
+              <p>
+                Tus respuestas no te clasifican ni te diagnostican: solo te muestran una tendencia,
+                un punto de partida para observarte con más honestidad, tal como propone el libro
+                desde su primera página.
+              </p>
+              <p>
+                Los módulos bonus ponen a prueba lo que sabes sobre microexpresiones e indicios,
+                pero incluso ahí la lección más importante es la misma: un solo gesto es un rumor,
+                nunca una sentencia. Usa lo que aprendas aquí para comprender, nunca para juzgar
+                ni manipular a otra persona.
+              </p>
+            </div>
+            <NavRow
+              onBack={() => setScreen('intro')}
+              backLabel="Portada"
+              onNext={() => setScreen('map')}
+              nextLabel="Entiendo, comenzar"
+              nextDisabled={false}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* ---------------- MAP ---------------- */}
+      {screen === 'map' && (
+        <div className="flex-1 px-5 sm:px-8 pb-16 pt-8 max-w-3xl mx-auto w-full page-forward">
+          <button
+            onClick={() => setScreen('ethics')}
+            className="inline-flex items-center gap-1.5 text-[12px] mb-6 focus:outline-none"
+            style={{ color: '#5B6478' }}
+          >
+            <ChevronLeft size={14} /> Portada
+          </button>
+
+          <div className="text-center mb-8">
+            <h2 className="font-display italic text-3xl mb-2" style={{ color: '#F0D479' }}>Tu mapa de observación</h2>
+            <p className="text-sm max-w-md mx-auto" style={{ color: '#93A2C0' }}>
+              Elige un nivel. En cada uno respondes una pregunta y marcas señales concretas para recibir un resumen personal.
+            </p>
+            <p className="text-[11px] mt-3" style={{ color: '#5B6478' }}>
+              {completedModules.length} de {MODULES.length} completados
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-3.5">
+            {MODULES.filter((m) => m.type !== 'quiz').map((m) => {
+              const idx = MODULES.indexOf(m);
+              const done = completedModules.includes(m.id);
+              const dominant = done ? getDominant(moduleScores[m.id]) : null;
+              const Icon = m.Icon;
+              return (
+                <button
+                  key={m.id}
+                  onClick={() => startModule(idx)}
+                  className="text-left rounded-2xl p-4 sm:p-5 transition-all duration-200 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+                  style={{
+                    background: done ? 'rgba(212,175,55,0.06)' : 'rgba(147,162,192,0.045)',
+                    border: `1px solid ${done ? 'rgba(212,175,55,0.35)' : 'rgba(147,162,192,0.14)'}`,
+                  }}
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center"
+                      style={{ background: 'rgba(212,175,55,0.14)', color: '#D4AF37' }}
+                    >
+                      <Icon size={18} />
+                    </div>
+                    {done && (
+                      <span
+                        className="flex items-center gap-1 text-[10px] uppercase tracking-wider font-semibold px-2 py-1 rounded-full"
+                        style={{ background: `${TRAIT_INFO[dominant].color}22`, color: TRAIT_INFO[dominant].color }}
+                      >
+                        <Check size={11} /> {TRAIT_INFO[dominant].label}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="font-display text-lg leading-snug mb-1" style={{ color: '#EDE3C8' }}>{m.title}</h3>
+                  <p className="text-[13px]" style={{ color: '#93A2C0' }}>{m.subtitle}</p>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="flex items-center gap-3 mt-10 mb-4">
+            <div className="h-px flex-1" style={{ background: 'rgba(212,175,55,0.25)' }} />
+            <span className="text-[11px] tracking-[0.25em] uppercase font-semibold" style={{ color: '#D4AF37' }}>
+              Módulos bonus
+            </span>
+            <div className="h-px flex-1" style={{ background: 'rgba(212,175,55,0.25)' }} />
+          </div>
+          <p className="text-[12px] text-center max-w-md mx-auto mb-5" style={{ color: '#93A2C0' }}>
+            Microexpresiones, indicios, su combinación, y las señales de coqueteo — con corrección
+            inmediata y explicación tomadas del libro.
+          </p>
+
+          <div className="grid sm:grid-cols-2 gap-3.5">
+            {MODULES.filter((m) => m.type === 'quiz').map((m) => {
+              const idx = MODULES.indexOf(m);
+              const done = completedModules.includes(m.id);
+              const Icon = m.Icon;
+              return (
+                <button
+                  key={m.id}
+                  onClick={() => startModule(idx)}
+                  className="text-left rounded-2xl p-4 sm:p-5 transition-all duration-200 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+                  style={{
+                    background: done ? 'rgba(212,175,55,0.09)' : 'rgba(212,175,55,0.035)',
+                    border: `1px solid ${done ? 'rgba(212,175,55,0.4)' : 'rgba(212,175,55,0.22)'}`,
+                  }}
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center"
+                      style={{ background: 'rgba(212,175,55,0.16)', color: '#D4AF37' }}
+                    >
+                      <Icon size={18} />
+                    </div>
+                    {done && (
+                      <span
+                        className="flex items-center gap-1 text-[10px] uppercase tracking-wider font-semibold px-2 py-1 rounded-full"
+                        style={{ background: 'rgba(212,175,55,0.18)', color: '#D4AF37' }}
+                      >
+                        <Check size={11} /> {moduleScores[m.id]?.correct}/{moduleScores[m.id]?.total}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="font-display text-lg leading-snug mb-1 flex items-center gap-2" style={{ color: '#EDE3C8' }}>
+                    {m.title}
+                    <span
+                      className="text-[9px] uppercase tracking-wider font-semibold px-1.5 py-0.5 rounded"
+                      style={{ background: 'rgba(212,175,55,0.22)', color: '#D4AF37' }}
+                    >
+                      Bonus
+                    </span>
+                  </h3>
+                  <p className="text-[13px] font-semibold" style={{ color: '#D4AF37' }}>{m.subtitle}</p>
+                </button>
+              );
+            })}
+          </div>
+
+          <button
+            onClick={() => allDone && setScreen('final')}
+            disabled={!allDone}
+            className="w-full mt-6 rounded-2xl p-5 text-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+            style={{
+              background: allDone ? 'linear-gradient(135deg, rgba(212,175,55,0.16), rgba(167,139,196,0.10))' : 'rgba(147,162,192,0.03)',
+              border: `1px solid ${allDone ? 'rgba(212,175,55,0.4)' : 'rgba(147,162,192,0.08)'}`,
+              cursor: allDone ? 'pointer' : 'default',
+              opacity: allDone ? 1 : 0.55,
+            }}
+          >
+            <p className="font-display italic text-xl mb-1" style={{ color: '#F0D479' }}>
+              {allDone ? 'Ver tu reflejo final' : 'Tu reflejo final se revela al completar los 12 módulos'}
+            </p>
+            <p className="text-[12px]" style={{ color: '#93A2C0' }}>
+              {allDone ? 'Un retrato de cómo habitas tu cuerpo, escrito a partir de tus respuestas.' : `Faltan ${MODULES.length - completedModules.length} módulo(s).`}
+            </p>
+          </button>
+        </div>
+      )}
+
+      {/* ---------------- QUESTION ---------------- */}
+      {screen === 'question' && (
+        <div className="flex-1 flex flex-col px-5 sm:px-8 pb-10 pt-10 max-w-2xl mx-auto w-full">
+          <div key={pageKey} className={`${pageClass} flex-1 flex flex-col`}>
+            <div className="flex items-center gap-2 mb-1" style={{ color: '#D4AF37' }}>
+              <currentModule.Icon size={15} />
+              <span className="text-[11px] tracking-[0.2em] uppercase font-medium">
+                Nivel {moduleIndex + 1} de {MODULES.length} · {currentModule.title}
+              </span>
+            </div>
+            <p className="text-[11px] mb-6" style={{ color: '#5B6478' }}>
+              Página {questionIndex + 1} de {currentModule.questions.length}
+            </p>
+
+            {currentModule.id === 'm7' && (
+              <div
+                className="rounded-2xl px-4 py-3 mb-5 text-left"
+                style={{ background: 'rgba(201,123,147,0.09)', border: '1px solid rgba(201,123,147,0.28)' }}
+              >
+                <p className="text-[10px] uppercase tracking-[0.18em] font-semibold mb-1" style={{ color: '#C97B93' }}>
+                  Nivel de relaciones
+                </p>
+                <p className="text-[13px] leading-relaxed" style={{ color: '#D7DCE8' }}>
+                  Observa mirada, pies, postura, distancia, voz y contacto. Una señal sola no decide si existe interés, distancia o incomodidad: busca la combinación, compárala con el contexto y respeta siempre los límites de la otra persona.
+                </p>
+              </div>
+            )}
+
+            <h2 className="font-display text-2xl sm:text-3xl leading-snug mb-2" style={{ color: '#EDE3C8' }}>
+              {currentQuestion.prompt}
+            </h2>
+            {isMulti && (
+              <p className="text-[12px] mb-6 italic" style={{ color: '#93A2C0' }}>
+                Marca todas las opciones que apliquen.
+              </p>
+            )}
+            {!isMulti && <div className="mb-6" />}
+
+            <div className="space-y-2.5">
+              {currentQuestion.options.map((opt, i) => {
+                const isSelected = isMulti
+                  ? Array.isArray(currentAnswer) && currentAnswer.includes(i)
+                  : currentAnswer === i;
+                let bg = 'rgba(147,162,192,0.045)', border = 'rgba(147,162,192,0.14)', color = '#D7DCE8';
+                if (isQuiz && checked) {
+                  if (opt.correct) { bg = 'rgba(122,196,140,0.14)'; border = '#7AC48C'; color = '#B7E8C4'; }
+                  else if (isSelected) { bg = 'rgba(201,116,74,0.14)'; border = '#C9744A'; color = '#E8B7A0'; }
+                  else { bg = 'rgba(147,162,192,0.03)'; border = 'rgba(147,162,192,0.08)'; color = '#5B6478'; }
+                } else if (isSelected) {
+                  bg = 'rgba(212,175,55,0.14)'; border = '#D4AF37'; color = '#F0D479';
+                }
+                return (
+                  <button
+                    key={i}
+                    onClick={() => selectOption(i)}
+                    disabled={isQuiz && checked}
+                    className="w-full text-left rounded-xl px-4 py-3.5 text-[14px] leading-snug transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] flex items-center justify-between gap-3"
+                    style={{ background: bg, border: `1px solid ${border}`, color, cursor: isQuiz && checked ? 'default' : 'pointer' }}
+                  >
+                    <span>{opt.text}</span>
+                    {isQuiz && checked && opt.correct && <Check size={16} className="shrink-0" style={{ color: '#7AC48C' }} />}
+                    {isQuiz && checked && isSelected && !opt.correct && <XIcon size={16} className="shrink-0" style={{ color: '#C9744A' }} />}
+                    {isMulti && !checked && (
+                      <span
+                        className="w-4 h-4 rounded shrink-0 flex items-center justify-center"
+                        style={{ border: `1.5px solid ${isSelected ? '#D4AF37' : 'rgba(147,162,192,0.35)'}`, background: isSelected ? '#D4AF37' : 'transparent' }}
+                      >
+                        {isSelected && <Check size={11} style={{ color: '#0A1428' }} />}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            {(() => {
+              const dynamic = getLevelDynamic(currentModule, questionIndex);
+              const renderMarks = (type, options) => options.map((option) => {
+                const selected = currentDynamicMarks[type].includes(option);
+                return (
+                  <div key={option}>
+                    <button onClick={() => toggleDynamicMark(type, option)} className="w-full flex items-center gap-2 text-left rounded-xl px-3 py-3 text-[12px] transition-all focus:outline-none focus:ring-2 focus:ring-[#D4AF37]" style={{ background: selected ? 'rgba(212,175,55,0.16)' : 'rgba(147,162,192,0.045)', border: `1px solid ${selected ? '#D4AF37' : 'rgba(147,162,192,0.16)'}`, color: selected ? '#F0D479' : '#D7DCE8' }}>
+                      <span className="w-4 h-4 rounded flex items-center justify-center shrink-0" style={{ border: `1px solid ${selected ? '#D4AF37' : '#5B6478'}`, background: selected ? '#D4AF37' : 'transparent' }}>{selected && <Check size={11} style={{ color: '#0A1428' }} />}</span>
+                      {option}
+                    </button>
+                    {selected && <p className="px-3 py-2 text-[11px] leading-relaxed" style={{ color: type === 'perceive' ? '#B9CFE8' : '#B7E8C4' }}>{getDynamicReading(type, option)}</p>}
+                  </div>
+                );
+              });
+              return (
+                <div className="mt-6 grid gap-4 text-left">
+                  <div className="rounded-2xl p-4" style={{ background: 'rgba(110,155,199,0.08)', border: '1px solid rgba(110,155,199,0.3)' }}>
+                    <p className="text-[10px] uppercase tracking-[0.18em] font-semibold mb-2" style={{ color: '#6E9BC7' }}>A · Lo que percibes</p>
+                    <p className="text-[13px] leading-relaxed mb-3" style={{ color: '#D7DCE8' }}>{dynamic.perceive}</p>
+                    <div className="grid sm:grid-cols-2 gap-2">{renderMarks('perceive', dynamic.options)}</div>
+                    <p className="text-[11px] mt-3" style={{ color: '#93A2C0' }}>{currentDynamicMarks.perceive.length} señales percibidas</p>
+                  </div>
+                  <div className="rounded-2xl p-4" style={{ background: 'rgba(122,196,140,0.08)', border: '1px solid rgba(122,196,140,0.3)' }}>
+                    <p className="text-[10px] uppercase tracking-[0.18em] font-semibold mb-2" style={{ color: '#7AC48C' }}>B · Cómo actuarías tú</p>
+                    <p className="text-[13px] leading-relaxed mb-3" style={{ color: '#D7DCE8' }}>{dynamic.act}</p>
+                    <div className="grid sm:grid-cols-2 gap-2">{renderMarks('act', dynamic.actions)}</div>
+                    <p className="text-[11px] mt-3" style={{ color: '#93A2C0' }}>{currentDynamicMarks.act.length} respuestas personales</p>
+                  </div>
+                  {hasDynamicMarks && <div className="rounded-xl px-4 py-3" style={{ background: 'rgba(212,175,55,0.06)', border: '1px solid rgba(212,175,55,0.2)' }}><p className="text-[10px] uppercase tracking-wider font-semibold mb-2" style={{ color: '#D4AF37' }}>Lectura de esta hoja</p><p className="text-[12px] leading-relaxed" style={{ color: '#D7DCE8' }}>Percibes: {currentDynamicMarks.perceive.join(', ') || 'ninguna señal todavía'}. Tu respuesta: {currentDynamicMarks.act.join(', ') || 'ninguna marcada todavía'}. Úsalo como preparación para observar y actuar con más claridad.</p></div>}
+                </div>
+              );
+            })()}
+
+            {isQuiz && checked && (
+              <div
+                className="mt-4 rounded-xl px-4 py-3.5 text-[13px] leading-relaxed"
+                style={{ background: 'rgba(212,175,55,0.06)', border: '1px solid rgba(212,175,55,0.2)', color: '#D7DCE8' }}
+              >
+                <span className="text-[10px] uppercase tracking-wider font-semibold block mb-1.5" style={{ color: '#D4AF37' }}>
+                  Por qué
+                </span>
+                {currentQuestion.explanation}
+              </div>
+            )}
+
+            <NavRow
+              onBack={goBackQuestion}
+              backLabel={questionIndex === 0 ? 'Al mapa' : 'Atrás'}
+              onNext={goForwardQuestion}
+              nextDisabled={!canContinue}
+              nextLabel={
+                isQuiz && !checked
+                  ? 'Verificar respuesta'
+                  : questionIndex === currentModule.questions.length - 1
+                  ? 'Terminar nivel'
+                  : 'Siguiente'
+              }
+            />
+          </div>
+        </div>
+      )}
+
+      {/* ---------------- MODULE SUMMARY ---------------- */}
+      {screen === 'moduleSummary' && (
+        <div className="flex-1 flex items-center justify-center px-5 sm:px-8 pb-10 pt-10 max-w-xl mx-auto w-full">
+          <div key={pageKey} className={`${pageClass} w-full text-center`}>
+            <span className="text-[11px] tracking-[0.25em] uppercase font-medium" style={{ color: '#D4AF37' }}>
+              Cae el telón · {currentModule.title}
+            </span>
+            {currentModule.type === 'quiz' ? (() => {
+              const { correct, total } = moduleScores[currentModule.id] || { correct: 0, total: 5 };
+              const msg = correct === total
+                ? 'Ojo clínico. Lees los racimos de señales, no gestos sueltos, que es justo la diferencia entre un observador casual y uno entrenado.'
+                : correct >= total - 2
+                ? 'Buen observador. Sigue practicando: la clave siempre está en combinar tres indicios, nunca en juzgar uno solo.'
+                : 'Ir despacio también es parte del entrenamiento. Vuelve al nivel de emociones y repasa cómo se combinan microexpresión, gesto y contexto.';
+              const missed = currentModule.questions
+                .map((_, qi) => qi)
+                .filter((qi) => !isQuestionCorrect(currentModule, qi, answers[qi]));
+              return (
+                <>
+                  <h2 className="font-display italic text-3xl my-5" style={{ color: '#D4AF37' }}>{correct} de {total} aciertos</h2>
+                  <p className="text-[15px] leading-relaxed mb-6" style={{ color: '#D7DCE8' }}>{msg}</p>
+                  {missed.length > 0 && (
+                    <div className="text-left rounded-xl px-5 py-4 mb-8" style={{ background: 'rgba(212,175,55,0.06)', border: '1px solid rgba(212,175,55,0.2)' }}>
+                      <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-semibold mb-3" style={{ color: '#D4AF37' }}>
+                        <Lightbulb size={12} /> En qué seguir trabajando
+                      </span>
+                      <div className="space-y-3">
+                        {missed.map((qi) => (
+                          <p key={qi} className="text-[13px] leading-relaxed" style={{ color: '#B9C2D6' }}>
+                            {currentModule.questions[qi].explanation}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </>
+              );
+            })() : (() => {
+              const dominant = getDominant(moduleScores[currentModule.id]);
+              const info = dominant
+                ? TRAIT_INFO[dominant]
+                : {
+                    color: '#D4AF37',
+                    mirrorTitle: 'Tu patrón de observación',
+                    text: () => 'Has construido este nivel a partir de las señales que reconociste. Observa cómo se combinan y confirma siempre su significado con el contexto, la conversación y los límites de la otra persona.'
+                  };
+              return (
+                <>
+                  <h2 className="font-display italic text-3xl my-5" style={{ color: info.color }}>{info.mirrorTitle}</h2>
+                  <p className="text-[15px] leading-relaxed mb-8" style={{ color: '#D7DCE8' }}>
+                    {info.text(currentModule.theme)}
+                  </p>
+                </>
+              );
+            })()}
+
+            <div
+              className="text-left rounded-2xl px-5 py-4 mb-6"
+              style={{ background: 'rgba(147,162,192,0.045)', border: '1px solid rgba(147,162,192,0.14)' }}
+            >
+              <span className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: '#D4AF37' }}>
+                Resumen de este nivel
+              </span>
+              <p className="text-[13px] leading-relaxed mt-2" style={{ color: '#D7DCE8' }}>
+                {getLevelSummary(currentModule, moduleScores[currentModule.id], getAllDynamicMarks(currentModule.id))}
+              </p>
+              {(() => {
+                const assessment = getDynamicAssessment(
+                  getAllDynamicMarks(currentModule.id).perceive,
+                  getAllDynamicMarks(currentModule.id).act
+                );
+                return (
+                  <div className="mt-3 space-y-2 text-[12px] leading-relaxed" style={{ color: '#B9C2D6' }}>
+                    <p><strong style={{ color: '#6E9BC7' }}>Lo que percibiste:</strong> {assessment.perceptionText}</p>
+                    <p><strong style={{ color: '#7AC48C' }}>Cómo actuarías:</strong> {assessment.actionText}</p>
+                    <p><strong style={{ color: '#D4AF37' }}>Evaluación:</strong> {assessment.coherence}</p>
+                  </div>
+                );
+              })()}
+              <p className="text-[11px] mt-3" style={{ color: '#93A2C0' }}>
+                {BOOK_PARTS[currentModule.id]} · Las señales orientan una conversación contigo; no son un diagnóstico.
+              </p>
+            </div>
+
+            {(() => {
+              const sections = getLevelSections(currentModule, getAllDynamicMarks(currentModule.id));
+              return (
+                <div className="grid gap-3 text-left mb-6">
+                  <div className="rounded-2xl px-5 py-4" style={{ background: 'rgba(110,155,199,0.08)', borderLeft: '3px solid #6E9BC7' }}>
+                    <p className="text-[10px] uppercase tracking-wider font-semibold mb-2" style={{ color: '#6E9BC7' }}>1 · Lo que identificaste</p>
+                    <p className="text-[13px] leading-relaxed" style={{ color: '#D7DCE8' }}>{sections.identified}</p>
+                  </div>
+                  <div className="rounded-2xl px-5 py-4" style={{ background: 'rgba(212,175,55,0.07)', borderLeft: '3px solid #D4AF37' }}>
+                    <p className="text-[10px] uppercase tracking-wider font-semibold mb-2" style={{ color: '#D4AF37' }}>2 · Qué puede significar</p>
+                    <p className="text-[13px] leading-relaxed" style={{ color: '#D7DCE8' }}>{sections.meaning}</p>
+                  </div>
+                  <div className="rounded-2xl px-5 py-4" style={{ background: 'rgba(122,196,140,0.08)', borderLeft: '3px solid #7AC48C' }}>
+                    <p className="text-[10px] uppercase tracking-wider font-semibold mb-2" style={{ color: '#7AC48C' }}>3 · Cómo actuar o prepararte</p>
+                    <p className="text-[13px] leading-relaxed" style={{ color: '#D7DCE8' }}>{sections.action}</p>
+                  </div>
+                </div>
+              );
+            })()}
+
+            {currentModule.type !== 'quiz' && (
+              <div className="flex justify-center flex-wrap gap-1.5 mb-4">
+                {Object.entries(moduleScores[currentModule.id] || {}).map(([k, v]) => (
+                  <span
+                    key={k}
+                    className="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full"
+                    style={{ background: `${TRAIT_INFO[k].color}22`, color: TRAIT_INFO[k].color }}
+                  >
+                    {TRAIT_INFO[k].label} · {v}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            <NavRow
+              onBack={backToLastQuestion}
+              backLabel="Revisar respuestas"
+              onNext={goNextModuleOrFinal}
+              nextLabel={allDone ? 'Ver mi reflejo final' : 'Siguiente módulo'}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* ---------------- FINAL ---------------- */}
+      {screen === 'final' && (() => {
+        const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+        const [top1] = sorted[0];
+        const [top2] = sorted[1];
+        const maxVal = Math.max(...Object.values(scores), 4);
+        const radarData = Object.entries(scores).map(([k, v]) => ({ trait: TRAIT_INFO[k].label, value: v, full: maxVal }));
+        const top1Info = TRAIT_INFO[top1];
+        const top2Info = TRAIT_INFO[top2];
+        const top2Text = top2Info.text('varios momentos de este recorrido');
+
+        return (
+          <div className="flex-1 px-5 sm:px-8 pb-16 pt-8 max-w-2xl mx-auto w-full page-forward">
+            <button
+              onClick={() => setScreen('map')}
+              className="inline-flex items-center gap-1.5 text-[12px] mb-4 focus:outline-none"
+              style={{ color: '#5B6478' }}
+            >
+              <ChevronLeft size={14} /> Volver al mapa
+            </button>
+
+            <div className="text-center mb-2">
+              <span className="text-[11px] tracking-[0.25em] uppercase font-medium" style={{ color: '#5B6478' }}>Tu reflejo</span>
+            </div>
+
+            <div className="flex justify-center my-8">
+              <div
+                className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full flex items-center justify-center text-center px-8"
+                style={{
+                  background: `radial-gradient(circle at 35% 30%, rgba(255,255,255,0.08), rgba(255,255,255,0) 45%), radial-gradient(circle, ${top1Info.color}22 0%, #0C1730 70%)`,
+                  border: `1px solid ${top1Info.color}55`,
+                  boxShadow: `0 0 60px ${top1Info.color}1f, inset 0 0 40px rgba(0,0,0,0.4)`,
+                }}
+              >
+                <p className="font-display italic text-2xl sm:text-[28px] leading-tight" style={{ color: top1Info.color }}>
+                  {top1Info.mirrorTitle}
+                </p>
+              </div>
+            </div>
+
+            <p className="text-[15px] leading-relaxed text-center max-w-md mx-auto mb-3" style={{ color: '#D7DCE8' }}>
+              {top1Info.text('tu forma general de habitar el cuerpo')}
+            </p>
+            <p className="text-[13px] leading-relaxed text-center max-w-md mx-auto mb-10" style={{ color: '#93A2C0' }}>
+              Muy cerca aparece también <span style={{ color: top2Info.color }}>{top2Info.label.toLowerCase()}</span>: {top2Text.charAt(0).toLowerCase() + top2Text.slice(1)}
+            </p>
+
+            <div className="h-64 sm:h-72 mb-10">
+              <ResponsiveContainer width="100%" height="100%">
+                <RadarChart data={radarData} outerRadius="70%">
+                  <PolarGrid stroke="rgba(147,162,192,0.16)" />
+                  <PolarAngleAxis dataKey="trait" tick={{ fill: '#93A2C0', fontSize: 12 }} />
+                  <Radar dataKey="value" stroke="#D4AF37" fill="#D4AF37" fillOpacity={0.28} strokeWidth={2} />
+                </RadarChart>
+              </ResponsiveContainer>
+            </div>
+
+            <h3 className="font-display italic text-xl mb-4 text-center" style={{ color: '#F0D479' }}>Módulo a módulo</h3>
+            <div className="space-y-2 mb-10">
+              {MODULES.map((m) => {
+                const isQuiz = m.type === 'quiz';
+                const dom = isQuiz ? null : getDominant(moduleScores[m.id]);
+                const info = dom ? TRAIT_INFO[dom] : null;
+                const levelSummary = moduleScores[m.id]
+                  ? getLevelSummary(m, moduleScores[m.id], getAllDynamicMarks(m.id))
+                  : 'Nivel pendiente.';
+                const levelSections = getLevelSections(m, getAllDynamicMarks(m.id));
+                return (
+                  <div
+                    key={m.id}
+                    className="rounded-xl px-4 py-3"
+                    style={{ background: 'rgba(147,162,192,0.035)', border: '1px solid rgba(147,162,192,0.1)' }}
+                  >
+                    <div className="flex items-center justify-between gap-2.5">
+                      <div className="flex items-center gap-2.5">
+                        <m.Icon size={15} style={{ color: '#5B6478' }} />
+                        <span className="text-[13px]" style={{ color: '#D7DCE8' }}>{m.title}</span>
+                      </div>
+                      {info && (
+                        <span
+                          className="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full shrink-0"
+                          style={{ background: `${info.color}22`, color: info.color }}
+                        >
+                          {info.label}
+                        </span>
+                      )}
+                      {isQuiz && moduleScores[m.id] && (
+                        <span
+                          className="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full shrink-0"
+                          style={{ background: 'rgba(212,175,55,0.18)', color: '#D4AF37' }}
+                        >
+                          {moduleScores[m.id].correct}/{moduleScores[m.id].total} aciertos
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-[12px] leading-relaxed mt-2" style={{ color: '#B9C2D6' }}>{levelSummary}</p>
+                    {moduleScores[m.id] && <p className="text-[12px] leading-relaxed mt-2" style={{ color: '#9ED9AC' }}><strong>Cómo actuar:</strong> {levelSections.action}</p>}
+                  </div>
+                );
+              })}
+            </div>
+
+            <NavRow
+              onBack={() => setScreen('map')}
+              backLabel="Volver al mapa"
+              onNext={() => setScreen('closing')}
+              nextDisabled={false}
+              nextLabel="Continuar"
+            />
+          </div>
+        );
+      })()}
+
+      {/* ---------------- CLOSING / MARKETING ---------------- */}
+      {screen === 'closing' && (
+        <div className="flex-1 flex items-center justify-center px-6 py-16 max-w-lg mx-auto w-full page-forward">
+          <div className="w-full text-center">
+            <div
+              className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-6"
+              style={{ background: 'rgba(212,175,55,0.14)', color: '#D4AF37' }}
+            >
+              <Sparkles size={20} />
+            </div>
+            <h2 className="font-display italic text-3xl mb-5" style={{ color: '#F0D479' }}>
+              Gracias por mirarte con honestidad
+            </h2>
+            <p className="text-[14.5px] leading-relaxed mb-6" style={{ color: '#D7DCE8' }}>
+              Has recorrido decenas de escenas de tu propia vida y has elegido, cada vez,
+              responder desde lo que realmente hace tu cuerpo y no desde lo que crees que
+              "debería" hacer. Ese gesto —el de observarte sin juzgarte— es exactamente el que
+              proponíamos al abrir este libro. El viaje no termina aquí: sigue cada vez que te
+              sorprendas a ti mismo cruzando los brazos, aguantando una sonrisa o buscando la
+              salida con los pies.
+            </p>
+
+            <div
+              className="rounded-2xl p-6 text-center mb-8"
+              style={{ background: 'linear-gradient(135deg, rgba(212,175,55,0.14), rgba(167,139,196,0.08))', border: '1px solid rgba(212,175,55,0.3)' }}
+            >
+              <BookHeart size={20} className="mx-auto mb-3" style={{ color: '#D4AF37' }} />
+              <p className="font-display italic text-lg mb-2" style={{ color: '#F0D479' }}>
+                Esta app es solo el eco de un libro más grande
+              </p>
+              <p className="text-[13.5px] leading-relaxed mb-4" style={{ color: '#D7DCE8' }}>
+                Todo lo que respondiste aquí viene de <em>Conócete: el lenguaje secreto de tu cuerpo</em>,
+                donde cada capítulo profundiza mucho más: entrevistas, negociaciones, pareja, poder,
+                pérdida y despedida. Si esta experiencia te dijo algo sobre ti, el libro completo
+                te dirá mucho más.
+              </p>
+              <a
+                href="https://www.conocete.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-semibold text-sm px-6 py-3 rounded-full transition-transform hover:scale-[1.02]"
+                style={{ background: 'linear-gradient(135deg, #C9A227, #E8C860)', color: '#0A1428' }}
+              >
+                Consigue el libro en conocete.com <ChevronRight size={16} />
+              </a>
+            </div>
+
+            <p className="text-[11px] tracking-wide mb-10" style={{ color: '#5B6478' }}>
+              Yoeldis Castillo Quiala, Psicólogo · Junior Coronel Durán<br />
+              Autores de «Conócete: el lenguaje secreto de tu cuerpo» · @conocete.app
+            </p>
+
+            <div className="flex justify-center gap-3">
+              <button
+                onClick={() => setScreen('final')}
+                className="inline-flex items-center gap-1.5 text-sm px-6 py-3 rounded-full border transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+                style={{ borderColor: 'rgba(147,162,192,0.25)', color: '#D7DCE8' }}
+              >
+                <ChevronLeft size={15} /> Volver a tu reflejo
+              </button>
+              <button
+                onClick={resetAll}
+                className="inline-flex items-center gap-2 font-semibold text-sm px-6 py-3 rounded-full transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+                style={{ background: 'linear-gradient(135deg, #C9A227, #E8C860)', color: '#0A1428' }}
+              >
+                <RotateCcw size={15} /> Empezar de nuevo
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
